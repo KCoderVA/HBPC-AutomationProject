@@ -3,16 +3,8 @@
 All notable changes to the HBPC Admission Compose action & supporting repository artifacts.
 
 ## [Unreleased]
-### Planned
-- Standardize top-section expressions to unified fallback pattern.
-- Add PowerShell expression integrity checker (fallback, `/Value`, structural).
-- Populate authoritative field schema data types & PHI flags from sample run exports.
-- Introduce release automation script bundling export + audit + tag.
-- Add SECURITY.md and anonymization tooling for sanitized HTML sharing.
-- Add manual badges section to README with schema field count automation placeholder.
-- Implement hotfix branch workflow and pre-release tag policy in governance.
-
-## [0.1.1] - 2025-11-07
+## [Unreleased]\n### Added\n- (placeholder)\n### Changed\n- (placeholder)\n### Fixed\n- (placeholder)\n
+## [v0.3.0] - 2025-11-07\n### Added\n- (none)\n\n### Changed\n- (none)\n\n### Fixed\n- (none)\n\n
 ### Added
 - Tracked historical flow export `.zip` packages (success & failure) by removing `*.zip` from `.gitignore`.
 - Expanded `README.md` with architecture diagram, governance workflow, troubleshooting matrix, and zip tracking rationale.
