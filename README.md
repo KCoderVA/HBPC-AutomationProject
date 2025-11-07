@@ -1,9 +1,11 @@
 # HBPC Admission Flow Repository
 
+<!-- BADGES:START -->
 <div>
-<strong>Badges (Manual)</strong>:<br/>
+<strong>Badges</strong>:<br/>
 <code>License: Apache-2.0</code> • <code>Governance: Active</code> • <code>Schema Fields: 11</code> • <code>Reconstruction: Stable</code>
 </div>
+<!-- BADGES:END -->
 
 ## Overview
 This repository houses governance, forensic, and maintenance artifacts for the **HBPC New Admission Email With Saved Form** Power Automate flow. The flow generates a structured HTML admission summary populated from SharePoint list item data. Reconstruction (v0.1.0 baseline) restored truncated middle sections; subsequent governance (v0.1.1) introduced tracked exports, architecture documentation, and config scaffolding; current end-of-day adds formal governance + CI + semantic versioning support.

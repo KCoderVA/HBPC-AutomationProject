@@ -11,6 +11,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Set up git for automated commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
       - name: Validate fieldSchema.json
         shell: pwsh
         run: |
@@ -26,6 +30,34 @@ jobs:
           }
           if($invalid.Count -gt 0){ Write-Error ("Schema validation errors:`n" + ($invalid -join "`n")); exit 1 }
           Write-Host 'fieldSchema.json validation OK'
+      - name: Auto-update README badge schema field count
+        shell: pwsh
+        run: |
+          $schemaPath = 'config/fieldSchema.json'
+          $readmePath = 'README.md'
+          if(!(Test-Path $schemaPath)){ Write-Error 'Schema file missing for badge update'; exit 1 }
+          if(!(Test-Path $readmePath)){ Write-Error 'README.md missing'; exit 1 }
+          $schemaJson = Get-Content $schemaPath -Raw | ConvertFrom-Json
+          if(-not $schemaJson.fields){ Write-Error 'fields array absent in schema'; exit 1 }
+          $count = $schemaJson.fields.Count
+          $readme = Get-Content $readmePath -Raw
+          $markerPattern = '(?s)<!-- BADGES:START -->(.*?)<!-- BADGES:END -->'
+          $m = [regex]::Match($readme, $markerPattern)
+          if(-not $m.Success){ Write-Error 'Badge markers not found'; exit 1 }
+          $block = $m.Value
+          $countMatch = [regex]::Match($block, 'Schema Fields:\s*(\d+)')
+          if(-not $countMatch.Success){ Write-Error 'Schema Fields count token missing in badge block'; exit 1 }
+          $existing = [int]$countMatch.Groups[1].Value
+          if($existing -eq $count){ Write-Host "Badge already up-to-date ($count)."; exit 0 }
+          $newBlock = $block -replace 'Schema Fields:\s*\d+', "Schema Fields: $count"
+          $updated = $readme.Substring(0,$m.Index) + $newBlock + $readme.Substring($m.Index + $m.Length)
+          Set-Content -Path $readmePath -Value $updated -Encoding UTF8
+          git add $readmePath
+          git commit -m "chore(readme): update schema fields badge to $count" || echo 'No changes to commit'
+      - name: Push badge update (if any)
+        if: always()
+        run: |
+          git push origin HEAD:main || echo 'No badge changes to push'
       - name: Check README quickstart present
         shell: pwsh
         run: |
