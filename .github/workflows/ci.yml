@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Set up git for automated commit
         run: |
           git config user.name "github-actions"
@@ -54,6 +56,20 @@ jobs:
           Set-Content -Path $readmePath -Value $updated -Encoding UTF8
           git add $readmePath
           git commit -m "chore(readme): update schema fields badge to $count" || echo 'No changes to commit'
+      - name: Update build info block
+        shell: pwsh
+        run: |
+          $readmePath = 'README.md'
+          if(!(Test-Path $readmePath)){ Write-Error 'README.md missing'; exit 1 }
+          $content = Get-Content $readmePath -Raw
+          if($content -notmatch '<!-- BUILDINFO:START -->'){ Write-Error 'Build info markers missing'; exit 1 }
+          $shortSha = (git rev-parse --short HEAD).Trim()
+          $utcDate = (Get-Date).ToUniversalTime().ToString('yyyy-MM-dd')
+          $schemaPath = 'config/fieldSchema.json'
+          $schemaCount = if(Test-Path $schemaPath){ (Get-Content $schemaPath -Raw | ConvertFrom-Json).fields.Count } else { 0 }
+          $newBlock = "<!-- BUILDINFO:START --><div><em>Build Info</em>: Commit <code>$shortSha</code> • UTC <code>$utcDate</code> • Schema Fields Snapshot <code>$schemaCount</code></div><!-- BUILDINFO:END -->"
+          $updated = [regex]::Replace($content,'<!-- BUILDINFO:START -->.*?<!-- BUILDINFO:END -->',$newBlock,'Singleline')
+          if($updated -ne $content){ Set-Content -Path $readmePath -Value $updated -Encoding UTF8; git add $readmePath; git commit -m "chore(readme): refresh build info ($shortSha)" | Out-Null } else { Write-Host 'Build info already current' }
       - name: Push badge update (if any)
         if: always()
         run: |

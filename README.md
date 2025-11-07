@@ -8,6 +8,10 @@
 <!-- BADGES:END -->
 <p><img alt="Schema Fields" src="badges/schema-field-count.svg" /></p>
 
+<!-- BUILDINFO:START -->
+<div><em>Build Info</em>: Commit <code>HEAD-SHORT-SHA</code> • UTC <code>YYYY-MM-DD</code> • Schema Fields Snapshot <code>11</code></div>
+<!-- BUILDINFO:END -->
+
 ## Overview
 This repository houses governance, forensic, and maintenance artifacts for the **HBPC New Admission Email With Saved Form** Power Automate flow. The flow generates a structured HTML admission summary populated from SharePoint list item data. Reconstruction (v0.1.0 baseline) restored truncated middle sections; subsequent governance (v0.1.1) introduced tracked exports, architecture documentation, and config scaffolding; current end-of-day adds formal governance + CI + semantic versioning support.
 
