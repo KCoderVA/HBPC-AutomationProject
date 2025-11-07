@@ -9,7 +9,7 @@
 <p><img alt="Schema Fields" src="badges/schema-field-count.svg" /></p>
 
 <!-- BUILDINFO:START -->
-<div><em>Build Info</em>: Commit <code>HEAD-SHORT-SHA</code> • UTC <code>YYYY-MM-DD</code> • Schema Fields Snapshot <code>11</code></div>
+<div><em>Build Info</em>: Commit <code>HEAD-SHORT-SHA</code> • UTC <code>YYYY-MM-DD</code> • Last Tag <code>vX.Y.Z</code> • Commits Since Tag <code>N</code> • Files Since Tag <code>M</code> • Schema Fields Snapshot <code>11</code></div>
 <!-- BUILDINFO:END -->
 
 ## Overview

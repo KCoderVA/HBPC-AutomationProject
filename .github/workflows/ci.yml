@@ -67,7 +67,19 @@ jobs:
           $utcDate = (Get-Date).ToUniversalTime().ToString('yyyy-MM-dd')
           $schemaPath = 'config/fieldSchema.json'
           $schemaCount = if(Test-Path $schemaPath){ (Get-Content $schemaPath -Raw | ConvertFrom-Json).fields.Count } else { 0 }
-          $newBlock = "<!-- BUILDINFO:START --><div><em>Build Info</em>: Commit <code>$shortSha</code> • UTC <code>$utcDate</code> • Schema Fields Snapshot <code>$schemaCount</code></div><!-- BUILDINFO:END -->"
+          # Determine last semantic tag
+          $lastTag = (git tag --list 'v*' --sort=-creatordate | Select-Object -First 1)
+          if([string]::IsNullOrWhiteSpace($lastTag)){ $lastTag = 'none' }
+          if($lastTag -eq 'none'){
+            $commitsSince = (git rev-list --count HEAD)
+            # Files since 'none' treated as total tracked files for initial baseline
+            $filesSince = (git ls-files | Measure-Object | ForEach-Object { $_.Count })
+          } else {
+            $commitsSince = (git rev-list --count "$lastTag..HEAD")
+            $filesSince = (git diff --name-only $lastTag HEAD | Measure-Object | ForEach-Object { $_.Count })
+          }
+          if(-not $filesSince){ $filesSince = 0 }
+          $newBlock = "<!-- BUILDINFO:START --><div><em>Build Info</em>: Commit <code>$shortSha</code> • UTC <code>$utcDate</code> • Last Tag <code>$lastTag</code> • Commits Since Tag <code>$commitsSince</code> • Files Since Tag <code>$filesSince</code> • Schema Fields Snapshot <code>$schemaCount</code></div><!-- BUILDINFO:END -->"
           $updated = [regex]::Replace($content,'<!-- BUILDINFO:START -->.*?<!-- BUILDINFO:END -->',$newBlock,'Singleline')
           if($updated -ne $content){ Set-Content -Path $readmePath -Value $updated -Encoding UTF8; git add $readmePath; git commit -m "chore(readme): refresh build info ($shortSha)" | Out-Null } else { Write-Host 'Build info already current' }
       - name: Push badge update (if any)
