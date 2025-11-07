@@ -91,6 +91,57 @@ jobs:
             "$TAG_REF" "$DATE_UTC" "$SCHEMA_COUNT" "$NEW_FIELDS_DELTA" "$FILE_COUNT" "$CHANGE_DENSITY" "$DAYS_SINCE" "${PREV_TAG:-none}" > metrics/build-manifest.json
           git add metrics/build-manifest.json
           if git diff --quiet; then echo "No changes to commit"; else git add README.md badges/schema-field-count.svg "$LOG_PATH"; git commit -m "chore(release-metrics): snapshot $TAG_REF (schema=$SCHEMA_COUNT files=$FILE_COUNT)"; fi
+      - name: Generate release notes & finalize CHANGELOG
+        run: |
+          set -euo pipefail
+          TAG_REF="${GITHUB_REF##*/}"
+          DATE_UTC=$(date -u +%Y-%m-%d)
+          if [ ! -f CHANGELOG.md ]; then echo "CHANGELOG.md missing"; exit 1; fi
+          PREV_TAG=$(git tag --list 'v*' --sort=-creatordate | grep -v "$TAG_REF" | head -n1 || true)
+          COMMITS_RANGE=""
+          if [ -n "$PREV_TAG" ]; then COMMITS_RANGE="$PREV_TAG..$TAG_REF"; else COMMITS_RANGE="$(git rev-list --max-parents=0 HEAD)..$TAG_REF"; fi
+          echo "Collecting conventional commits in range: $COMMITS_RANGE"
+          RAW_COMMITS=$(git log --pretty='%s' $COMMITS_RANGE || true)
+          ADDED_LIST=""; CHANGED_LIST=""; FIXED_LIST=""
+          while IFS= read -r line; do
+            case "$line" in
+              feat* ) ADDED_LIST+="- ${line#feat*:}\n" ;;
+              fix* ) FIXED_LIST+="- ${line#fix*:}\n" ;;
+              refactor*|perf*|chore*|build*|ci*|security* ) CHANGED_LIST+="- ${line#*:}\n" ;;
+              docs* ) CHANGED_LIST+="- (docs) ${line#docs*:}\n" ;;
+              * ) : ;;
+            esac
+          done <<< "$RAW_COMMITS"
+          [ -z "$ADDED_LIST" ] && ADDED_LIST="- (none)\n"
+          [ -z "$CHANGED_LIST" ] && CHANGED_LIST="- (none)\n"
+          [ -z "$FIXED_LIST" ] && FIXED_LIST="- (none)\n"
+          CHANGELOG_CONTENT=$(cat CHANGELOG.md)
+          # Extract Unreleased block if present
+          if echo "$CHANGELOG_CONTENT" | grep -q '## \[Unreleased\]'; then
+            UNRELEASED_BLOCK=$(echo "$CHANGELOG_CONTENT" | awk '/## \[Unreleased\]/{flag=1;next}/## \[/{flag=0}flag')
+          else
+            UNRELEASED_BLOCK=""
+          fi
+          NEW_VERSION_SECTION="## [$TAG_REF] - $DATE_UTC\n### Added\n$ADDED_LIST\n### Changed\n$CHANGED_LIST\n### Fixed\n$FIXED_LIST\n"
+          # Insert new version section above previous versions (after Unreleased)
+          if echo "$CHANGELOG_CONTENT" | grep -q "## \[$TAG_REF\]"; then echo "CHANGELOG already contains $TAG_REF"; else
+            if echo "$CHANGELOG_CONTENT" | grep -q '## \[Unreleased\]'; then
+              # Rebuild file: header + Unreleased skeleton + new version + rest
+              HEADER_PART=$(echo "$CHANGELOG_CONTENT" | awk '1;/## \[Unreleased\]/ {exit}')
+              REST_PART=$(echo "$CHANGELOG_CONTENT" | awk 'f;/## \[0/{f=1}' )
+              UNRELEASED_SKELETON='## [Unreleased]\n### Added\n- (placeholder)\n### Changed\n- (placeholder)\n### Fixed\n- (placeholder)\n'
+              printf '%s\n%s\n%s\n%s\n' "$HEADER_PART" "$UNRELEASED_SKELETON" "$NEW_VERSION_SECTION" "$REST_PART" > CHANGELOG.md
+            else
+              printf '%s\n%s\n' "$CHANGELOG_CONTENT" "$NEW_VERSION_SECTION" > CHANGELOG.md
+            fi
+            git add CHANGELOG.md
+            git commit -m "docs(changelog): finalize release notes for $TAG_REF" || echo "No CHANGELOG changes"
+          fi
+          # Write release notes artifact
+          mkdir -p metrics
+          printf 'Release: %s\nDate: %s\n\nAdded:\n%s\nChanged:\n%s\nFixed:\n%s\n' "$TAG_REF" "$DATE_UTC" "$ADDED_LIST" "$CHANGED_LIST" "$FIXED_LIST" > metrics/release-notes-$TAG_REF.md
+          git add metrics/release-notes-$TAG_REF.md
+          git commit -m "chore(release-notes): add notes for $TAG_REF" || echo "No release notes changes"
       - name: Push changes
         run: |
           git push origin HEAD:main || echo "No metric changes to push"

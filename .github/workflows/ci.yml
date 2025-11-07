@@ -202,6 +202,24 @@ jobs:
             foreach($m in $matches){ if($text -notmatch '\*\*\*'){ $bad += "$f:$($m.Value)" } }
           }
           if($bad){ Write-Error "Potential PHI (SSN) patterns detected:`n$($bad -join "`n")" }
+      - name: PHI masking heuristic (non-fatal)
+        shell: pwsh
+        run: |
+          $warn = @()
+          $files = git ls-files | Where-Object { $_ -notlike 'tests/flowSuccess/*' -and $_ -notlike 'tests/flowFailure/*' }
+          foreach($f in $files){
+            $text = Get-Content $f -Raw
+            # Phone numbers (basic) not already masked (exclude patterns with X or *)
+            $phones = [regex]::Matches($text,'\b\d{3}[ -]?\d{3}[ -]?\d{4}\b') | ForEach-Object { $_.Value } | Where-Object { $_ -notmatch '[Xx\*]{3}-?[Xx\*]{2}-?[Xx\*]{4}' }
+            foreach($p in $phones){ $warn += "$f: phone?$p" }
+            # Simple address heuristic: number + word + (Street|St|Avenue|Ave|Road|Rd|Boulevard|Blvd)
+            $addr = [regex]::Matches($text,'\b\d{1,5}\s+[A-Z][a-zA-Z]+\s+(Street|St|Avenue|Ave|Road|Rd|Boulevard|Blvd)\b') | ForEach-Object { $_.Value }
+            foreach($a in $addr){ $warn += "$f: address?$a" }
+            # Potential full names: First Last (Capitalization) not already generic (skip if 'Veteran')
+            $names = [regex]::Matches($text,'\b[A-Z][a-z]+\s+[A-Z][a-z]+\b') | ForEach-Object { $_.Value } | Where-Object { $_ -notmatch 'Veteran|Not Provided' }
+            foreach($n in $names){ $warn += "$f: name?$n" }
+          }
+          if($warn.Count -gt 0){ Write-Warning "Heuristic PHI candidates (review manually):`n$($warn -join "`n")" } else { Write-Host 'No heuristic PHI candidates detected' }
       - name: LICENSE hash verification
         shell: pwsh
         run: |

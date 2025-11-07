@@ -39,6 +39,11 @@ Before finishing an automated change batch:
 - YAML workflows must parse (avoid heredocs that confuse YAML; prefer printf or inline multi-line strings)
 - CI steps should be idempotent (second run without input changes yields no diff/commit)
 - Regex patterns must be Singleline-aware when spanning blocks (use `(?s)` or PowerShell `[regex]::Replace` with `Singleline` option)
+ - Generated edits to `CHANGELOG.md` must preserve required Unreleased skeleton with headings Added / Changed / Fixed.
+ - Commit messages MUST use allowed conventional prefixes to pass the commit check.
+ - Release tags MUST follow `vMAJOR.MINOR.PATCH` (optionally `-rc.N`) pattern.
+ - Governance edits outside marker will trigger hash change; expect version bump.
+ - Marker blocks must remain intact; only modify content inside, never remove markers.
 
 ## Expression Pattern Rules (Compose JSON)
 | Rule | Description | Example |
@@ -57,6 +62,7 @@ Use Conventional Commits with scoped clarity:
 - `fix(flow): correct fallback for AdmissionDate`
 
 Avoid generic messages like `update file` or `misc fixes`.
+Do NOT include trailing punctuation in the type scope (avoid `feat(ci):.`). Keep summary under ~72 chars.
 
 ## When Adding a New Metric
 1. Compute inside existing relevant step if logically adjacent (prefer fewer steps).
@@ -79,12 +85,15 @@ Avoid generic messages like `update file` or `misc fixes`.
 | Schema Updated | Ensure fallback present & sensitivity enumerated. |
 | Docs Touched | If headings changed, allow TOC regeneration step to run. |
 | Governance Changed | Expect policy version bump next CI run. |
+| CHANGELOG Updated | Preserve Unreleased skeleton & headings. |
+| Release Tag Prepared | Ensure CHANGELOG version section exists before tagging. |
 
 ## Anti-Goals
 - Do NOT reformat entire files (preserve existing diff minimalism).
 - Do NOT introduce runtime dependencies for simple text processing.
 - Do NOT manually edit generated blocks rather than updating their sources.
 - Do NOT expose PHI or create sample data containing real identifiers.
+ - Do NOT auto-tag without verifying CHANGELOG, velocity log, and metrics manifest are consistent.
 
 ## Escalation / Clarification Strategy
 If ambiguity arises (e.g., unknown field classification):
@@ -102,6 +111,7 @@ If ambiguity arises (e.g., unknown field classification):
 3. Re-run YAML validation mentally (avoid heredocs — prefer `printf`).
 4. Stage & commit with scoped message.
 5. Suggest follow-up micro-improvements (explicitly mark as optional).
+ 6. If release preparation: ensure Unreleased converted to new version block, reinsert empty Unreleased skeleton, update velocity log & release notes.
 
 ## Glossary
 | Term | Meaning |
@@ -115,6 +125,7 @@ If ambiguity arises (e.g., unknown field classification):
 - If schema complexity grows ( > 50 fields ), consider splitting into categorized arrays then re-aggregating in CI for docs.
 - Introduce severity levels for expression audit findings (warn vs fail) using a simple severity prefix.
 - Add optional SARIF output for audits to annotate PRs directly.
+ - Implement allowlist file for heuristic PHI scan to reduce false positives (e.g., diagram labels).
 
 ## AI Interaction Examples
 Scenario: Add a new choice field `CareSetting`.
@@ -130,5 +141,19 @@ Scenario: Add a metric (average files changed last 3 releases).
 
 ## Concluding Notes
 This file itself should remain mostly static—update only when introducing new marker types, validation domains, or process shifts. Treat it as a contract between maintainers and AI automation.
+
+## CI Compliance Guardrails (Quick Reference)
+| Check | Enforcement | How to Stay Compliant |
+|-------|------------|-----------------------|
+| CHANGELOG Unreleased Headings | CI fails if Added/Changed/Fixed missing | Always keep skeleton after release finalize. |
+| Conventional Commit Prefix | CI fails on non-matching pattern | Start summaries with allowed types only. |
+| Schema Field Fallbacks | CI fails if missing fallback | Include `fallback` in every new field. |
+| SPDX Headers in Scripts | CI fails if header absent | Add `# SPDX-License-Identifier: Apache-2.0` at top. |
+| Policy Version Hash | Version auto-bumped | Don't manually edit hash; let CI regenerate. |
+| Badge & Build Info | Auto-updated | Never hardcode counts manually. |
+| Expression Audit | Fails on structural anomalies | Use standard `if(empty(...))` pattern. |
+| PHI Heuristic | Warn-only currently | Avoid inserting realistic personal data. |
+
+If a future change increases false positives, downgrade the check to warning-only before broad content refactors.
 
 _Last updated: 2025-11-07_
