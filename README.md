@@ -1,7 +1,7 @@
 # HBPC Admission Flow Repository
 
 ## Overview
-This repository houses governance, forensic, and maintenance artifacts for the **HBPC New Admission Email With Saved Form** Power Automate flow. The flow generates a structured HTML admission summary populated from SharePoint list item data. A recent reconstruction (v0.1.0 baseline) restored previously truncated middle sections and standardized dynamic expression patterns for reliability and maintainability.
+This repository houses governance, forensic, and maintenance artifacts for the **HBPC New Admission Email With Saved Form** Power Automate flow. The flow generates a structured HTML admission summary populated from SharePoint list item data. Reconstruction (v0.1.0 baseline) restored truncated middle sections; subsequent governance (v0.1.1) introduced tracked exports, architecture documentation, and config scaffolding; current end-of-day adds formal governance + CI + semantic versioning support.
 
 ## Quickstart (60 Seconds)
 1. Clone: `git clone <repo>` & checkout `main`.
@@ -37,14 +37,21 @@ root/
 | `flowSuccess_SaveHTML_INPUTS.html` | `tests/flowSuccess/` | Historical successful full HTML (blueprint for restore). |
 | `exportedFailure_*.zip` | `tests/flowFailure/` | Full environment flow export at failing state. |
 | `exportedSuccess_*.zip` | `tests/flowSuccess/` | Full environment flow export at successful state. |
-| `FLOW_RECONSTRUCTION_REPORT.md` | `docs/` | Verbose technical remediation and analysis. |
+| `FLOW_RECONSTRUCTION_REPORT.md` | `docs/` | Verbose technical remediation & analysis. |
 | `FLOW_RECONSTRUCTION_REPORT_QUICK.md` | `docs/` | Concise stakeholder summary. |
-| `FIELD_SCHEMA.md` | `docs/` | Data dictionary / PHI classification scaffold. |
-| `VERBOSE_COMMIT_MESSAGE.txt` | `docs/` | First commit narrative (baseline). |
-| `QUICK_COMMIT_MESSAGE.txt` | `docs/` | Abbreviated commit message. |
+| `FIELD_SCHEMA.md` | `docs/` | Data dictionary / PHI classification scaffold (generated/enriched). |
+| `VERBOSE_COMMIT_MESSAGE.txt` | `docs/` | Initial verbose commit narrative (baseline). |
+| `QUICK_COMMIT_MESSAGE.txt` | `docs/` | Abbreviated baseline commit message. |
 | `hbpc_admission_flow_issue.md` | `.github/ISSUE_TEMPLATE/` | Structured issue reporting template. |
 | `PULL_REQUEST_TEMPLATE.md` | `.github/` | Standardized PR review checklist. |
 | `regenerate_inputs_pretty.ps1` | `scripts/` | Regenerates readable mirror of escaped HTML string. |
+| `changelog-finalize.ps1` | `scripts/` | Promotes Unreleased section in CHANGELOG to version + optional tag. |
+| `fieldSchema.json` | `config/` | Machine-readable authoritative field schema scaffold (drives future audits). |
+| `GOVERNANCE.md` | root | Roles, versioning rules, release flow, incident response. |
+| `CONTRIBUTING.md` | root | Branching, commit conventions, PR requirements, PHI rules. |
+| `CODEOWNERS` | root | Automatic review assignment. |
+| `LICENSE.txt` | root | Internal use & confidentiality notice. |
+| `ARCHITECTURE.md` | `docs/` | Flow component diagram & extension points. |
 
 ## Expression & Fallback Strategy
 Standard pattern for restored dynamic fields:
@@ -81,11 +88,21 @@ Principles:
 | Traceability | Zip exports now tracked for direct rollback. |
 | Audit Trail | Reconstruction reports + CHANGELOG entries provide historical narrative. |
 
-## Governance Roadmap (Near-Term)
-- Add automated expression integrity checker (PowerShell) scanning for: missing fallback, unbalanced `@{}` tokens, orphaned `<div>` tags.
-- Normalize top (Patient/Social/Medical) sections to standard fallback pattern.
-- Populate `FIELD_SCHEMA.md` with authoritative types & PHI flags after schema verification.
-- Introduce release tagging (`v0.1.0`, `v0.2.0`, etc.).
+## Active Governance & Roadmap
+Implemented Today:
+- CI workflow (`.github/workflows/ci.yml`) validating field schema, CHANGELOG Unreleased presence, README quickstart, external link health.
+- Central field schema config (`config/fieldSchema.json`).
+- CHANGELOG automation script.
+- Formal governance & contributing documents.
+- Architecture diagram.
+
+Up Next (Planned):
+1. Expression audit script (fallback + `/Value` correctness + balance checks).
+2. Normalization of top Patient/Social/Medical sections to unified `if(empty())` pattern.
+3. Authoritative population of remaining field schema entries (automated extraction from run JSON).
+4. Release script bundling export → audit → changelog finalize → tag.
+5. Security protocol document & anonymization script for HTML output.
+6. Test harness (Pester or custom) verifying section counts & fallback coverage.
 
 ## Contributing Guidelines (Abbreviated)
 | Step | Requirement |
@@ -108,7 +125,7 @@ Blank field where data exists | Incorrect field internal name or path | Cross-ch
 Artifacts reference internal VA workflows and may include PHI in raw exports or run histories. Keep repository access restricted. Do **not** publish externally. Redact patient identifiers in any shared screenshots.
 
 ## Status
-Baseline reconstruction completed; governance and automation improvements pending. See `CHANGELOG.md` for version history.
+EOD 2025-11-07: Baseline reconstruction (v0.1.0) + governance/structure enhancements (v0.1.1) + formal contributor, versioning, CI, architecture & schema scaffolds now in place. Pending automation (audit + normalization) slated for v0.1.2.
 
 ---
-_Last updated: 2025-11-07_
+_Last updated: 2025-11-07 (EOD)_

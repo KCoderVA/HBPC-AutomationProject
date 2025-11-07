@@ -58,9 +58,13 @@ Update `config/fieldSchema.json` first. Run generator (future) to rebuild `docs/
 
 ## 9. CI Expectations
 CI must pass prior to merge:
-- README link check
-- Audit script (fallback + optional `/Value` validation)
-- CHANGELOG version consistency (if releasing)
+| Check | Purpose |
+|-------|---------|
+| Field schema validation | Ensures each field entry has fallback & `/Value` rules applied. |
+| README Quickstart present | Confirms onboarding clarity. |
+| CHANGELOG Unreleased present | Prevents missing placeholder before release. |
+| External link HEAD requests | Flags broken resource links (non-blocking warning). |
+| Expression audit (future) | Detects missing fallbacks, `/Value` misuse, unbalanced tokens. |
 
 ## 10. Review Roles
 Add approvers in CODEOWNERS. Clinical stakeholder required for changes that add or modify clinical fields.
@@ -75,6 +79,7 @@ Add approvers in CODEOWNERS. Clinical stakeholder required for changes that add 
 - Prefer editing template (`tests/altered/altered_rawHTMLParameters.html`) before raw JSON.
 - Regenerate `inputs_pretty` using `scripts/regenerate_inputs_pretty.ps1`.
 - Avoid introducing multiline indentation that could break tokenization.
+- After edits, run upcoming `scripts/audit-compose.ps1` (once implemented) to validate expressions.
 
 ## 13. Adding New Fields
 1. Add to SharePoint list.

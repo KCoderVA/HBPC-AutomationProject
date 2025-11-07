@@ -3,9 +3,12 @@
 All notable changes to the HBPC Admission Compose action & supporting repository artifacts.
 
 ## [Unreleased]
-- Pending: Standardize top-section expressions to unified fallback pattern.
-- Planned: Add PowerShell expression integrity checker.
-- Planned: Populate authoritative field schema data types & PHI flags.
+### Planned
+- Standardize top-section expressions to unified fallback pattern.
+- Add PowerShell expression integrity checker (fallback, `/Value`, structural).
+- Populate authoritative field schema data types & PHI flags from sample run exports.
+- Introduce release automation script bundling export + audit + tag.
+- Add SECURITY.md and anonymization tooling for sanitized HTML sharing.
 
 ## [0.1.1] - 2025-11-07
 ### Added

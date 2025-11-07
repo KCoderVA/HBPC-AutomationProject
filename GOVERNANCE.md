@@ -18,15 +18,16 @@ MAJOR.MINOR.PATCH
 
 ## Release Flow
 1. Merge changes to `main` after PR approval.
-2. Run export of updated flow; place zip in `tests/flowSuccess/`.
-3. Promote `[Unreleased]` section in CHANGELOG via `scripts/changelog-finalize.ps1 -Version <x.y.z>`.
-4. Tag: `git tag -a vX.Y.Z -m "vX.Y.Z: summary"` and push.
-5. Create GitHub Release (optional) summarizing clinical impact & remediation notes.
+2. Run export of updated flow; place zip in `tests/flowSuccess/` with timestamped name.
+3. Run expression audit script (pending implementation) – must pass.
+4. Promote `[Unreleased]` section in CHANGELOG via `scripts/changelog-finalize.ps1 -Version <x.y.z>`.
+5. Tag: `git tag -a vX.Y.Z -m "vX.Y.Z: summary"` and push.
+6. Create GitHub Release (optional) summarizing clinical impact & remediation notes.
 
 ## Branch Protection (Recommended)
-- Require status checks (CI audit) to pass.
+- Require status checks (CI workflow) to pass.
 - Minimum 1 engineering + 1 clinical review for field changes.
-- Disallow force pushes to `main`.
+- Disallow force pushes & direct merges (require PR).
 
 ## Audit Artifacts
 | Artifact | Purpose |
@@ -35,6 +36,8 @@ MAJOR.MINOR.PATCH
 | altered_RawCodeView.json | Authoritative Compose action mid-body patterns. |
 | FIELD_SCHEMA.md | Data dictionary and PHI classification. |
 | CHANGELOG.md | Chronological human-readable history. |
+| config/fieldSchema.json | Machine-readable schema scaffold for automation. |
+| CI workflow (ci.yml) | Validates schema, README Quickstart, CHANGELOG Unreleased presence. |
 
 ## Deferred / Experimental Changes
 Experimental branches (`exp/`) must not be merged without conversion to a standard branch prefix.
@@ -47,10 +50,11 @@ Experimental branches (`exp/`) must not be merged without conversion to a standa
 - Announce impending removal of fields via issue labeled `deprecation` at least one minor version before removal.
 
 ## Incident Response (Flow Break / Data Loss)
-1. Open critical issue with run IDs & scope.
-2. Branch `fix/incident-<short-key>`.
-3. Restore from last known good zip if reconstruction exceeds SLA.
-4. Document in CHANGELOG under `Fixed` subsection.
+1. Open critical issue with run IDs & scope (label `critical`).
+2. Run audit script to classify failure (missing sections vs expression errors).
+3. Branch `fix/incident-<short-key>`.
+4. Restore from last known good zip if reconstruction exceeds SLA.
+5. Document in CHANGELOG under `Fixed` subsection with root cause summary.
 
 ---
 _Last updated: 2025-11-07_
