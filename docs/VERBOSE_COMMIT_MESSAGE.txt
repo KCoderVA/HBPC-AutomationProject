@@ -92,3 +92,61 @@ FINAL STATE
 Compose action now contains fully restored dynamic sections, standardized field extraction patterns, readability scaffolding, and comprehensive documentation completing successful remediation of the earlier major issue.
 
 END OF COMMIT MESSAGE
+---
+ENHANCEMENT WAVE (v0.3.0 PRE-RELEASE SUMMARY)
+
+NEW AUTOMATION & TOOLING
+1. CI Workflow Expansion (`.github/workflows/ci.yml`):
+	- Release notes preview generation (conventional commit parsing into `metrics/release-notes-preview.md`).
+	- Metrics history archival (`metrics/build-history.jsonl`) for longitudinal trend tracking.
+	- Artifact table regeneration using new manifest (`config/artifacts.manifest.json`) and marker block in `README.md`.
+	- Security heuristic tuning (whitelist filtering of known safe tokens to reduce PHI noise).
+	- Badge SVG presence warning to detect missing asset after restructuring.
+	- Governance relocation path adjustments (policy hash bump & security section checks).
+
+2. Release Workflow Update (`.github/workflows/release-finalize.yml`):
+	- Externalized badge color thresholds via `config/badgeThresholds.json` (green/yellow/orange/red scaling is now configurable).
+	- Adjusted output path for dynamic schema field badge to `assets/badges/schema-field-count.svg`.
+
+3. Developer Ergonomics:
+	- Added `scripts/local-ci-audit.ps1` enabling local replication of critical CI checks (schema validity, badge sync, build info refresh, governance hash preview, artifact table verification) with `-FixReadme` auto-fix option.
+	- Introduced `.gitattributes` to normalize line endings (LF) while allowing CRLF retention for PowerShell scripts if desired; classified SVG and zip artifacts appropriately.
+
+4. Documentation & Structure:
+	- Repository restructuring: governance docs moved to `governance/`, AI collaboration guides + workspace file to `dev/`, badges relocated under `assets/badges/`.
+	- `README.md` updated with artifact table markers (`<!-- ARTIFACT-TABLE:START/END -->`) and new paths, plus dynamic build info refresh.
+	- Added manifest-driven artifact table source (`config/artifacts.manifest.json`) for single-source-of-truth regeneration.
+
+5. Quality & Consistency Improvements:
+	- Robust artifact table parser in local audit script (marker + row parsing) eliminating prior false positives.
+	- Policy version bump step updated to new path; hash-driven versioning preserved.
+	- Security heuristic now filters known organization tokens (reducing spurious name/address warnings).
+
+METRICS SNAPSHOT (Pre-tag v0.3.0)
+ - Schema fields: 11
+ - Commits since last tag (v0.2.0): (dynamic in build info block)
+ - Files changed since last tag: (dynamic)
+ - New automation steps added: 6
+ - New config files introduced: 2 (`artifacts.manifest.json`, `badgeThresholds.json`)
+ - New scripts introduced: 1 (`local-ci-audit.ps1`)
+ - Structural relocations: 3 groups (governance/, dev/, assets/badges/)
+
+RISK MITIGATION
+ - Manifest-driven artifact table reduces manual drift.
+ - Local audit lowers feedback latency and prevents broken CI surprises.
+ - Threshold config externalization allows safe future tuning without workflow edits.
+ - Metrics history log enables anomaly detection release-over-release.
+
+FOLLOW-UP RECOMMENDATIONS
+ - Add pre-commit hook invoking local audit script for even earlier validation.
+ - Extend release notes preview step to auto-comment on PR with parsed sections.
+ - Introduce small Pester test suite for schema and governance hash invariants.
+ - Automate DOC_INDEX staleness enforcement with age threshold fail condition.
+
+VERSION BUMP JUSTIFICATION (v0.3.0)
+Minor (feature) increment due to substantial non-breaking automation enhancements, developer tooling additions, and configuration externalization without altering existing artifact semantics.
+
+Conventional Commit Subject (planned):
+feat(ci,docs): restructure & expand automation (artifact manifest, thresholds, local audit, release preview)
+
+END OF ENHANCEMENT SUMMARY

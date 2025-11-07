@@ -1,0 +1,15 @@
+Test5 Partial Success – Verbose Commit (Mirrored)
+Source: test5_partialSuccess_Troubleshooting&Solution_verboseCommitMessage.txt (root)
+Stage: test5_partialSuccess
+Date: 2025-11-07
+Strategy: copy-only
+
+Summary: Mirrors verbose commit detailing partial success state; two mis-populating blocks remain. Provides guidance for Test6 adjustments.
+
+Included Elements:
+- Field correction summary
+- Remaining anomaly enumeration
+- Parameter capture confirmation
+- Raw code excerpt reference
+
+Pending: quick_commit.txt creation.

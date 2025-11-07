@@ -70,6 +70,11 @@ jobs:
           Set-Content -Path $readmePath -Value $updated -Encoding UTF8
           git add $readmePath
           git commit -m "chore(readme): update schema fields badge to $count" || echo 'No changes to commit'
+      - name: Badge SVG presence warning
+        shell: pwsh
+        run: |
+          $badgePath = 'assets/badges/schema-field-count.svg'
+          if(Test-Path $badgePath){ Write-Host "Badge SVG present at $badgePath" } else { Write-Warning "Badge SVG missing at $badgePath (will regenerate on release tag)" }
       - name: Update build info block
         shell: pwsh
         run: |
@@ -133,10 +138,10 @@ jobs:
           if(!(Test-Path metrics)){ New-Item -ItemType Directory -Path metrics | Out-Null }
           Set-Content metrics/build-manifest.json -Value $manifest -Encoding UTF8
           git add metrics/build-manifest.json; git commit -m 'chore(metrics): update build-manifest snapshot' | Out-Null
-      - name: Policy version bump if changed
+      - name: Policy version bump if changed (governance relocation)
         shell: pwsh
         run: |
-          $govPath = 'GOVERNANCE.md'
+          $govPath = 'governance/GOVERNANCE.md'
           if(!(Test-Path $govPath)){ Write-Host 'GOVERNANCE.md missing'; exit 0 }
           $raw = Get-Content $govPath -Raw
           if($raw -notmatch '<!-- POLICY-VERSION:START -->'){ Write-Host 'Policy version markers absent'; exit 0 }
@@ -177,6 +182,15 @@ jobs:
           $docFiles = $docFiles | Where-Object { $_ -ne 'DOC_INDEX.md' }
           $orphans = $docFiles | Where-Object { $_ -notin $mentioned }
           if($orphans){ Write-Warning "Docs not referenced in README artifact table: $($orphans -join ', ')" } else { Write-Host 'All docs referenced in README table' }
+      - name: Artifact table path consistency (non-fatal)
+        shell: pwsh
+        run: |
+          $readme = Get-Content README.md -Raw
+          $issues = @()
+          if($readme -notmatch '\`GOVERNANCE.md\` \| \`governance/') { $issues += 'GOVERNANCE.md row missing governance/ location formatting' }
+          foreach($f in 'SECURITY.md','RELEASE.md','LABELS.md','CONTRIBUTING.md'){ if($readme -notmatch "`$f` \| `governance/") { $issues += "$f row missing governance/ location formatting" } }
+          foreach($f in 'copilot-instructions.md','copilot-quickref.md','HBPC_AdmitsDischarges.code-workspace'){ if($readme -notmatch "`$f` \| `dev/") { $issues += "$f row missing dev/ location formatting" } }
+          if($issues.Count -gt 0){ Write-Warning ("Artifact table consistency issues:`n" + ($issues -join "`n")) } else { Write-Host 'Artifact table path consistency OK' }
       - name: Enforce CHANGELOG headings
         shell: pwsh
         run: |
@@ -186,10 +200,10 @@ jobs:
             $required = @('Added','Changed','Fixed')
             foreach($h in $required){ if($block -notmatch "### $h" ){ Write-Error "CHANGELOG missing '### $h' in Unreleased" } }
           } else { Write-Error 'Unreleased section parse failure' }
-      - name: SECURITY.md section checks
+      - name: SECURITY.md section checks (governance relocation)
         shell: pwsh
         run: |
-          $sec = Get-Content SECURITY.md -Raw
+          $sec = Get-Content governance/SECURITY.md -Raw
           foreach($req in 'PHI Categories','Reporting Potential Exposure'){ if($sec -notmatch $req){ Write-Error "SECURITY.md missing section: $req" } }
       - name: PHI pattern scan
         shell: pwsh
@@ -360,6 +374,72 @@ jobs:
           $content = "# Contributors`n`n| Commits | Author | Email |`n|---------|--------|-------|`n" + ($contributors | ForEach-Object { $p = $_ -split ' '; $count=$p[0]; $rest=$p[1..($p.Length-1)] -join ' '; if($rest -match '<(.+?)>'){ $name = $rest -replace '<.*?>',''; $email = $Matches[1] } else { $name=$rest; $email='' }; "| $count | $name | $email |" }) -join "`n"
           Set-Content CONTRIBUTORS.md -Value $content -Encoding UTF8
           git add CONTRIBUTORS.md; git commit -m 'docs: update CONTRIBUTORS' | Out-Null
+      - name: Release notes preview (PR only)
+        if: github.event_name == 'pull_request'
+        shell: pwsh
+        run: |
+          $lastTag = (git tag --list 'v*' --sort=-creatordate | Select-Object -First 1)
+            if([string]::IsNullOrWhiteSpace($lastTag)){ $range = (git rev-list --max-parents=0 HEAD) + '..HEAD' } else { $range = "$lastTag..HEAD" }
+          $lines = git log --pretty=%s $range
+          $added = @(); $changed=@(); $fixed=@()
+          foreach($l in $lines){
+            if($l -like 'feat*'){ $added += $l.Substring($l.IndexOf(':')+1).Trim() }
+            elseif($l -like 'fix*'){ $fixed += $l.Substring($l.IndexOf(':')+1).Trim() }
+            elseif($l -match '^(refactor|perf|chore|build|ci|security|docs)'){ $changed += ($l -replace '^[^:]+:','').Trim() }
+          }
+          if(-not $added){ $added = @('(none)') }
+          if(-not $changed){ $changed = @('(none)') }
+          if(-not $fixed){ $fixed = @('(none)') }
+          $preview = "## Release Notes Preview (unreleased)\n### Added\n" + ($added | ForEach-Object { "- $_" }) -join "`n"
+          $preview += "`n### Changed`n" + (($changed | ForEach-Object { "- $_" }) -join "`n")
+          $preview += "`n### Fixed`n" + (($fixed | ForEach-Object { "- $_" }) -join "`n") + "`n"
+          if(!(Test-Path metrics)){ New-Item metrics -ItemType Directory | Out-Null }
+          Set-Content metrics/release-notes-preview.md -Value $preview -Encoding UTF8
+          git add metrics/release-notes-preview.md; git commit -m 'docs(changelog): update release notes preview' | Out-Null
+      - name: Metrics history append
+        shell: pwsh
+        run: |
+          $manifestPath = 'metrics/build-manifest.json'
+          if(!(Test-Path $manifestPath)){ Write-Host 'No build-manifest.json yet (earlier step may not have produced)'; exit 0 }
+          $json = Get-Content $manifestPath -Raw
+          $history = 'metrics/build-history.jsonl'
+          if(!(Test-Path $history)){ New-Item -ItemType File -Path $history | Out-Null }
+          # Avoid duplicate commit entries
+          $commit = (ConvertFrom-Json $json).commit
+          $already = Select-String -Path $history -Pattern '"commit"\s*:\s*"'+[regex]::Escape($commit)+'"' -SimpleMatch -Quiet
+          if(-not $already){ Add-Content $history $json; git add $history; git commit -m "chore(metrics): append build history $commit" | Out-Null } else { Write-Host 'Commit already recorded in history' }
+      - name: Security heuristic tuning
+        shell: pwsh
+        run: |
+          # Re-run heuristic with whitelist filtering for names and addresses
+          $whitelistNames = @('Veteran Affairs','Health System','Admission Flow')
+          $whitelistPatterns = $whitelistNames | ForEach-Object { [regex]::Escape($_) }
+          $joined = ($whitelistPatterns -join '|')
+          $warn = @()
+          $files = git ls-files | Where-Object { $_ -notlike 'tests/flowSuccess/*' -and $_ -notlike 'tests/flowFailure/*' }
+          foreach($f in $files){
+            $text = Get-Content $f -Raw
+            $phones = [regex]::Matches($text,'\b\d{3}[ -]?\d{3}[ -]?\d{4}\b') | ForEach-Object { $_.Value } | Where-Object { $_ -notmatch '[Xx\*]{3}-?[Xx\*]{2}-?[Xx\*]{4}' }
+            foreach($p in $phones){ $warn += "$f: phone?$p" }
+            $addr = [regex]::Matches($text,'\b\d{1,5}\s+[A-Z][a-zA-Z]+\s+(Street|St|Avenue|Ave|Road|Rd|Boulevard|Blvd)\b') | ForEach-Object { $_.Value }
+            foreach($a in $addr){ if($joined -and $a -match $joined){ continue }; $warn += "$f: address?$a" }
+            $names = [regex]::Matches($text,'\b[A-Z][a-z]+\s+[A-Z][a-z]+\b') | ForEach-Object { $_.Value } | Where-Object { $_ -notmatch 'Veteran|Not Provided' }
+            foreach($n in $names){ if($joined -and $n -match $joined){ continue }; $warn += "$f: name?$n" }
+          }
+          if($warn.Count -gt 0){ Write-Warning "Heuristic PHI candidates (filtered):`n$($warn -join "`n")" } else { Write-Host 'No heuristic PHI candidates after filtering' }
+      - name: Artifact table regeneration
+        shell: pwsh
+        run: |
+          $manifest = 'config/artifacts.manifest.json'
+          if(!(Test-Path $manifest)){ Write-Host 'Artifact manifest missing'; exit 0 }
+          $data = Get-Content $manifest -Raw | ConvertFrom-Json
+          $rows = foreach($a in $data.artifacts){ "| `$($a.file)` | `$($a.location)` | $($a.purpose) |" }
+          $table = @('| File | Location | Purpose |','|------|----------|---------|') + $rows
+          $readme = Get-Content README.md -Raw
+          if($readme -notmatch '<!-- ARTIFACT-TABLE:START -->'){ Write-Host 'No artifact table markers'; exit 0 }
+          $newBlock = '<!-- ARTIFACT-TABLE:START -->' + "`n" + ($table -join "`n") + "`n" + '<!-- ARTIFACT-TABLE:END -->'
+          $updated = [regex]::Replace($readme,'<!-- ARTIFACT-TABLE:START -->[\s\S]*?<!-- ARTIFACT-TABLE:END -->',$newBlock)
+          if($updated -ne $readme){ Set-Content README.md -Value $updated -Encoding UTF8; git add README.md; git commit -m 'docs(readme): regenerate artifact table' | Out-Null } else { Write-Host 'Artifact table already current' }
       - name: Large PR warning
         if: github.event_name == 'pull_request'
         shell: pwsh

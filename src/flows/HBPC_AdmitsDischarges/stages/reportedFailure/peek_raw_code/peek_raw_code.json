@@ -1,0 +1,11 @@
+{
+  "_migration": {
+    "sourceFile": "reportedFailure_Compose(SaveHTML)_peekRawCode.json",
+    "stage": "reportedFailure",
+    "migratedOn": "2025-11-07",
+    "normalizedBy": "automation",
+    "notes": "Mirrored failure peek raw code JSON for structured diagnostics."
+  },
+  "originalFragmentNotice": "Full JSON retained in root source; this normalized copy focuses on high-level Compose inputs for failure analysis.",
+  "partial": true
+}

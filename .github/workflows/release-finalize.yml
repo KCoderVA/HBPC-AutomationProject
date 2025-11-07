@@ -38,9 +38,19 @@ jobs:
           if ! grep -q '<!-- BADGES:START -->' README.md; then echo "Badge markers missing"; exit 1; fi
           EXISTING_COUNT=$(grep -Eo 'Schema Fields: [0-9]+' README.md | head -n1 | awk '{print $3}') || true
           if [ "$EXISTING_COUNT" != "$SCHEMA_COUNT" ]; then sed -i -E "/BADGES:START/,/BADGES:END/ s/Schema Fields: [0-9]+/Schema Fields: $SCHEMA_COUNT/" README.md; echo "Updated inline badge: $EXISTING_COUNT -> $SCHEMA_COUNT"; else echo "Inline badge already $SCHEMA_COUNT"; fi
-          mkdir -p badges
-          # Dynamic badge color scaling based on field count thresholds
-          if [ "$SCHEMA_COUNT" -le 10 ]; then BADGE_COLOR="#4c1"; elif [ "$SCHEMA_COUNT" -le 20 ]; then BADGE_COLOR="#dfb317"; elif [ "$SCHEMA_COUNT" -le 30 ]; then BADGE_COLOR="#fe7d37"; else BADGE_COLOR="#e05d44"; fi
+          mkdir -p assets/badges
+          # Dynamic badge color scaling based on external thresholds config if present
+          if [ -f config/badgeThresholds.json ]; then
+            GREEN_MAX=$(jq -r '.greenMax' config/badgeThresholds.json)
+            YELLOW_MAX=$(jq -r '.yellowMax' config/badgeThresholds.json)
+            ORANGE_MAX=$(jq -r '.orangeMax' config/badgeThresholds.json)
+            if [ "$SCHEMA_COUNT" -le "$GREEN_MAX" ]; then BADGE_COLOR="#4c1";
+            elif [ "$SCHEMA_COUNT" -le "$YELLOW_MAX" ]; then BADGE_COLOR="#dfb317";
+            elif [ "$SCHEMA_COUNT" -le "$ORANGE_MAX" ]; then BADGE_COLOR="#fe7d37";
+            else BADGE_COLOR="#e05d44"; fi
+          else
+            if [ "$SCHEMA_COUNT" -le 10 ]; then BADGE_COLOR="#4c1"; elif [ "$SCHEMA_COUNT" -le 20 ]; then BADGE_COLOR="#dfb317"; elif [ "$SCHEMA_COUNT" -le 30 ]; then BADGE_COLOR="#fe7d37"; else BADGE_COLOR="#e05d44"; fi
+          fi
           # Adjust right segment width for multi-digit counts (base 55, +6 per extra digit beyond 2)
           COUNT_LEN=${#SCHEMA_COUNT}
           RIGHT_W=$((55 + (COUNT_LEN>2?(COUNT_LEN-2)*6:0)))
@@ -56,7 +66,7 @@ jobs:
             "    <text x=\"43\" y=\"14\">schema fields</text>" \
             "    <text x=\"$((85 + RIGHT_W/2))\" y=\"14\">$SCHEMA_COUNT</text>" \
             "  </g>" \
-            "</svg>" > badges/schema-field-count.svg
+            "</svg>" > assets/badges/schema-field-count.svg
           echo "SVG badge regenerated (color=$BADGE_COLOR width=$TOTAL_W)"
           LOG_PATH="docs/CHANGE_VELOCITY_LOG.md"
           if [ ! -f "$LOG_PATH" ]; then echo "Missing $LOG_PATH"; exit 1; fi
@@ -90,7 +100,7 @@ jobs:
           printf '{\n  "tag": "%s",\n  "dateUtc": "%s",\n  "schemaFieldCount": %s,\n  "newFieldsDelta": %s,\n  "filesChanged": %s,\n  "changeDensityPercent": "%s",\n  "daysSincePreviousTag": "%s",\n  "previousTag": "%s"\n}\n' \
             "$TAG_REF" "$DATE_UTC" "$SCHEMA_COUNT" "$NEW_FIELDS_DELTA" "$FILE_COUNT" "$CHANGE_DENSITY" "$DAYS_SINCE" "${PREV_TAG:-none}" > metrics/build-manifest.json
           git add metrics/build-manifest.json
-          if git diff --quiet; then echo "No changes to commit"; else git add README.md badges/schema-field-count.svg "$LOG_PATH"; git commit -m "chore(release-metrics): snapshot $TAG_REF (schema=$SCHEMA_COUNT files=$FILE_COUNT)"; fi
+          if git diff --quiet; then echo "No changes to commit"; else git add README.md assets/badges/schema-field-count.svg "$LOG_PATH"; git commit -m "chore(release-metrics): snapshot $TAG_REF (schema=$SCHEMA_COUNT files=$FILE_COUNT)"; fi
       - name: Generate release notes & finalize CHANGELOG
         run: |
           set -euo pipefail

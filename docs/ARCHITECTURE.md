@@ -1,5 +1,12 @@
 # HBPC Admission Flow Architecture
 
+<!-- TOC:START -->
+1. Architecture Diagram
+2. Components
+3. Data Flow Highlights
+4. Extension Points
+<!-- TOC:END -->
+
 ```mermaid
 graph TD
   A[SharePoint Item Created] --> B[Trigger]
@@ -33,5 +40,4 @@ graph TD
 | Expression Audit CI | Fallback + structure enforcement |
 | Anonymization Tool | Redact PHI for troubleshooting outside secure boundary |
 
----
 _Last updated: 2025-11-07_

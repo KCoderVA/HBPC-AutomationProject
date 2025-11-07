@@ -1,0 +1,23 @@
+# Normalize text files to LF to reduce diff noise across platforms
+* text eol=lf
+
+# Preserve CRLF for Windows PowerShell scripts if desired (comment out to enforce LF)
+*.ps1 text eol=crlf
+
+# Treat SVGs as text (allow diffs)
+*.svg text
+
+# Binary artifacts
+*.zip binary
+
+# Markdown always LF
+*.md text eol=lf
+
+# JSON & YAML always LF
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# Do not attempt to diff large archive exports
+tests/flowSuccess/*.zip binary
+tests/flowFailure/*.zip binary

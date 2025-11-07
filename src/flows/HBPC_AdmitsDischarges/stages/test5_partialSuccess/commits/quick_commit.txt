@@ -1,0 +1,4 @@
+Test5 Partial Success – Quick Commit (Mirrored)
+Stage: test5_partialSuccess | Date: 2025-11-07 | Strategy: copy-only
+Summary: Partial success; 2 mis-populating blocks persist (Admission Date, Veteran Use). Added normalized inputs/outputs, parameters, peek raw code, reports, verbose commit; created directories for issues & exports.
+Next: generate runInfo.json, issue.md, migrate export ZIP, plan Test6 fixes.

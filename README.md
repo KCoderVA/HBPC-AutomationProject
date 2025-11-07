@@ -6,11 +6,9 @@
 <code>License: Apache-2.0</code> • <code>Governance: Active</code> • <code>Schema Fields: 11</code> • <code>Reconstruction: Stable</code>
 </div>
 <!-- BADGES:END -->
-<p><img alt="Schema Fields" src="badges/schema-field-count.svg" /></p>
+<p><img alt="Schema Fields" src="assets/badges/schema-field-count.svg" /></p>
 
-<!-- BUILDINFO:START -->
-<div><em>Build Info</em>: Commit <code>HEAD-SHORT-SHA</code> • UTC <code>YYYY-MM-DD</code> • Last Tag <code>vX.Y.Z</code> • Commits Since Tag <code>N</code> • Files Since Tag <code>M</code> • Schema Fields Snapshot <code>11</code></div>
-<!-- BUILDINFO:END -->
+<!-- BUILDINFO:START --><div><em>Build Info</em>: Commit <code>408ebac</code> • UTC <code>2025-11-07</code> • Last Tag <code>v0.2.0</code> • Commits Since Tag <code>7</code> • Files Since Tag <code>11</code> • Schema Fields Snapshot <code>11</code></div><!-- BUILDINFO:END -->
 
 ## Overview
 This repository houses governance, forensic, and maintenance artifacts for the **HBPC New Admission Email With Saved Form** Power Automate flow. The flow generates a structured HTML admission summary populated from SharePoint list item data. Reconstruction (v0.1.0 baseline) restored truncated middle sections; subsequent governance (v0.1.1) introduced tracked exports, architecture documentation, and config scaffolding; current end-of-day adds formal governance + CI + semantic versioning support.
@@ -41,6 +39,7 @@ root/
 ```
 
 ## Key Artifacts (Authoritative & Historical)
+<!-- ARTIFACT-TABLE:START -->
 | File | Location | Purpose |
 |------|----------|---------|
 | `altered_RawCodeView.json` | `tests/altered/` | Repaired Compose action JSON (authoritative mid-body pattern). |
@@ -59,11 +58,18 @@ root/
 | `regenerate_inputs_pretty.ps1` | `scripts/` | Regenerates readable mirror of escaped HTML string. |
 | `changelog-finalize.ps1` | `scripts/` | Promotes Unreleased section in CHANGELOG to version + optional tag. |
 | `fieldSchema.json` | `config/` | Machine-readable authoritative field schema scaffold (drives future audits). |
-| `GOVERNANCE.md` | root | Roles, versioning rules, release flow, incident response. |
-| `CONTRIBUTING.md` | root | Branching, commit conventions, PR requirements, PHI rules. |
+| `GOVERNANCE.md` | `governance/` | Roles, versioning rules, release flow, incident response. |
+| `CONTRIBUTING.md` | `governance/` | Branching, commit conventions, PR requirements, PHI rules. |
+| `SECURITY.md` | `governance/` | Security & PHI reporting guidance. |
+| `RELEASE.md` | `governance/` | Release procedure & tagging policy. |
+| `LABELS.md` | `governance/` | Issue label taxonomy. |
+| `copilot-instructions.md` | `dev/` | Full AI collaboration contract & guardrails. |
+| `copilot-quickref.md` | `dev/` | Condensed Copilot checklist. |
+| `HBPC_AdmitsDischarges.code-workspace` | `dev/` | VS Code workspace settings. |
 | `CODEOWNERS` | root | Automatic review assignment. |
 | `LICENSE.txt` | root | Apache 2.0 license (joint copyright: Kyle J. Coder & Ara A. Zakarian). |
 | `ARCHITECTURE.md` | `docs/` | Flow component diagram & extension points. |
+<!-- ARTIFACT-TABLE:END -->
 
 ## Expression & Fallback Strategy
 Standard pattern for restored dynamic fields:
@@ -143,3 +149,4 @@ EOD 2025-11-07: Baseline reconstruction (v0.1.0) + governance/structure enhancem
 
 ---
 _Last updated: 2025-11-07 (EOD)_
+

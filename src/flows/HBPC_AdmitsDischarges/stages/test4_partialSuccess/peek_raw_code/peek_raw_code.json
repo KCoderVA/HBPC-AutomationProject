@@ -1,0 +1,11 @@
+{
+  "_migration": {
+    "sourceFile": "test4_PartialSuccess_Compose(SaveHTML)_peekRawCode.json",
+    "stage": "test4_partialSuccess",
+    "migratedOn": "2025-11-07",
+    "normalizedBy": "automation",
+    "notes": "Partial success peek raw code mirrored; JSON abridged for structure."
+  },
+  "partial": true,
+  "originalFragmentNotice": "Full JSON with DevOps_Comments retained at root; this copy focuses on migration metadata."
+}
