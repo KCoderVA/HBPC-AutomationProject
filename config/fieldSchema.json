@@ -1,5 +1,5 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "Authoritative field schema scaffold for HBPC Admission flow; drives validation & doc generation.",
   "version": "0.1.0",
   "fields": [
