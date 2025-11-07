@@ -1,5 +1,10 @@
 # HBPC Admission Flow Repository
 
+<div>
+<strong>Badges (Manual)</strong>:<br/>
+<code>License: Apache-2.0</code> • <code>Governance: Active</code> • <code>Schema Fields: 11</code> • <code>Reconstruction: Stable</code>
+</div>
+
 ## Overview
 This repository houses governance, forensic, and maintenance artifacts for the **HBPC New Admission Email With Saved Form** Power Automate flow. The flow generates a structured HTML admission summary populated from SharePoint list item data. Reconstruction (v0.1.0 baseline) restored truncated middle sections; subsequent governance (v0.1.1) introduced tracked exports, architecture documentation, and config scaffolding; current end-of-day adds formal governance + CI + semantic versioning support.
 
@@ -127,7 +132,7 @@ Licensed under Apache 2.0 (see `LICENSE.txt`). Joint Copyright (c) 2025 Kyle J. 
 Artifacts reference HBPC clinical workflows. All committed examples must be de-identified. Do **not** include PHI (names, full addresses, unmasked SSN, MRNs) in issues, PRs, or screenshots. Use anonymization tooling (planned) for any real output prior to sharing externally.
 
 ## Status
-EOD 2025-11-07: Baseline reconstruction (v0.1.0) + governance/structure enhancements (v0.1.1) + formal contributor, versioning, CI, architecture & schema scaffolds now in place. Pending automation (audit + normalization) slated for v0.1.2.
+EOD 2025-11-07: Baseline reconstruction (v0.1.0) + governance/structure enhancements (v0.1.1) + formal contributor, versioning, CI, architecture & schema scaffolds now in place. Pending automation (audit + normalization) slated for v0.1.2. Badge schema field count will be updated via future automation script.
 
 ---
 _Last updated: 2025-11-07 (EOD)_

@@ -18,11 +18,12 @@ MAJOR.MINOR.PATCH
 
 ## Release Flow
 1. Merge changes to `main` after PR approval.
-2. Run export of updated flow; place zip in `tests/flowSuccess/` with timestamped name.
+2. Run export of updated flow; place zip in `tests/flowSuccess/` with timestamped name (retain latest 3 success & 3 failure exports).
 3. Run expression audit script (pending implementation) – must pass.
-4. Promote `[Unreleased]` section in CHANGELOG via `scripts/changelog-finalize.ps1 -Version <x.y.z>`.
-5. Tag: `git tag -a vX.Y.Z -m "vX.Y.Z: summary"` and push.
-6. Create GitHub Release (optional) summarizing clinical impact & remediation notes.
+4. For pre-release stabilization use tags: `vX.Y.Z-rc.N` (release candidates) prior to final.
+5. Promote `[Unreleased]` section in CHANGELOG via `scripts/changelog-finalize.ps1 -Version <x.y.z>`.
+6. Tag final: `git tag -a vX.Y.Z -m "vX.Y.Z: summary"` and push.
+7. Create GitHub Release (optional) summarizing clinical impact & remediation notes.
 
 ## Branch Protection (Recommended)
 - Require status checks (CI workflow) to pass.
@@ -44,17 +45,21 @@ Experimental branches (`exp/`) must not be merged without conversion to a standa
 
 ## Compliance Notes
 - Mask identifiers in all long-lived documentation unless essential for structural accuracy.
-- Retain previous two successful export zips for historical diff (space permitting).
+- Retain latest 3 successful AND 3 failure export zips for historical diff & regression forensics.
+- Maintain offline encrypted backup of latest successful export monthly (manual until automated).
 
 ## Deprecation Policy
 - Announce impending removal of fields via issue labeled `deprecation` at least one minor version before removal.
 
-## Incident Response (Flow Break / Data Loss)
-1. Open critical issue with run IDs & scope (label `critical`).
+## Incident & Hotfix Response
+Hotfix triggers: production regression, PHI exposure risk, missing critical section.
+1. Open critical issue with run IDs & scope (label `release-blocker` + `hotfix`).
 2. Run audit script to classify failure (missing sections vs expression errors).
-3. Branch `fix/incident-<short-key>`.
-4. Restore from last known good zip if reconstruction exceeds SLA.
-5. Document in CHANGELOG under `Fixed` subsection with root cause summary.
+3. Branch `hotfix/vX.Y.Z-hotfixN` from the last good tag.
+4. Apply minimal corrective change; validate success + sparse runs.
+5. Update CHANGELOG under `Fixed` subsection; if tag already published bump PATCH.
+6. Document root cause & mitigation steps.
+7. Consider offline backup refresh if structural correction.
 
 ---
 _Last updated: 2025-11-07_
