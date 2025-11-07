@@ -1,0 +1,165 @@
+[HBPC Admission] Mid-Body HTML Truncation and Expression Normalization Completion
+
+## 1. Reporter Demographics (VA Employee)
+Employee Name: (To be filled)
+Title / Role: (To be filled)
+Team / Service Line: (To be filled)
+Work Email Address: (To be filled)
+Office / Location: (To be filled)
+Phone / Extension: (To be filled)
+Date/Time Reported (Local CST): 2025-11-06 (approx)
+Time Zone of Reporter: CST
+Is Reporter a Flow Co-Owner? (Yes/No): Yes (assumed)
+
+## 2. Issue Classification
+Type: Regression
+Severity (Initial): High
+Patient Safety Impact?: No (data completeness issue, not clinical decision logic)
+PHI/PII Exposure Risk?: No new risk; missing sections removed data rather than exposing it.
+Operational Impact Summary: Admission form emails lacked key assessment sections, requiring manual SharePoint review.
+
+## 3. Flow Context
+Flow Name: HBPC New Admission Email With Saved Form
+Flow Internal ID / GUID: (Not captured)
+Environment Name: Production (assumed)
+Solution Name: (Not packaged / unknown)
+Last Known Working Run ID: Referenced by file `flowSuccess_SaveHTML_INPUTS.html`
+First Observed Failing Run ID: Referenced by file `flowFailure_SaveHTML_INPUTS.html`
+Compose Action Name / Step Identifier: Compose (Admission HTML)
+Trigger Type: SharePoint - When an item is created
+SharePoint Site URL: (Internal VA site - not included for privacy)
+SharePoint List Name: HBPC Admission Form (assumed)
+List Item ID(s) Impacted: Multiple new admissions during failure window
+Connectors Used: SharePoint, Data Operations
+Dependent Child/Parent Flows: None reported
+
+## 4. Affected Sections
+[X] Functional Assessment
+[X] Activities of Daily Living (ADL)
+[X] Continence Assessment
+[X] Behavioral & Cognitive Assessment
+[X] Admission Details
+[ ] Summary Section
+[ ] Patient Information
+[ ] Social & Living Situation
+[ ] Medical Information
+[ ] Footer / Metadata
+[ ] Styling / CSS
+
+## 5. Field-Level Data Impact (Examples)
+Vision: Missing -> Restored
+Hearing: Missing -> Restored
+ExpressiveCommunication: Missing -> Restored
+ReceptiveCommunication: Missing -> Restored
+ADLBathingorShower: Missing -> Restored
+ADLDressing: Missing -> Restored (malformed earlier)
+ADLUsingToilet: Missing -> Restored
+ActivitiesOfDailyLiving (Transfer): Missing -> Restored
+ADLEating: Missing -> Restored
+ADLWalking: Missing -> Restored
+ContinenceBowel: Missing -> Restored
+Continence: Missing -> Restored
+Mobility: Missing -> Restored
+AdaptiveTasks: Missing -> Restored
+BehaviorProblems: Missing -> Restored
+DisorientationMemoryImpairment: Missing -> Restored
+DisturbanceOfMood: Missing -> Restored
+CaregiverLimitations: Missing -> Restored
+HBHCAdmissionDate: Missing -> Restored
+PatientAddress: Present earlier, normalized later with /Value
+PreferredPhoneNumber: Present earlier, normalized later with /Value
+AdmissionType: Missing -> Restored
+LevelOfCare: Missing -> Restored
+HBPCAdmittingMDTeam: Missing -> Restored
+HBPCPrimaryNurse: Missing -> Restored
+EmergencyPlanPriorityLevel: Missing -> Restored
+DoesTheVeteranUse: Missing -> Restored
+
+## 6. Reproduction Steps (Original Failure)
+1. Create new SharePoint admission item triggering flow.
+2. Flow runs Compose action.
+3. Generated HTML email arrives.
+4. Observe absence of mid-body sections (Functional, ADL, etc.).
+
+## 7. Expected vs Actual
+Expected: Full structured HTML containing all assessment and admission detail sections.
+Actual (Failure): Only top sections + footer; central blocks truncated.
+Percentage Missing: ~50% of content length (estimated from restored segment size).
+
+## 8. Attachments & Evidence
+Raw HTML Failing Output: `flowFailure_SaveHTML_INPUTS.html`
+Raw HTML Successful Reference: `flowSuccess_SaveHTML_INPUTS.html`
+Exported Failing Flow: `exportedFailure_HBPCNewAdmissionEmailWithSavedForm_20251106212334.zip`
+Exported Successful Flow: `exportedSuccess_HBPCNewAdmissionEmailWithSavedForm_20251106222122.zip`
+Run History Diagnostic Links: (Add from Power Automate portal)
+
+## 9. Timeline of Events
+2025-11-06T21:23 CST: Failing export captured.
+2025-11-06T22:21 CST: Successful export captured (reference baseline).
+2025-11-06 (Session): Reconstruction and refactor performed.
+
+## 10. Suspected Root Cause
+Preliminary Hypothesis: Prior edit (manual or AI-assisted) removed mid-body dynamic lines from Compose.
+Changed Elements: Loss of 24 field rows; missing section containers.
+AI-assisted Editing Used?: Likely.
+Export/Import Operations Prior?: Unknown.
+
+## 11. Expression Integrity Review (Sample)
+if(empty(outputs('Get_item')?['body/Vision/Value']), 'Not provided', ...) -> Valid
+if(empty(outputs('Get_item')?['body/ADLDressing/Value']), 'Not provided', ...) -> Valid after correction
+formatDateTime(convertTimeZone(outputs('Get_item')?['body/Created'],'UTC','Central Standard Time'),'MM/dd/yyyy hh:mm tt') -> Valid
+
+## 12. Compliance & Privacy
+Contains PHI/PII Fields?: Yes (Patient name, address, phone) – controlled environment.
+Screenshots Reviewed for PHI?: Pending.
+Secure Transmission Path?: Yes (Internal VA systems + Power Automate connectors).
+
+## 13. Impact Assessment
+Affected Veteran Records: Several admissions during truncation window (exact count TBD).
+Affected Staff: HBPC clinical & admin team; estimated 5–10 users.
+Operational Delay: Manual data retrieval adds ~5–10 minutes per record.
+Risk if Unresolved: Data inconsistencies; potential auditing gaps.
+
+## 14. Interim Mitigations
+Manual SharePoint review: Yes.
+Temporary fallback email: No.
+Manual nurse notification workflow: Informal.
+
+## 15. Final Remediation
+Sections Restored: Functional, ADL, Continence, Behavioral/Cognitive, Admission Details.
+Field Rows Restored: 24.
+Expression Pattern: if(empty(...),'Not provided', value) + /Value.
+Fallback Text: Standard "Not provided" across all restored fields.
+Readability: Added `inputs_pretty` + `lint_notes`.
+Commit Reference: VERBOSE_COMMIT_MESSAGE.txt (session artifact).
+
+## 16. Post-Fix Validation (Conceptual)
+Null Choice Field -> Displays fallback.
+Populated ADL Field -> Displays value.
+Date Formatting -> Correct CST timestamp.
+Multi-section Rendering -> All five restored sections present.
+
+## 17. Preventative Actions
+Source control adoption: Recommended (pending).
+Expression audit script: Recommended.
+Compose version tagging: Recommended.
+Monthly environment export: Recommended.
+
+## 18. Triage & Assignment
+Triage Owner: (To be assigned)
+Assigned Engineer: (To be assigned)
+SLA Target Date: (Set)
+Escalation Level: None.
+Resolution Date: 2025-11-06.
+Close Code: Fixed.
+
+## 19. Additional Notes
+Added structural boundary comments for future diffing. Provided reconstruction report (FLOW_RECONSTRUCTION_REPORT.md) documenting process & metrics.
+
+## 20. Submission Checklist
+[X] Mandatory fields addressed
+[ ] Reporter demographics completed
+[X] Root cause hypothesis included
+[X] Attachments listed
+
+-- End of Sample Filled Issue --

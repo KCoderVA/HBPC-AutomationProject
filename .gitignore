@@ -1,0 +1,40 @@
+# ---- HBPC Automation Project .gitignore ----
+# OS / Editor cruft
+Thumbs.db
+Desktop.ini
+*.lnk
+
+# VS Code workspace settings (keep root workspace file, ignore local settings folder)
+.vscode/
+
+# Node / JS (if later added)
+node_modules/
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# Python (future use)
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# PowerShell transient files
+*.ps1xml
+
+# Archives / exports
+*.zip
+*.tar
+*.gz
+
+# Secrets / environment (if introduced later)
+.env
+.env.*
+
+# Temporary diff / scratch
+scratch/
+.tmp/
+
+# Ignore raw flow export bundles unless intentionally tracked
+flow_export_*/
+
+# End of file
