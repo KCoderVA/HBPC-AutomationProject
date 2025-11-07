@@ -166,6 +166,17 @@ jobs:
           $testFiles = Get-ChildItem tests -Recurse -File | ForEach-Object { $_.Name }
           $orphans = $testFiles | Where-Object { $_ -notin $mentioned }
           if($orphans){ Write-Warning "Orphaned test artifacts not referenced in README: $($orphans -join ', ')" } else { Write-Host 'No orphaned test artifacts' }
+      - name: Orphaned docs detection (non-fatal)
+        shell: pwsh
+        run: |
+          $readme = Get-Content README.md -Raw
+          $tableLines = ($readme -split "`n") | Where-Object { $_ -match '^\| `.+` \| ' }
+          $mentioned = @()
+          foreach($l in $tableLines){ foreach($m in ([regex]::Matches($l,'`([^`]+)`'))){ $mentioned += $m.Groups[1].Value } }
+          $docFiles = Get-ChildItem docs -File -Filter *.md | ForEach-Object { $_.Name }
+          $docFiles = $docFiles | Where-Object { $_ -ne 'DOC_INDEX.md' }
+          $orphans = $docFiles | Where-Object { $_ -notin $mentioned }
+          if($orphans){ Write-Warning "Docs not referenced in README artifact table: $($orphans -join ', ')" } else { Write-Host 'All docs referenced in README table' }
       - name: Enforce CHANGELOG headings
         shell: pwsh
         run: |
@@ -215,6 +226,27 @@ jobs:
           $violations = @()
           Get-ChildItem scripts -Filter *.ps1 | ForEach-Object { $c = Get-Content $_.FullName -Raw; if($c -notmatch 'SPDX-License-Identifier'){ $violations += $_.Name } }
           if($violations){ Write-Error "Missing SPDX header: $($violations -join ', ')" }
+      - name: Expression audit (Compose JSON)
+        shell: pwsh
+        run: |
+          $path = 'tests/altered/altered_RawCodeView.json'
+          if(!(Test-Path $path)){ Write-Host 'Compose JSON not found, skipping audit'; exit 0 }
+          $raw = Get-Content $path -Raw
+          $errors = @()
+          $ifCount = ([regex]::Matches($raw,'@\{if\(empty\(')).Count
+          if($ifCount -lt 10){ $errors += "Suspiciously low fallback pattern count ($ifCount)" }
+          if($raw -match 'RECONSTRUCTED-MID-BLOCK-START'){
+            $segment = [regex]::Match($raw,'RECONSTRUCTED-MID-BLOCK-START([\s\S]*?)RECONSTRUCTED-MID-BLOCK-END').Groups[1].Value
+            if($segment -match 'coalesce\('){ $errors += 'Legacy coalesce() found in reconstructed segment' }
+          }
+          $openTokens = ([regex]::Matches($raw,'@\{')).Count
+          $closeTokens = ([regex]::Matches($raw,'\}')).Count
+            
+          if($openTokens -gt $closeTokens){ $errors += "Unbalanced tokens: @{=$openTokens }=$closeTokens" }
+          $invalidPatterns = 0
+          foreach($m in [regex]::Matches($raw,'@\{if\(empty\((.*?)\)')){ if($m.Value -notmatch '\)\)'){ $invalidPatterns++ } }
+          if($invalidPatterns -gt 0){ $errors += "Fallback patterns missing closing )) count=$invalidPatterns" }
+          if($errors.Count -gt 0){ Write-Error ("Expression audit failures:`n" + ($errors -join "`n")) } else { Write-Host "Expression audit passed (if(empty) count=$ifCount)" }
       - name: Auto-sort schema fields
         shell: pwsh
         run: |
@@ -228,6 +260,19 @@ jobs:
             ($orig | ConvertTo-Json -Depth 6) | Set-Content $path -Encoding UTF8
             git add $path; git commit -m 'chore(schema): auto-sort fields' | Out-Null
           } else { Write-Host 'Schema already sorted' }
+          # If build-manifest exists append build info reference slug to README build block
+          if(Test-Path 'metrics/build-manifest.json'){
+            $readmePath = 'README.md'
+            if(Test-Path $readmePath){
+              $content = Get-Content $readmePath -Raw
+              if($content -match '<!-- BUILDINFO:START -->'){ 
+                if($content -notmatch 'Metrics Manifest'){ 
+                  $content = [regex]::Replace($content,'(<!-- BUILDINFO:START -->.*?</div>)',"$1".Replace('</div>',' • Metrics Manifest <code>metrics/build-manifest.json</code></div>'))
+                  Set-Content $readmePath -Value $content -Encoding UTF8; git add $readmePath; git commit -m 'chore(readme): add metrics manifest reference' | Out-Null 
+                }
+              }
+            }
+          }
       - name: Schema summary table injection
         shell: pwsh
         run: |
