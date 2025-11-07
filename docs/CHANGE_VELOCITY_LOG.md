@@ -14,3 +14,4 @@ Metrics guidance:
 Future: script to append row automatically post-tag.
 
 _Last updated: 2025-11-07_
+| 2025-11-07 | v0.2.0 | 0 | 11 | Automated snapshot |
