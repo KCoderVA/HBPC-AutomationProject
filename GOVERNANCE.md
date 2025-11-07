@@ -1,7 +1,7 @@
 # Governance & Versioning
 
 ## Purpose
-Defines how changes are proposed, reviewed, versioned, and audited for the HBPC Admission Flow artifacts.
+Defines how changes are proposed, reviewed, versioned, and audited for the HBPC Admission Flow artifacts. Licensed under Apache 2.0 (see `LICENSE.txt`). Joint Copyright © 2025 Kyle J. Coder & Ara A. Zakarian.
 
 ## Roles
 | Role | Responsibilities |

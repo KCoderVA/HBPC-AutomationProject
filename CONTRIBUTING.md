@@ -1,6 +1,6 @@
 # Contributing to HBPC Admission Flow Repository
 
-Welcome! This repo manages governance and forensic artifacts for the **HBPC New Admission Email With Saved Form** Power Automate flow. Because clinical and PHI considerations apply, please follow the rules below.
+Welcome! This repo manages governance and forensic artifacts for the **HBPC New Admission Email With Saved Form** Power Automate flow. It is licensed under Apache 2.0 (see `LICENSE.txt`). Joint Copyright © 2025 Kyle J. Coder & Ara A. Zakarian. Because clinical and PHI considerations apply, please follow the rules below.
 
 ## 1. Branching Strategy
 | Purpose | Prefix | Example |

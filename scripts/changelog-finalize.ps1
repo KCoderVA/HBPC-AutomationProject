@@ -1,21 +1,31 @@
 <#
-.SYNOPSIS
-  Promote the Unreleased section in CHANGELOG.md to a versioned release and create a matching git tag (optional).
+  Copyright (c) 2025 Coder, Kyle J. and Zakarian, Ara A.
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
 
-.DESCRIPTION
-  Parses CHANGELOG.md, finds '## [Unreleased]' block, renames it to specified version with current date, and inserts a fresh Unreleased placeholder.
+  .SYNOPSIS
+    Promote the Unreleased section in CHANGELOG.md to a versioned release and create a matching git tag (optional).
 
-.PARAMETER Version
-  Semantic version to release (e.g. 0.1.2).
+  .DESCRIPTION
+    Parses CHANGELOG.md, finds '## [Unreleased]' block, renames it to specified version with current date, and inserts a fresh Unreleased placeholder.
 
-.PARAMETER Tag
-  Switch to also create and push a git annotated tag.
+  .PARAMETER Version
+    Semantic version to release (e.g. 0.1.2).
 
-.EXAMPLE
-  ./scripts/changelog-finalize.ps1 -Version 0.1.2 -Tag
+  .PARAMETER Tag
+    Switch to also create and push a git annotated tag.
 
-.NOTES
-  Assumes CHANGELOG.md uses headings: ## [Unreleased], ## [x.y.z] - YYYY-MM-DD
+  .EXAMPLE
+    ./scripts/changelog-finalize.ps1 -Version 0.1.2 -Tag
+
+  .NOTES
+    Assumes CHANGELOG.md uses headings: ## [Unreleased], ## [x.y.z] - YYYY-MM-DD
 #>
 [CmdletBinding()]
 param(

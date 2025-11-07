@@ -50,7 +50,7 @@ root/
 | `GOVERNANCE.md` | root | Roles, versioning rules, release flow, incident response. |
 | `CONTRIBUTING.md` | root | Branching, commit conventions, PR requirements, PHI rules. |
 | `CODEOWNERS` | root | Automatic review assignment. |
-| `LICENSE.txt` | root | Internal use & confidentiality notice. |
+| `LICENSE.txt` | root | Apache 2.0 license (joint copyright: Kyle J. Coder & Ara A. Zakarian). |
 | `ARCHITECTURE.md` | `docs/` | Flow component diagram & extension points. |
 
 ## Expression & Fallback Strategy
@@ -121,8 +121,10 @@ Invalid expression error on save | Malformed string quoting or mismatched parent
 Choice field displays JSON | Missing `/Value` dereference | Append `/Value` in path after field internal name.
 Blank field where data exists | Incorrect field internal name or path | Cross-check with sample run outputs JSON.
 
-## Security & Confidentiality
-Artifacts reference internal VA workflows and may include PHI in raw exports or run histories. Keep repository access restricted. Do **not** publish externally. Redact patient identifiers in any shared screenshots.
+## Security, Licensing & Confidentiality
+Licensed under Apache 2.0 (see `LICENSE.txt`). Joint Copyright (c) 2025 Kyle J. Coder & Ara A. Zakarian.
+
+Artifacts reference HBPC clinical workflows. All committed examples must be de-identified. Do **not** include PHI (names, full addresses, unmasked SSN, MRNs) in issues, PRs, or screenshots. Use anonymization tooling (planned) for any real output prior to sharing externally.
 
 ## Status
 EOD 2025-11-07: Baseline reconstruction (v0.1.0) + governance/structure enhancements (v0.1.1) + formal contributor, versioning, CI, architecture & schema scaffolds now in place. Pending automation (audit + normalization) slated for v0.1.2.
