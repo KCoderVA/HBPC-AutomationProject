@@ -1,0 +1,15 @@
+# CODEOWNERS for HBPC Admission Flow Repository
+# Each line is a file pattern followed by one or more owners.
+# Owners will be requested for review automatically.
+
+*       @KCoderVA
+
+# Clinical artifacts (ensure stakeholder review placeholder)
+docs/FIELD_SCHEMA.md   @KCoderVA
+
+# Workflow / CI
+actions/               @KCoderVA
+.github/workflows/     @KCoderVA
+
+# Scripts
+scripts/               @KCoderVA

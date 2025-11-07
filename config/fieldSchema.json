@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Authoritative field schema scaffold for HBPC Admission flow; drives validation & doc generation.",
+  "version": "0.1.0",
+  "fields": [
+    {
+      "internalName": "PatientFullName",
+      "displayLabel": "Patient Full Name",
+      "dataType": "Text",
+      "choice": false,
+      "requiresValueSuffix": false,
+      "phi": true,
+      "fallback": "Not provided",
+      "notes": "Masked externally"
+    },
+    {
+      "internalName": "PatientFullSSN",
+      "displayLabel": "Patient Full SSN",
+      "dataType": "Text",
+      "choice": false,
+      "requiresValueSuffix": false,
+      "phi": true,
+      "fallback": "Not provided",
+      "notes": "Store masked"
+    },
+    {
+      "internalName": "PrimaryDiagnosis",
+      "displayLabel": "Primary Diagnosis",
+      "dataType": "Text",
+      "choice": false,
+      "requiresValueSuffix": false,
+      "phi": true,
+      "fallback": "Not provided",
+      "notes": "Clinical condition"
+    },
+    {
+      "internalName": "Vision",
+      "displayLabel": "Vision",
+      "dataType": "Choice",
+      "choice": true,
+      "requiresValueSuffix": true,
+      "phi": false,
+      "fallback": "Not provided",
+      "notes": "Single-choice"
+    }
+  ],
+  "fallbackStandard": "if(empty(value),'Not provided',value)",
+  "timezone": "Central Standard Time",
+  "rules": {
+    "requireFallback": true,
+    "requireValueSuffixForChoices": true
+  }
+}

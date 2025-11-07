@@ -1,0 +1,14 @@
+HBPC Admission Flow Repository – Internal Use Notice
+
+Copyright (c) 2025, U.S. Department of Veterans Affairs.
+All rights reserved.
+
+This repository contains internal operational and clinical workflow artifacts. Unauthorized disclosure of protected health information (PHI) or personally identifiable information (PII) is prohibited.
+
+Use, reproduction, or distribution outside authorized VA environments requires prior written approval. This code and documentation are NOT licensed for public or commercial use.
+
+NO WARRANTY. Provided "AS IS" without any expressed or implied warranties, including but not limited to implied warranties of merchantability or fitness for a particular purpose.
+
+If you are not an authorized user, cease access and notify the repository owner.
+
+Contact: HBPC Automation Project Maintainer <(internal)>

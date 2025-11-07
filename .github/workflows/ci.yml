@@ -1,0 +1,51 @@
+name: CI Audit
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  audit:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Validate fieldSchema.json
+        shell: pwsh
+        run: |
+          $schemaPath = 'config/fieldSchema.json'
+          if(!(Test-Path $schemaPath)){ Write-Error 'fieldSchema.json missing'; exit 1 }
+          $json = Get-Content $schemaPath -Raw | ConvertFrom-Json
+          if(-not $json.fields){ Write-Error 'No fields array found'; exit 1 }
+          $invalid = @()
+          foreach($f in $json.fields){
+            if([string]::IsNullOrWhiteSpace($f.internalName)){ $invalid += 'missing internalName' }
+            if([string]::IsNullOrWhiteSpace($f.fallback)){ $invalid += "$($f.internalName): missing fallback" }
+            if($f.choice -and -not $f.requiresValueSuffix){ $invalid += "$($f.internalName): choice without requiresValueSuffix" }
+          }
+          if($invalid.Count -gt 0){ Write-Error ("Schema validation errors:`n" + ($invalid -join "`n")); exit 1 }
+          Write-Host 'fieldSchema.json validation OK'
+      - name: Check README quickstart present
+        shell: pwsh
+        run: |
+          $readme = Get-Content README.md -Raw
+          if($readme -notmatch 'Quickstart'){ Write-Error 'Quickstart section missing in README'; exit 1 }
+          Write-Host 'README quickstart found'
+      - name: Verify CHANGELOG Unreleased section
+        shell: pwsh
+        run: |
+          $cl = Get-Content CHANGELOG.md -Raw
+          if($cl -notmatch '## \[Unreleased\]'){ Write-Error 'Missing Unreleased section in CHANGELOG'; exit 1 }
+          Write-Host 'CHANGELOG Unreleased section present'
+      - name: Basic link lint (README)
+        shell: pwsh
+        run: |
+          $readme = Get-Content README.md -Raw
+          $links = Select-String -InputObject $readme -Pattern '\[(.+?)\]\((.+?)\)' | ForEach-Object { $_.Matches } | ForEach-Object { $_.Groups[2].Value }
+          $fails = @()
+          foreach($l in $links){
+            if($l -match '^(http|https)://'){ try { (Invoke-WebRequest -Uri $l -UseBasicParsing -Method Head -TimeoutSec 10) | Out-Null } catch { $fails += $l } }
+          }
+          if($fails.Count -gt 0){ Write-Warning "Broken links:`n$($fails -join "`n")" }
+          Write-Host 'Link lint complete'

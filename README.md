@@ -3,6 +3,15 @@
 ## Overview
 This repository houses governance, forensic, and maintenance artifacts for the **HBPC New Admission Email With Saved Form** Power Automate flow. The flow generates a structured HTML admission summary populated from SharePoint list item data. A recent reconstruction (v0.1.0 baseline) restored previously truncated middle sections and standardized dynamic expression patterns for reliability and maintainability.
 
+## Quickstart (60 Seconds)
+1. Clone: `git clone <repo>` & checkout `main`.
+2. Review architecture: see `docs/ARCHITECTURE.md` (Mermaid diagram of flow steps).
+3. Run CI audit locally (optional): inspect `scripts/changelog-finalize.ps1` & upcoming audit script.
+4. Make change in a branch (`feat/...` or `fix/...`), modify template HTML or JSON.
+5. Validate with two flow runs (populated + sparse).
+6. Update `CHANGELOG.md` Unreleased section; open PR using template.
+7. After merge, export flow, place zip in `tests/flowSuccess/`, tag release.
+
 ## Current Architecture & Layout
 ```
 root/
