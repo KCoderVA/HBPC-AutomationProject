@@ -25,9 +25,14 @@ jobs:
           if [ ! -f config/fieldSchema.json ]; then echo "Missing config/fieldSchema.json"; exit 1; fi
           SCHEMA_COUNT=$(jq '.fields | length' config/fieldSchema.json)
           echo "Schema fields: $SCHEMA_COUNT"
-          PREV_TAG=$(git tag --sort=-creatordate | grep -v "$TAG_REF" | tail -n1 || true)
+          PREV_TAG=$(git tag --list 'v*' --sort=-creatordate | grep -v "$TAG_REF" | tail -n1 || true)
           if [ -z "$PREV_TAG" ]; then BASE=$(git rev-list --max-parents=0 HEAD); FILE_COUNT=$(git diff --name-only $BASE $TAG_REF | wc -l); else FILE_COUNT=$(git diff --name-only $PREV_TAG $TAG_REF | wc -l); fi
           echo "Files changed since previous tag: $FILE_COUNT"
+          if [ -z "$PREV_TAG" ]; then NEW_FIELDS_DELTA=$SCHEMA_COUNT; else PREV_FIELDS=$(git show $PREV_TAG:config/fieldSchema.json 2>/dev/null | jq '.fields | length'); NEW_FIELDS_DELTA=$((SCHEMA_COUNT-PREV_FIELDS)); fi
+          TOTAL_FILES=$(git ls-files | wc -l)
+          if [ "$TOTAL_FILES" -gt 0 ]; then CHANGE_DENSITY=$(awk -v f=$FILE_COUNT -v t=$TOTAL_FILES 'BEGIN{ printf "%.2f", (t==0?0:(f/t*100)) }'); else CHANGE_DENSITY=0; fi
+          if [ -n "$PREV_TAG" ]; then PREV_DATE=$(git log -1 --format=%cI $PREV_TAG); NOW_DATE=$(date -u +%s); PREV_SECS=$(date -u -d "$PREV_DATE" +%s); DAYS_SINCE=$(( (NOW_DATE-PREV_SECS)/86400 )); else DAYS_SINCE='N/A'; fi
+          echo "New fields delta: $NEW_FIELDS_DELTA"; echo "Change density: $CHANGE_DENSITY%"; echo "Days since previous tag: $DAYS_SINCE"
           DATE_UTC=$(date -u +%Y-%m-%d)
           if [ ! -f README.md ]; then echo "README.md missing"; exit 1; fi
           if ! grep -q '<!-- BADGES:START -->' README.md; then echo "Badge markers missing"; exit 1; fi
@@ -48,7 +53,10 @@ jobs:
           echo "SVG badge regenerated"
           LOG_PATH="docs/CHANGE_VELOCITY_LOG.md"
           if [ ! -f "$LOG_PATH" ]; then echo "Missing $LOG_PATH"; exit 1; fi
-          if grep -q "| $TAG_REF |" "$LOG_PATH"; then echo "Velocity row exists"; else echo "| $DATE_UTC | $TAG_REF | $FILE_COUNT | $SCHEMA_COUNT | Automated snapshot |" >> "$LOG_PATH"; echo "Velocity log appended"; fi
+          if grep -q "| $TAG_REF |" "$LOG_PATH"; then echo "Velocity row exists"; else echo "| $DATE_UTC | $TAG_REF | $FILE_COUNT | $SCHEMA_COUNT | +$NEW_FIELDS_DELTA fields |" >> "$LOG_PATH"; echo "Velocity log appended"; fi
+          # Simple trend header (count list)
+          RECENT=$(grep '^|' "$LOG_PATH" | grep -v 'Date' | tail -n 10 | awk -F'|' '{print $4}' | tr -d ' ' | xargs)
+          if ! grep -q 'FIELD COUNT TREND' "$LOG_PATH"; then echo -e "FIELD COUNT TREND (last up to 10 releases):\n$RECENT\n" | cat - "$LOG_PATH" > temp && mv temp "$LOG_PATH"; else sed -i "1,/FIELD COUNT TREND/s/FIELD COUNT TREND.*$/FIELD COUNT TREND (last up to 10 releases):/" "$LOG_PATH"; fi
           if git diff --quiet; then echo "No changes to commit"; else git add README.md badges/schema-field-count.svg "$LOG_PATH"; git commit -m "chore(release-metrics): snapshot $TAG_REF (schema=$SCHEMA_COUNT files=$FILE_COUNT)"; fi
       - name: Push changes
         run: |

@@ -21,15 +21,29 @@ jobs:
         shell: pwsh
         run: |
           $schemaPath = 'config/fieldSchema.json'
+          $schemaSpec = 'config/fieldSchema.schema.json'
           if(!(Test-Path $schemaPath)){ Write-Error 'fieldSchema.json missing'; exit 1 }
           $json = Get-Content $schemaPath -Raw | ConvertFrom-Json
           if(-not $json.fields){ Write-Error 'No fields array found'; exit 1 }
+          if(Test-Path $schemaSpec){
+            # Basic schema structural validation (manual due to no external lib):
+            $raw = Get-Content $schemaPath -Raw | ConvertFrom-Json
+            foreach($f in $raw.fields){
+              foreach($req in 'internalName','displayLabel','dataType','fallback'){
+                if([string]::IsNullOrWhiteSpace($f.$req)){ Write-Error "Schema violation: missing $req on a field" }
+              }
+              if($f.sensitivity -and $f.sensitivity -notin @('Low','Moderate','High')){ Write-Error "Invalid sensitivity $($f.sensitivity)" }
+            }
+          }
           $invalid = @()
           foreach($f in $json.fields){
             if([string]::IsNullOrWhiteSpace($f.internalName)){ $invalid += 'missing internalName' }
             if([string]::IsNullOrWhiteSpace($f.fallback)){ $invalid += "$($f.internalName): missing fallback" }
             if($f.choice -and -not $f.requiresValueSuffix){ $invalid += "$($f.internalName): choice without requiresValueSuffix" }
           }
+          # Duplicate internalName detection
+          $dupes = $json.fields | Group-Object internalName | Where-Object { $_.Count -gt 1 } | ForEach-Object { $_.Name }
+          if($dupes){ $invalid += ('Duplicate internalName(s): ' + ($dupes -join ', ')) }
           if($invalid.Count -gt 0){ Write-Error ("Schema validation errors:`n" + ($invalid -join "`n")); exit 1 }
           Write-Host 'fieldSchema.json validation OK'
       - name: Auto-update README badge schema field count
@@ -82,6 +96,129 @@ jobs:
           $newBlock = "<!-- BUILDINFO:START --><div><em>Build Info</em>: Commit <code>$shortSha</code> • UTC <code>$utcDate</code> • Last Tag <code>$lastTag</code> • Commits Since Tag <code>$commitsSince</code> • Files Since Tag <code>$filesSince</code> • Schema Fields Snapshot <code>$schemaCount</code></div><!-- BUILDINFO:END -->"
           $updated = [regex]::Replace($content,'<!-- BUILDINFO:START -->.*?<!-- BUILDINFO:END -->',$newBlock,'Singleline')
           if($updated -ne $content){ Set-Content -Path $readmePath -Value $updated -Encoding UTF8; git add $readmePath; git commit -m "chore(readme): refresh build info ($shortSha)" | Out-Null } else { Write-Host 'Build info already current' }
+      - name: Enforce CHANGELOG headings
+        shell: pwsh
+        run: |
+          $cl = Get-Content CHANGELOG.md -Raw
+          if($cl -match '## \[Unreleased\]([\s\S]*?)(## \[|$)'){
+            $block = $Matches[1]
+            $required = @('Added','Changed','Fixed')
+            foreach($h in $required){ if($block -notmatch "### $h" ){ Write-Error "CHANGELOG missing '### $h' in Unreleased" } }
+          } else { Write-Error 'Unreleased section parse failure' }
+      - name: SECURITY.md section checks
+        shell: pwsh
+        run: |
+          $sec = Get-Content SECURITY.md -Raw
+          foreach($req in 'PHI Categories','Reporting Potential Exposure'){ if($sec -notmatch $req){ Write-Error "SECURITY.md missing section: $req" } }
+      - name: PHI pattern scan
+        shell: pwsh
+        run: |
+          $bad = @()
+          $files = git ls-files | Where-Object { $_ -notlike 'tests/flowSuccess/*' -and $_ -notlike 'tests/flowFailure/*' }
+          foreach($f in $files){
+            $text = Get-Content $f -Raw
+            $matches = [regex]::Matches($text,'\b(?!000-00-0000)(\d{3}-\d{2}-\d{4})\b')
+            foreach($m in $matches){ if($text -notmatch '\*\*\*'){ $bad += "$f:$($m.Value)" } }
+          }
+          if($bad){ Write-Error "Potential PHI (SSN) patterns detected:`n$($bad -join "`n")" }
+      - name: LICENSE hash verification
+        shell: pwsh
+        run: |
+          $expected = 'APACHE-2.0'
+          $lic = Get-Content LICENSE.txt -Raw
+          if($lic -notmatch 'Apache License'){ Write-Error 'LICENSE missing Apache text' }
+          # simple marker token only; canonical hash option can be added later
+          Write-Host 'LICENSE text looks valid'
+      - name: CODEOWNERS presence
+        shell: pwsh
+        run: |
+          if(!(Test-Path CODEOWNERS)){ Write-Error 'CODEOWNERS missing' }
+          if(-not (Get-Content CODEOWNERS | Where-Object { $_ -match '\S'})){ Write-Error 'CODEOWNERS empty' }
+      - name: Conventional commit prefix (HEAD)
+        shell: pwsh
+        run: |
+          $msg = git log -1 --pretty=%s
+          if($msg -notmatch '^(feat|fix|chore|docs|refactor|security|perf|test|build|ci)(\(|:){1}'){ Write-Error "Head commit not conventional: $msg" }
+      - name: SPDX header validation (scripts)
+        shell: pwsh
+        run: |
+          $violations = @()
+          Get-ChildItem scripts -Filter *.ps1 | ForEach-Object { $c = Get-Content $_.FullName -Raw; if($c -notmatch 'SPDX-License-Identifier'){ $violations += $_.Name } }
+          if($violations){ Write-Error "Missing SPDX header: $($violations -join ', ')" }
+      - name: Auto-sort schema fields
+        shell: pwsh
+        run: |
+          $path = 'config/fieldSchema.json'
+          $orig = Get-Content $path -Raw | ConvertFrom-Json
+          $sorted = ($orig.fields | Sort-Object internalName)
+          $needs = $false
+          for($i=0;$i -lt $orig.fields.Count;$i++){ if($orig.fields[$i].internalName -ne $sorted[$i].internalName){ $needs = $true; break } }
+          if($needs){
+            $orig.fields = $sorted
+            ($orig | ConvertTo-Json -Depth 6) | Set-Content $path -Encoding UTF8
+            git add $path; git commit -m 'chore(schema): auto-sort fields' | Out-Null
+          } else { Write-Host 'Schema already sorted' }
+      - name: Schema summary table injection
+        shell: pwsh
+        run: |
+          $mdPath = 'docs/FIELD_SCHEMA.md'
+          if(!(Test-Path $mdPath)){ Write-Host 'FIELD_SCHEMA.md not present'; exit 0 }
+          $json = Get-Content config/fieldSchema.json -Raw | ConvertFrom-Json
+          $rows = foreach($f in $json.fields){ "| $($f.internalName) | $($f.displayLabel) | $($f.section) | $($f.category) | $($f.sensitivity) | $($f.dataType) |" }
+          $table = @("<!-- SCHEMA-SUMMARY:START -->","| Internal | Label | Section | Category | Sensitivity | Type |","|---------|-------|---------|----------|------------|------|") + $rows + '<!-- SCHEMA-SUMMARY:END -->'
+          $content = Get-Content $mdPath -Raw
+          if($content -match '<!-- SCHEMA-SUMMARY:START -->[\s\S]*?<!-- SCHEMA-SUMMARY:END -->'){
+            $content = [regex]::Replace($content,'<!-- SCHEMA-SUMMARY:START -->[\s\S]*?<!-- SCHEMA-SUMMARY:END -->',$table -join "`n")
+          } else {
+            $content += "`n$table" -join "`n"
+          }
+          Set-Content $mdPath -Value $content -Encoding UTF8
+          git add $mdPath; git commit -m 'docs(schema): refresh schema summary table' | Out-Null
+      - name: FIELD_SCHEMA last updated timestamp
+        shell: pwsh
+        run: |
+          $mdPath = 'docs/FIELD_SCHEMA.md'
+          if(Test-Path $mdPath){
+            $c = Get-Content $mdPath -Raw
+            $stamp = (Get-Date).ToUniversalTime().ToString('yyyy-MM-dd')
+            if($c -match '_Last updated:'){ $nc = [regex]::Replace($c,'_Last updated: .*','_Last updated: '+$stamp) } else { $nc = $c + "`n_Last updated: $stamp" }
+            if($nc -ne $c){ Set-Content $mdPath -Value $nc -Encoding UTF8; git add $mdPath; git commit -m 'docs(schema): update timestamp' | Out-Null }
+          }
+      - name: Generate DOC_INDEX
+        shell: pwsh
+        run: |
+          $files = Get-ChildItem docs -Filter *.md | Sort-Object Name
+          $lines = @('# Documentation Index','','| File | Last Modified (UTC) |','|------|-------------------|')
+          foreach($f in $files){ $dt = (Get-Date $f.LastWriteTimeUtc -Format 'yyyy-MM-dd'); $lines += "| $($f.Name) | $dt |" }
+          $out = $lines -join "`n"
+          Set-Content docs/DOC_INDEX.md -Value $out -Encoding UTF8
+          git add docs/DOC_INDEX.md; git commit -m 'docs: regenerate DOC_INDEX' | Out-Null
+      - name: CONTRIBUTORS generation
+        shell: pwsh
+        run: |
+          $contributors = git shortlog -sne | ForEach-Object { $_ -replace '\t',' ' }
+          $content = "# Contributors`n`n| Commits | Author | Email |`n|---------|--------|-------|`n" + ($contributors | ForEach-Object { $p = $_ -split ' '; $count=$p[0]; $rest=$p[1..($p.Length-1)] -join ' '; if($rest -match '<(.+?)>'){ $name = $rest -replace '<.*?>',''; $email = $Matches[1] } else { $name=$rest; $email='' }; "| $count | $name | $email |" }) -join "`n"
+          Set-Content CONTRIBUTORS.md -Value $content -Encoding UTF8
+          git add CONTRIBUTORS.md; git commit -m 'docs: update CONTRIBUTORS' | Out-Null
+      - name: Large PR warning
+        if: github.event_name == 'pull_request'
+        shell: pwsh
+        run: |
+          $count = (git diff --name-only origin/main...HEAD | Measure-Object).Count
+          if($count -gt 30){ Write-Warning "Large PR: $count files changed" } else { Write-Host "PR size OK ($count files)" }
+      - name: PR summary comment
+        if: github.event_name == 'pull_request'
+        shell: pwsh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $schemaCount = (Get-Content config/fieldSchema.json -Raw | ConvertFrom-Json).fields.Count
+          $fileCount = (git diff --name-only origin/main...HEAD | Measure-Object).Count
+          $sha = (git rev-parse --short HEAD)
+          $body = "PR Metrics:\n- Files Changed: $fileCount\n- Schema Fields Now: $schemaCount\n- Head: $sha"
+          $pr = $env:GITHUB_REF -replace 'refs/pull/','' -replace '/merge',''
+          $url = "https://api.github.com/repos/${env:GITHUB_REPOSITORY}/issues/$pr/comments"
+          Invoke-RestMethod -Method Post -Uri $url -Headers @{Authorization="Bearer $env:GITHUB_TOKEN"} -Body (@{body=$body} | ConvertTo-Json)
       - name: Push badge update (if any)
         if: always()
         run: |

@@ -94,3 +94,19 @@ Use `Not provided` except:
 
 ---
 _Last updated: 2025-11-07 (expanded grouping & roadmap)_
+
+<!-- SCHEMA-SUMMARY:START -->
+| Internal | Label | Section | Category | Sensitivity | Type |
+|---------|-------|---------|----------|------------|------|
+| AdmissionDate | Admission Date | Identity | Encounter | Moderate | DateTime |
+| CarePlanSummary | Care Plan Summary | Clinical | Plan | Moderate | Text |
+| Hearing | Hearing | Assessment | Functional | Low | Choice |
+| MobilityLevel | Mobility Level | Assessment | Functional | Low | Choice |
+| PatientFullName | Patient Full Name | Identity | DirectIdentifier | High | Text |
+| PatientFullSSN | Patient Full SSN | Identity | DirectIdentifier | High | Text |
+| PrimaryCaregiverRelationship | Primary Caregiver Relationship | Social | CareSupport | Low | Choice |
+| PrimaryDiagnosis | Primary Diagnosis | Clinical | Condition | Moderate | Text |
+| PrimaryProviderName | Primary Provider Name | CareTeam | Staff | Moderate | Text |
+| PreferredLanguage | Preferred Language | Identity | Demographic | Low | Choice |
+| Vision | Vision | Assessment | Functional | Low | Choice |
+<!-- SCHEMA-SUMMARY:END -->
