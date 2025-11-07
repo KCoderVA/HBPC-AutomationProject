@@ -1,0 +1,55 @@
+name: Release Finalization
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  finalize:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set git identity
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+      - name: Gather metrics & update badges and velocity log
+        run: |
+          set -euo pipefail
+          TAG_REF="${GITHUB_REF##*/}"
+          if [[ ! $TAG_REF =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[A-Za-z0-9.-]+)?$ ]]; then echo "Tag $TAG_REF not semver"; exit 1; fi
+          echo "Processing tag: $TAG_REF"
+          if [ ! -f config/fieldSchema.json ]; then echo "Missing config/fieldSchema.json"; exit 1; fi
+          SCHEMA_COUNT=$(jq '.fields | length' config/fieldSchema.json)
+          echo "Schema fields: $SCHEMA_COUNT"
+          PREV_TAG=$(git tag --sort=-creatordate | grep -v "$TAG_REF" | tail -n1 || true)
+          if [ -z "$PREV_TAG" ]; then BASE=$(git rev-list --max-parents=0 HEAD); FILE_COUNT=$(git diff --name-only $BASE $TAG_REF | wc -l); else FILE_COUNT=$(git diff --name-only $PREV_TAG $TAG_REF | wc -l); fi
+          echo "Files changed since previous tag: $FILE_COUNT"
+          DATE_UTC=$(date -u +%Y-%m-%d)
+          if [ ! -f README.md ]; then echo "README.md missing"; exit 1; fi
+          if ! grep -q '<!-- BADGES:START -->' README.md; then echo "Badge markers missing"; exit 1; fi
+          EXISTING_COUNT=$(grep -Eo 'Schema Fields: [0-9]+' README.md | head -n1 | awk '{print $3}') || true
+          if [ "$EXISTING_COUNT" != "$SCHEMA_COUNT" ]; then sed -i -E "/BADGES:START/,/BADGES:END/ s/Schema Fields: [0-9]+/Schema Fields: $SCHEMA_COUNT/" README.md; echo "Updated inline badge: $EXISTING_COUNT -> $SCHEMA_COUNT"; else echo "Inline badge already $SCHEMA_COUNT"; fi
+          mkdir -p badges
+          printf '%s\n' "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"140\" height=\"20\" role=\"img\" aria-label=\"schema fields: $SCHEMA_COUNT\">" \
+            "  <linearGradient id=\"g\" x2=\"0\" y2=\"100%\"><stop offset=\"0\" stop-color=\"#bbb\" stop-opacity=\".1\"/><stop offset=\"1\" stop-opacity=\".1\"/></linearGradient>" \
+            "  <rect rx=\"3\" width=\"140\" height=\"20\" fill=\"#555\"/>" \
+            "  <rect rx=\"3\" x=\"85\" width=\"55\" height=\"20\" fill=\"#4c1\"/>" \
+            "  <path fill=\"#4c1\" d=\"M85 0h4v20h-4z\"/>" \
+            "  <rect rx=\"3\" width=\"140\" height=\"20\" fill=\"url(#g)\"/>" \
+            "  <g fill=\"#fff\" text-anchor=\"middle\" font-family=\"Verdana,Geneva,DejaVu Sans,sans-serif\" font-size=\"11\">" \
+            "    <text x=\"43\" y=\"14\">schema fields</text>" \
+            "    <text x=\"111\" y=\"14\">$SCHEMA_COUNT</text>" \
+            "  </g>" \
+            "</svg>" > badges/schema-field-count.svg
+          echo "SVG badge regenerated"
+          LOG_PATH="docs/CHANGE_VELOCITY_LOG.md"
+          if [ ! -f "$LOG_PATH" ]; then echo "Missing $LOG_PATH"; exit 1; fi
+          if grep -q "| $TAG_REF |" "$LOG_PATH"; then echo "Velocity row exists"; else echo "| $DATE_UTC | $TAG_REF | $FILE_COUNT | $SCHEMA_COUNT | Automated snapshot |" >> "$LOG_PATH"; echo "Velocity log appended"; fi
+          if git diff --quiet; then echo "No changes to commit"; else git add README.md badges/schema-field-count.svg "$LOG_PATH"; git commit -m "chore(release-metrics): snapshot $TAG_REF (schema=$SCHEMA_COUNT files=$FILE_COUNT)"; fi
+      - name: Push changes
+        run: |
+          git push origin HEAD:main || echo "No metric changes to push"
