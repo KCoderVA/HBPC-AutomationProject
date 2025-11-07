@@ -1,8 +1,22 @@
 # CHANGELOG
 
-All notable changes to the HBPC Admission Compose action & supporting artifacts.
+All notable changes to the HBPC Admission Compose action & supporting repository artifacts.
 
-## 2025-11-06
+## [Unreleased]
+- Pending: Standardize top-section expressions to unified fallback pattern.
+- Planned: Add PowerShell expression integrity checker.
+- Planned: Populate authoritative field schema data types & PHI flags.
+
+## [0.1.1] - 2025-11-07
+### Added
+- Tracked historical flow export `.zip` packages (success & failure) by removing `*.zip` from `.gitignore`.
+- Expanded `README.md` with architecture diagram, governance workflow, troubleshooting matrix, and zip tracking rationale.
+### Changed
+- Updated `.gitignore` comments to retain tar/gz ignores but include zip exports.
+### Documentation
+- Clarified regeneration process for `inputs_pretty` and future governance roadmap.
+
+## [0.1.0] - 2025-11-06
 ### Added
 - Restored five missing HTML sections (Functional, ADL, Continence, Behavioral/Cognitive, Admission Details).
 - Implemented uniform expression pattern with explicit `if(empty(...),'Not provided', value)`.
@@ -27,3 +41,6 @@ All notable changes to the HBPC Admission Compose action & supporting artifacts.
 ### Notes
 - Source control adoption and automated integrity auditing pending.
 - Top sections still use original `coalesce()` approach; consider normalization in next release.
+
+---
+Version numbering begins at 0.1.x for post-reconstruction baseline; future semantic version tags (e.g., 0.2.0) will represent structural or governance feature additions.

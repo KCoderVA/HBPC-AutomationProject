@@ -21,8 +21,8 @@ __pycache__/
 # PowerShell transient files
 *.ps1xml
 
-# Archives / exports
-*.zip
+# Archives / exports (retain .zip solution exports for tracking)
+# Removed *.zip ignore to allow flow export packages in version control
 *.tar
 *.gz
 
@@ -34,7 +34,7 @@ __pycache__/
 scratch/
 .tmp/
 
-# Ignore raw flow export bundles unless intentionally tracked
-flow_export_*/
+# Keep flow export bundles (forensic & rollback) now tracked
+# flow_export_*/
 
 # End of file
