@@ -39,24 +39,57 @@ jobs:
           EXISTING_COUNT=$(grep -Eo 'Schema Fields: [0-9]+' README.md | head -n1 | awk '{print $3}') || true
           if [ "$EXISTING_COUNT" != "$SCHEMA_COUNT" ]; then sed -i -E "/BADGES:START/,/BADGES:END/ s/Schema Fields: [0-9]+/Schema Fields: $SCHEMA_COUNT/" README.md; echo "Updated inline badge: $EXISTING_COUNT -> $SCHEMA_COUNT"; else echo "Inline badge already $SCHEMA_COUNT"; fi
           mkdir -p badges
-          printf '%s\n' "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"140\" height=\"20\" role=\"img\" aria-label=\"schema fields: $SCHEMA_COUNT\">" \
+          # Dynamic badge color scaling based on field count thresholds
+          if [ "$SCHEMA_COUNT" -le 10 ]; then BADGE_COLOR="#4c1"; elif [ "$SCHEMA_COUNT" -le 20 ]; then BADGE_COLOR="#dfb317"; elif [ "$SCHEMA_COUNT" -le 30 ]; then BADGE_COLOR="#fe7d37"; else BADGE_COLOR="#e05d44"; fi
+          # Adjust right segment width for multi-digit counts (base 55, +6 per extra digit beyond 2)
+          COUNT_LEN=${#SCHEMA_COUNT}
+          RIGHT_W=$((55 + (COUNT_LEN>2?(COUNT_LEN-2)*6:0)))
+          TOTAL_W=$((85 + RIGHT_W))
+          if [ $TOTAL_W -lt 140 ]; then TOTAL_W=140; fi
+          printf '%s\n' "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"$TOTAL_W\" height=\"20\" role=\"img\" aria-label=\"schema fields: $SCHEMA_COUNT\">" \
             "  <linearGradient id=\"g\" x2=\"0\" y2=\"100%\"><stop offset=\"0\" stop-color=\"#bbb\" stop-opacity=\".1\"/><stop offset=\"1\" stop-opacity=\".1\"/></linearGradient>" \
-            "  <rect rx=\"3\" width=\"140\" height=\"20\" fill=\"#555\"/>" \
-            "  <rect rx=\"3\" x=\"85\" width=\"55\" height=\"20\" fill=\"#4c1\"/>" \
-            "  <path fill=\"#4c1\" d=\"M85 0h4v20h-4z\"/>" \
-            "  <rect rx=\"3\" width=\"140\" height=\"20\" fill=\"url(#g)\"/>" \
+            "  <rect rx=\"3\" width=\"$TOTAL_W\" height=\"20\" fill=\"#555\"/>" \
+            "  <rect rx=\"3\" x=\"85\" width=\"$RIGHT_W\" height=\"20\" fill=\"$BADGE_COLOR\"/>" \
+            "  <path fill=\"$BADGE_COLOR\" d=\"M85 0h4v20h-4z\"/>" \
+            "  <rect rx=\"3\" width=\"$TOTAL_W\" height=\"20\" fill=\"url(#g)\"/>" \
             "  <g fill=\"#fff\" text-anchor=\"middle\" font-family=\"Verdana,Geneva,DejaVu Sans,sans-serif\" font-size=\"11\">" \
             "    <text x=\"43\" y=\"14\">schema fields</text>" \
-            "    <text x=\"111\" y=\"14\">$SCHEMA_COUNT</text>" \
+            "    <text x=\"$((85 + RIGHT_W/2))\" y=\"14\">$SCHEMA_COUNT</text>" \
             "  </g>" \
             "</svg>" > badges/schema-field-count.svg
-          echo "SVG badge regenerated"
+          echo "SVG badge regenerated (color=$BADGE_COLOR width=$TOTAL_W)"
           LOG_PATH="docs/CHANGE_VELOCITY_LOG.md"
           if [ ! -f "$LOG_PATH" ]; then echo "Missing $LOG_PATH"; exit 1; fi
           if grep -q "| $TAG_REF |" "$LOG_PATH"; then echo "Velocity row exists"; else echo "| $DATE_UTC | $TAG_REF | $FILE_COUNT | $SCHEMA_COUNT | +$NEW_FIELDS_DELTA fields |" >> "$LOG_PATH"; echo "Velocity log appended"; fi
-          # Simple trend header (count list)
-          RECENT=$(grep '^|' "$LOG_PATH" | grep -v 'Date' | tail -n 10 | awk -F'|' '{print $4}' | tr -d ' ' | xargs)
-          if ! grep -q 'FIELD COUNT TREND' "$LOG_PATH"; then echo -e "FIELD COUNT TREND (last up to 10 releases):\n$RECENT\n" | cat - "$LOG_PATH" > temp && mv temp "$LOG_PATH"; else sed -i "1,/FIELD COUNT TREND/s/FIELD COUNT TREND.*$/FIELD COUNT TREND (last up to 10 releases):/" "$LOG_PATH"; fi
+          # Build velocity trend table & sparkline (last up to 10 releases)
+          RECENT_ROWS=$(grep '^|' "$LOG_PATH" | grep -v 'Date' | tail -n 10)
+          RECENT_COUNTS=$(echo "$RECENT_ROWS" | awk -F'|' '{print $4}' | tr -d ' ')
+          MIN=$(echo "$RECENT_COUNTS" | tr ' ' '\n' | sort -n | head -n1)
+          MAX=$(echo "$RECENT_COUNTS" | tr ' ' '\n' | sort -n | tail -n1)
+          SPARK=''
+          for v in $RECENT_COUNTS; do
+            if [ "$MAX" = "$MIN" ]; then idx=0; else
+              norm=$(awk -v val=$v -v min=$MIN -v max=$MAX 'BEGIN{ if(max-min==0){print 0}else{print (val-min)/(max-min)} }')
+              idx=$(awk -v n=$norm 'BEGIN{ printf "%d", (n*7) }')
+            fi
+            case $idx in
+              0) ch='▁';; 1) ch='▂';; 2) ch='▃';; 3) ch='▄';; 4) ch='▅';; 5) ch='▆';; 6) ch='▇';; 7) ch='█';; *) ch='▁';; esac
+            SPARK="$SPARK$ch"
+          done
+          TABLE_HEADER='| Date | Tag | Files | Fields | Delta | Density % | Days Since Prev |'
+          TABLE_SEP='|------|-----|-------|--------|-------|-----------|-----------------|'
+          TABLE_ROWS=$(echo "$RECENT_ROWS" | awk -F'|' -v dens=$CHANGE_DENSITY -v days=$DAYS_SINCE -v prev=$PREV_TAG -v tag=$TAG_REF 'BEGIN{OFS="|"} {gsub(/^[ \t]+|[ \t]+$/,"",$2); if(NR>0){print "|" $2 "|" $3 "|" $4 "|" $5 "|" $6 "|" dens "|" days "|"}}')
+          # Insert / replace trend block between markers (create if absent)
+          if grep -q '<!-- VELOCITY-TREND:START -->' "$LOG_PATH"; then
+            sed -i "/VELOCITY-TREND:START/,/VELOCITY-TREND:END/c\\<!-- VELOCITY-TREND:START -->\nFIELD COUNT SPARKLINE: $SPARK (min=$MIN max=$MAX)\n$TABLE_HEADER\n$TABLE_SEP\n$TABLE_ROWS\n<!-- VELOCITY-TREND:END -->" "$LOG_PATH"
+          else
+            printf '\n<!-- VELOCITY-TREND:START -->\nFIELD COUNT SPARKLINE: %s (min=%s max=%s)\n%s\n%s\n%s\n<!-- VELOCITY-TREND:END -->\n' "$SPARK" "$MIN" "$MAX" "$TABLE_HEADER" "$TABLE_SEP" "$TABLE_ROWS" >> "$LOG_PATH"
+          fi
+          # Generate build metrics JSON artifact (commit snapshot)
+          mkdir -p metrics
+          printf '{\n  "tag": "%s",\n  "dateUtc": "%s",\n  "schemaFieldCount": %s,\n  "newFieldsDelta": %s,\n  "filesChanged": %s,\n  "changeDensityPercent": "%s",\n  "daysSincePreviousTag": "%s",\n  "previousTag": "%s"\n}\n' \
+            "$TAG_REF" "$DATE_UTC" "$SCHEMA_COUNT" "$NEW_FIELDS_DELTA" "$FILE_COUNT" "$CHANGE_DENSITY" "$DAYS_SINCE" "${PREV_TAG:-none}" > metrics/build-manifest.json
+          git add metrics/build-manifest.json
           if git diff --quiet; then echo "No changes to commit"; else git add README.md badges/schema-field-count.svg "$LOG_PATH"; git commit -m "chore(release-metrics): snapshot $TAG_REF (schema=$SCHEMA_COUNT files=$FILE_COUNT)"; fi
       - name: Push changes
         run: |

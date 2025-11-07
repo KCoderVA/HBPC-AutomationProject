@@ -1,4 +1,7 @@
 ## HBPC Admission Flow Reconstruction & Remediation Report
+<!-- TOC:START -->
+<!-- (Generated automatically – do not edit manually) -->
+<!-- TOC:END -->
 
 ### 1. Executive Summary
 

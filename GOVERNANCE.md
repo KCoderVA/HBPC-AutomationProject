@@ -1,4 +1,5 @@
 # Governance & Versioning
+<!-- POLICY-VERSION:START -->Policy Version: 1 (hash: INIT)<!-- POLICY-VERSION:END -->
 
 ## Purpose
 Defines how changes are proposed, reviewed, versioned, and audited for the HBPC Admission Flow artifacts. Licensed under Apache 2.0 (see `LICENSE.txt`). Joint Copyright © 2025 Kyle J. Coder & Ara A. Zakarian.
@@ -61,5 +62,4 @@ Hotfix triggers: production regression, PHI exposure risk, missing critical sect
 6. Document root cause & mitigation steps.
 7. Consider offline backup refresh if structural correction.
 
----
 _Last updated: 2025-11-07_
