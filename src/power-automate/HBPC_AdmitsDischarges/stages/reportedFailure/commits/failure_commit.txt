@@ -1,0 +1,5 @@
+REPORTED FAILURE COMMIT PLACEHOLDER
+
+Stage: reportedFailure
+Mirrored On: 2025-11-07
+Summary: Captured failing HTML inputs/outputs + peek raw code for diagnostic anchoring.

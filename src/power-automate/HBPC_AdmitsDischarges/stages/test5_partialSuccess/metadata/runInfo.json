@@ -1,0 +1,81 @@
+{
+  "stage": "test5_partialSuccess",
+  "status": "PARTIAL_SUCCESS",
+  "migration": {
+    "performedOn": "2025-11-07",
+    "strategy": "copy-only",
+    "originalsRetained": true,
+    "sourceArtifacts": [
+      "test5_partialSuccess_Compose(SaveHTML)_INPUTS.html",
+      "test5_partialSuccess_Compose(SaveHTML)_OUTPUTS.html",
+      "test5_partialSuccess_rawHTMLParameters.html",
+      "test5_partialSuccess_Compose(SaveHTML)_peekRawCode.json",
+      "test5_partialSuccess_Troubleshooting&Solution_verboseReport.md",
+      "test5_partialSuccess_Troubleshooting&Solution_quickReport.md",
+      "test5_partialSuccess_Troubleshooting&Solution_verboseCommitMessage.txt.txt",
+      "test5_partialSuccess_Troubleshooting&Solution_quickCommitMessage.txt",
+      "test5_partialSuccess_Troubleshooting&Solution_filledIssue.txt.txt",
+      "test5_partialSuccess_rawHTMLParameters.html"
+    ],
+    "normalizedFiles": {
+      "compose_inputs": "compose_inputs/inputs.html",
+      "compose_outputs": "compose_outputs/outputs.html",
+      "raw_parameters": "raw_parameters/raw_parameters.html",
+      "peek_raw_code": "peek_raw_code/peek_raw_code.json",
+      "reports_verbose": "reports/verbose_report.md",
+      "reports_quick": "reports/quick_report.md",
+      "commit_verbose": "commits/verbose_commit.txt",
+      "commit_quick": "commits/quick_commit.txt",
+      "issue": "issues/issue.md"
+    }
+  },
+  "artifacts": {
+  "compose_inputs": {"file": "compose_inputs/inputs.html", "placeholder": false},
+  "compose_outputs": {"file": "compose_outputs/outputs.html", "placeholder": false},
+  "raw_parameters": {"file": "raw_parameters/raw_parameters.html", "placeholder": false},
+    "peek_raw_code": {"file": "peek_raw_code/peek_raw_code.json", "placeholder": false, "status": "partial"},
+    "reports": {
+      "verbose": {"file": "reports/verbose_report.md", "placeholder": false},
+      "quick": {"file": "reports/quick_report.md", "placeholder": false}
+    },
+    "commits": {
+      "verbose": {"file": "commits/verbose_commit.txt", "placeholder": false},
+      "quick": {"file": "commits/quick_commit.txt", "placeholder": false}
+    },
+    "issues": {"file": "issues/issue.md", "placeholder": false},
+    "exports": {"file": "exports/flow_export.zip", "placeholder": false, "status": "present", "originalName": "test5_partialSuccess_exportedFlowSourceCode.zip", "normalizedOn": "2025-11-07"}
+  },
+  "metrics": {
+    "evaluatedBlocks": 18,
+    "misPopulatingBlocks": 2,
+    "estimatedSuccessPercent": 78
+  },
+  "diagnostics": {
+    "misPopulatingFields": [
+      {
+        "name": "HBPC Admission Date",
+        "symptom": "Fallback expression chosen; format not applied after timezone conversion"
+      },
+      {
+        "name": "Does the Veteran Use",
+        "symptom": "Null vs false misclassification"
+      }
+    ],
+    "reference": "issues/issue.md"
+  },
+  "nextSteps": [
+    "Relocate export ZIP to exports/ directory",
+    "Validate placeholders by replacing with full original content as needed",
+    "Prepare Test6 remediation plan",
+    "Update migration addendum with test5 completion"
+  ],
+  "archival": {
+    "policy": "non-destructive parallel + archive",
+    "hashFile": "metadata/hashes.json",
+    "placeholderRelocated": [
+      "src/flows/HBPC_AdmitsDischarges/stages/test5_partialSuccess/compose_outputs/outputs.html (abbreviated placeholder)",
+      "src/flows/HBPC_AdmitsDischarges/stages/test5_partialSuccess/raw_parameters/raw_parameters.html (abbreviated placeholder)",
+      "src/flows/HBPC_AdmitsDischarges/stages/test5_partialSuccess/peek_raw_code/peek_raw_code.json (partial placeholder)"
+    ]
+  }
+}

@@ -1,0 +1,2 @@
+Test6 Pending – Verbose Commit (Placeholder)
+Goal: Implement remediation for HBPC Admission Date and Does the Veteran Use fields; validate zero placeholders.

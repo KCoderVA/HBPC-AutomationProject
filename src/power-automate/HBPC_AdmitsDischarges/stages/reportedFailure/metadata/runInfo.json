@@ -1,0 +1,35 @@
+{
+  "stage": "reportedFailure",
+  "status": "FAILURE",
+  "issue": "Mid-body sections truncated; missing assessment blocks",
+  "sourceArtifacts": {
+    "compose_inputs": "inputs.html (failure snapshot)",
+    "compose_outputs": "outputs.html (failure snapshot)",
+    "peek_raw_code": "peek_raw_code.json (partial metadata)",
+    "raw_parameters": "raw_parameters.html (placeholder)",
+    "report": "failure_report.md (placeholder)",
+    "commit": "failure_commit.txt (placeholder)",
+    "issue": "issue.md (placeholder)"
+  },
+  "placeholders": ["raw_parameters.html", "failure_report.md", "failure_commit.txt", "issue.md"],
+  "migration": {
+    "copiedFrom": [
+      "reportedFailure_SaveHTML_INPUTS.html",
+      "reportedFailure_SaveHTML_OUTPUTS.html",
+      "reportedFailure_Compose(SaveHTML)_peekRawCode.json"
+    ],
+    "performedOn": "2025-11-07",
+    "policy": "copy-only"
+  },
+  "exports": {
+    "zip": "exports/flow_export.zip",
+    "status": "present",
+    "normalizedOn": "2025-11-07",
+    "originalName": "reportedFailure_exportedFlowSourceCode.zip"
+  },
+  "archival": {
+    "policy": "non-destructive parallel + archive",
+    "hashFile": "metadata/hashes.json",
+    "placeholderRelocated": []
+  }
+}

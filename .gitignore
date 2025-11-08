@@ -6,7 +6,7 @@ Desktop.ini
 
 # VS Code workspace settings (keep root workspace file, ignore local settings folder)
 .vscode/
-.archives/*
+
 
 # Node / JS (if later added)
 node_modules/
@@ -22,7 +22,13 @@ __pycache__/
 # PowerShell transient files
 *.ps1xml
 
-# Archives / exports (retain .zip solution exports for tracking)
+# Archives / exports
+# Ignore entire archives directory recursively (historical baseline + forensic diffs not versioned going forward)
+archives/
+
+# Explicit .git ignore (redundant: Git never tracks .git/, added for clarity per governance request)
+.git/
+
 # Removed *.zip ignore to allow flow export packages in version control
 *.tar
 *.gz

@@ -21,7 +21,7 @@
     {"file": "SECURITY.md", "location": "governance/", "purpose": "Security & PHI reporting guidance."},
     {"file": "RELEASE.md", "location": "governance/", "purpose": "Release procedure & tagging policy."},
     {"file": "LABELS.md", "location": "governance/", "purpose": "Issue label taxonomy."},
-    {"file": "copilot-instructions.md", "location": "dev/", "purpose": "Full AI collaboration contract & guardrails."},
+  {"file": "copilot-instructions.md", "location": ".github/", "purpose": "Full AI collaboration contract & guardrails (authoritative)."},
     {"file": "copilot-quickref.md", "location": "dev/", "purpose": "Condensed Copilot checklist."},
     {"file": "HBPC_AdmitsDischarges.code-workspace", "location": "dev/", "purpose": "VS Code workspace settings."},
     {"file": "CODEOWNERS", "location": "root", "purpose": "Automatic review assignment."},

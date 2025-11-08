@@ -3,7 +3,31 @@
 All notable changes to the HBPC Admission Compose action & supporting repository artifacts.
 
 ## [Unreleased]
-## [Unreleased]\n### Added\n- (placeholder)\n### Changed\n- (placeholder)\n### Fixed\n- (placeholder)\n
+### Added
+### Changed
+### Fixed
+
+## [Unreleased]
+### Added
+- (placeholder)
+### Changed
+- (placeholder)
+### Fixed
+- (placeholder)
+
+## [v0.4.0] - 2025-11-07
+### Added
+- Source tree replacement adopting new namespace `src/power-automate/` with enriched stage evidence (exports, issues, metadata, verbose artifacts).
+- Diff tooling scripts: `generate-src-new-manifest.ps1`, `src-new-metrics.ps1`, `diff-src-manifests.ps1`, tests diff scripts, and metrics capture utilities.
+- Forensic baseline artifacts (manifests, metrics, diff reports) preserved under `archives/` with new ignore policy.
+- Relocated `copilot-instructions.md` to `.github/` for improved discovery by automation.
+### Changed
+- README artifact table updated for source namespace & Copilot relocation.
+- CI path consistency check adjusted to expect `.github/copilot-instructions.md`.
+- `.gitignore` now ignores `archives/` recursively and includes explicit `.git/` entry (clarity).
+### Fixed
+- Removed outdated dev path expectation for Copilot instructions in CI consistency validation.
+
 ## [v0.3.0] - 2025-11-07\n### Added\n- (none)\n\n### Changed\n- (none)\n\n### Fixed\n- (none)\n\n
 ### Added
 - Tracked historical flow export `.zip` packages (success & failure) by removing `*.zip` from `.gitignore`.

@@ -63,7 +63,7 @@ root/
 | `SECURITY.md` | `governance/` | Security & PHI reporting guidance. |
 | `RELEASE.md` | `governance/` | Release procedure & tagging policy. |
 | `LABELS.md` | `governance/` | Issue label taxonomy. |
-| `copilot-instructions.md` | `dev/` | Full AI collaboration contract & guardrails. |
+| `copilot-instructions.md` | `.github/` | Full AI collaboration contract & guardrails (authoritative). |
 | `copilot-quickref.md` | `dev/` | Condensed Copilot checklist. |
 | `HBPC_AdmitsDischarges.code-workspace` | `dev/` | VS Code workspace settings. |
 | `CODEOWNERS` | root | Automatic review assignment. |

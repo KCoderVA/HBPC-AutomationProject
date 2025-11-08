@@ -1,0 +1,36 @@
+{
+  "stage": "test6_pending",
+  "status": "PENDING",
+  "objective": "Eliminate remaining 2 mis-populating blocks and remove all placeholders.",
+  "targets": {
+    "misPopulatingBlocks": 0,
+    "placeholderCount": 0
+  },
+  "artifacts": {
+    "compose_inputs": {"file": "compose_inputs/inputs.html", "placeholder": true},
+    "compose_outputs": {"file": "compose_outputs/outputs.html", "placeholder": true},
+    "raw_parameters": {"file": "raw_parameters/raw_parameters.html", "placeholder": true},
+    "peek_raw_code": {"file": "peek_raw_code/peek_raw_code.json", "placeholder": true},
+    "reports": {
+      "verbose": {"file": "reports/verbose_report.md", "placeholder": true},
+      "quick": {"file": "reports/quick_report.md", "placeholder": true}
+    },
+    "commits": {
+      "verbose": {"file": "commits/verbose_commit.txt", "placeholder": true},
+      "quick": {"file": "commits/quick_commit.txt", "placeholder": true}
+    },
+    "issues": {"file": "issues/issue.md", "placeholder": true},
+    "exports": {"file": "exports/flow_export.zip", "placeholder": true}
+  },
+  "plannedExpressions": {
+    "HBPCAdmissionDate": "if(and(not(empty(outputs('Get_item')?['body/HBHCAdmissionDate/Value'])), not(equals(outputs('Get_item')?['body/HBHCAdmissionDate/Value'], null))), formatDateTime(convertTimeZone(outputs('Get_item')?['body/HBHCAdmissionDate/Value'], 'UTC','Central Standard Time'),'MM/dd/yyyy'), 'Not provided')",
+    "DoesTheVeteranUse": "if(equals(outputs('Get_item')?['body/DoesTheVeteranUse/Value'], false), 'No', if(empty(outputs('Get_item')?['body/DoesTheVeteranUse/Value']), 'Not provided', outputs('Get_item')?['body/DoesTheVeteranUse/Value']))"
+  },
+  "nextSteps": [
+    "Apply remediation expressions to flow",
+    "Execute Test6 run and capture artifacts",
+    "Replace placeholder files with actual content",
+    "Recalculate success metrics and update runInfo"
+  ],
+  "createdOn": "2025-11-07"
+}

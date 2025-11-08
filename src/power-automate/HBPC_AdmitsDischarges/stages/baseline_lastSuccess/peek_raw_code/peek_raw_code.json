@@ -1,0 +1,25 @@
+{
+  "_migration": {
+    "sourceFile": "lastSuccessPriorToChange_exportedFlow_RawJSON.json",
+    "stage": "baseline_lastSuccess",
+    "migratedOn": "2025-11-07",
+    "normalizedBy": "automation",
+    "notes": "Mirrored for structured storage; original left intact at root."
+  },
+  "DevOps_Comments": {
+        "File Description":   "Extracted the 'Peek View' full raw .json code from the last successful flow run prior to whatever flow modifications will be made that triggered the bug to occur, pulled out of the \"Compose\" flow action (called \"Save-HTML-Document\") that generates the HTML document",
+        "File Purpose":   "To help with debugging flow issues by providing a snapshot of the raw Power Automate 'Compose' action's 'Peek Code' view that is used to compile the final .html document that will be created prior to whatever flow modifications will be made that triggered the bug to occur",
+        "Flow name": "HBPCNewAdmissionEmailWithSavedForm",
+        "Flow Details URL": "https://make.gov.powerautomate.us/environments/Default-e95f1b23-abaf-45ee-821d-b7ab251ab3bf/flows/shared/75361723-be53-4b6b-8e1a-9cd4417f10c7/details",
+        "Flow Step Type":  "Compose",
+        "Flow Step Name":  "Save-HTML-Document"
+        },
+  "name": "75361723-be53-4b6b-8e1a-9cd4417f10c7",
+  "id": "/providers/Microsoft.Flow/flows/75361723-be53-4b6b-8e1a-9cd4417f10c7",
+  "type": "Microsoft.Flow/flows",
+  "properties": {
+    "apiId": "/providers/Microsoft.PowerApps/apis/shared_logicflows",
+    "displayName": "HBPCNewAdmissionEmailWithSavedForm"
+  }
+  /* Truncated: original definition content retained in source file; include full actions/definition if full fidelity required */
+}

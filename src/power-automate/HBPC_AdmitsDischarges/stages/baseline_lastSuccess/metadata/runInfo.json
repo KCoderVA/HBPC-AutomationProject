@@ -1,0 +1,33 @@
+{
+  "stage": "baseline_lastSuccess",
+  "status": "FULL_SUCCESS",
+  "recordIdExample": 24,
+  "sourceArtifacts": {
+    "compose_inputs": "inputs.html",
+    "compose_outputs": "outputs.html (abbreviated)",
+    "peek_raw_code": "peek_raw_code.json (truncated metadata)",
+    "raw_parameters": "raw_parameters.html (placeholder)",
+    "report": "baseline_report.md (placeholder)",
+    "commit": "baseline_commit.txt (placeholder)"
+  },
+  "placeholders": ["raw_parameters.html", "baseline_report.md", "baseline_commit.txt"],
+  "migration": {
+    "copiedFrom": [
+      "lastSuccessPriorToChange_Compose(SaveHTML)_INPUTS.html",
+      "lastSuccessPriorToChange_Compose(SaveHTML)_OUTPUTS.html",
+      "lastSuccessPriorToChange_exportedFlow_RawJSON.json"
+    ],
+    "performedOn": "2025-11-07",
+    "policy": "copy-only"
+  },
+  "exports": {
+    "zip": null,
+    "status": "absent",
+    "notes": "No baseline ZIP located during migration; placeholder README present in exports/"
+  },
+  "archival": {
+    "policy": "non-destructive parallel + archive",
+    "hashFile": "metadata/hashes.json",
+    "placeholderRelocated": []
+  }
+}

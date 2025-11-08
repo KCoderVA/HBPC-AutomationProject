@@ -189,7 +189,8 @@ jobs:
           $issues = @()
           if($readme -notmatch '\`GOVERNANCE.md\` \| \`governance/') { $issues += 'GOVERNANCE.md row missing governance/ location formatting' }
           foreach($f in 'SECURITY.md','RELEASE.md','LABELS.md','CONTRIBUTING.md'){ if($readme -notmatch "`$f` \| `governance/") { $issues += "$f row missing governance/ location formatting" } }
-          foreach($f in 'copilot-instructions.md','copilot-quickref.md','HBPC_AdmitsDischarges.code-workspace'){ if($readme -notmatch "`$f` \| `dev/") { $issues += "$f row missing dev/ location formatting" } }
+          foreach($f in 'copilot-instructions.md'){ if($readme -notmatch "`$f` \| `.github/") { $issues += "$f row missing .github/ location formatting" } }
+          foreach($f in 'copilot-quickref.md','HBPC_AdmitsDischarges.code-workspace'){ if($readme -notmatch "`$f` \| `dev/") { $issues += "$f row missing dev/ location formatting" } }
           if($issues.Count -gt 0){ Write-Warning ("Artifact table consistency issues:`n" + ($issues -join "`n")) } else { Write-Host 'Artifact table path consistency OK' }
       - name: Enforce CHANGELOG headings
         shell: pwsh

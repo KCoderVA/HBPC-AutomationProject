@@ -1,3 +1,4 @@
+<!-- DEPRECATED: This copy has moved to `.github/copilot-instructions.md`. Update references if still pointing here. -->
 # Copilot Instructions for HBPC Admission Flow Repository
 
 ## Purpose
@@ -156,4 +157,4 @@ This file itself should remain mostly static—update only when introducing new 
 
 If a future change increases false positives, downgrade the check to warning-only before broad content refactors.
 
-_Last updated: 2025-11-07_
+_Last updated: 2025-11-07 (Relocated to `.github/`)_
