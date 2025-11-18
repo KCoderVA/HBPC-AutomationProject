@@ -1,0 +1,96 @@
+App As appinfo:
+    BackEnabled: =true
+    OnStart: |
+        =ClearCollect(
+            colRequiredFields,
+            { FormType: "Inpatient", Fields: [
+                "Patient Name",
+                "Room Number",
+                "Unit:",
+                "Primary Nurse Name:",
+                "HCT Name:",
+                "Admission date",
+                "Date of fall",
+                "Time of Fall",
+                "Fall risk score on Admission:",
+                "Fall risk score at the time of fall:",
+                "Date of the last fall risk assessment:",
+                "Choose the fall bundle components that were in place for the patient:",
+                "PIER education documented:",
+                "Patient agreement signed?",
+                "Most recent time of hourly rounding?",
+                "Last time of patient toileting?",
+                "Was the patient in restraints at the time of the fall?",
+                "Type of the fall",
+                "Ask Patient or Witness: Can you remember anything about the fall?",
+                "Ask Patient or Witness: Where did you fall?",
+                "Ask Patient or Witness: What were you doing at the time of the fall?",
+                "Ask Patient or Witness: Did you use the call light for help before falling?",
+                "Ask Patient or Witness: Why do you think you fell?",
+                "How did you find out that this patient fell?",
+                "What was the patient doing at the time of fall?",
+                "Why do you think the patient fell?",
+                "Prior to the patient's fall, what was his/her activity level?",
+                "Prior to the fall, identify the ancillary walking aids the patient had available in the room",
+                "What CONNECTED IVs/tubes were present at the time of fall?",
+                "What was the outcome of the fall?",
+                "What NEW interventions have been added",
+                "After reviewing the fall huddle form and completing this form, please ensure the following has been done",
+                "Who attended the post fall huddle"
+            ]},
+            { FormType: "Outpatient", Fields: [
+                "Patient Name",
+                "Date of fall",
+                "Time of Fall",
+                "Choose the fall bundle components that were in place for the patient:",
+                "PIER education documented",
+                "Type of the fall",
+                "Ask Patient or Witness: Can you remember anything about the fall?",
+                "Ask Patient or Witness: Where did you fall?",
+                "Ask Patient or Witness: What were you doing at the time of the fall?",
+                "Ask Patient or Witness: Why do you think you fell?",
+                "How did you find out that this patient fell?",
+                "What was the patient doing at the time of fall?",
+                "Why do we think the patient fell?",
+                "Prior to the fall, identify the ancillary walking aids the patient had available in the room",
+                "What was the outcome of the fall?",
+                "What NEW interventions have been added",
+                "After reviewing the huddle form and completing this form, please ensure the following has been done",
+                "Who attended the post fall huddle",
+                "PactTeamOrUnit",
+                "AlertAndOrientedTo",
+                "OrthodtaticVs",
+                "AreaCondition",
+                "PharmacyMedicationRecon"
+            ]}
+        );
+        //ClearCollect(colMissingFields);
+        
+        Set(varResponsiveWidth, 
+            If(
+                App.Width <= 600, App.Width,
+                App.Width <= 1200, App.Width * 0.8,
+                App.Width <= 1600, App.Width * 0.7,
+                App.Width * 0.6
+            )
+        );
+        
+        Set(varResponsiveX, 
+            If(
+                App.Width <= 600, 0,
+                App.Width <= 1200, App.Width * 0.1,
+                App.Width <= 1600, App.Width * 0.15,
+                App.Width * 0.2
+            )
+        );
+        
+        Set(varFixedHeight, 75);
+    Theme: =PowerAppsTheme
+
+    Host As hostControl.DefaultHostControlVariant:
+        OnCancel: =false
+        OnEdit: =false
+        OnNew: =false
+        OnSave: =false
+        OnView: =false
+

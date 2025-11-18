@@ -57,4 +57,19 @@ graph TD
 | Expression Audit CI | Fallback + structure enforcement |
 | Anonymization Tool | Redact PHI for troubleshooting outside secure boundary |
 
+## Canvas App Integration (v0.5.1)
+The Canvas App (`HinesHBPCAdmDisApp`) now provides structured data capture feeding Admission & Discharge flows. Key architectural roles:
+
+| Element | Role | Notes |
+|---------|------|-------|
+| OnStart (App.fx.yaml) | Initializes required field collections & responsive layout vars | Prepares validation sets (Inpatient vs Outpatient) |
+| MainFormAdmission | Admission-specific data entry & conditional sections | Drives flow trigger payload completeness |
+| MainFormDischarge | Discharge data entry with remediation fields | Ensures remediation parity with flow summary rows |
+| Themes.json | Central styling tokens | Uniform visual identity across screens |
+| CanvasManifest.json | Feature flags & compatibility | Documents enabled experimental features (e.g., nativecdsexperimental) |
+
+Data lineage: User input -> Canvas App collections / controls -> SharePoint list item -> Power Automate trigger -> Compose HTML reconstruction.
+
+_Canvas integration recorded: 2025-11-18 (v0.5.1)_
+
 _Last updated: 2025-11-18_

@@ -1,0 +1,3399 @@
+"Screen1 As screen.'headerFormLayout_ver1.0'":
+    LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+
+    ScreenContainer2 As groupContainer.verticalAutoLayoutContainer:
+        DropShadow: =DropShadow.Light
+        Fill: =RGBA(245, 245, 245, 1)
+        Height: =Parent.Height
+        LayoutAlignItems: =LayoutAlignItems.Stretch
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGap: =16
+        LayoutMode: =LayoutMode.Auto
+        PaddingBottom: =16
+        PaddingLeft: =16
+        PaddingRight: =16
+        PaddingTop: =16
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Width: =Parent.Width
+        ZIndex: =1
+
+        HeaderContainer2 As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            DropShadow: =DropShadow.Light
+            FillPortions: =0
+            Height: =75
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            RadiusBottomLeft: =8
+            RadiusBottomRight: =8
+            RadiusTopLeft: =8
+            RadiusTopRight: =8
+            ZIndex: =2
+
+            Header1 As Header:
+                BasePaletteColor: =
+                BorderColor: =
+                DisplayMode: =DisplayMode.Edit
+                Fill: =
+                FontColor: =
+                Height: =75
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =75
+                LayoutMinWidth: =Parent.Width
+                OnSelectLogo: =false
+                Title: ="Header"
+                UserEmail: =User().Email
+                UserImage: =User().Image
+                UserImageAltText: =User().FullName &" profile picture"
+                UserName: =User().FullName
+                Width: =Parent.Width
+                X: =0
+                Y: =0
+                ZIndex: =3
+
+        MainContainer2 As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutGap: =16
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            LayoutWrap: =true
+            PaddingBottom: =2
+            PaddingLeft: =2
+            PaddingRight: =2
+            PaddingTop: =2
+            ZIndex: =4
+
+            FormContainer1 As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                DropShadow: =DropShadow.Light
+                FillPortions: =7
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutGap: =16
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                LayoutOverflowY: =LayoutOverflow.Scroll
+                PaddingBottom: =15
+                PaddingLeft: =15
+                PaddingRight: =15
+                PaddingTop: =15
+                RadiusBottomLeft: =8
+                RadiusBottomRight: =8
+                RadiusTopLeft: =8
+                RadiusTopRight: =8
+                ZIndex: =5
+
+                Form1 As form.PowerApps_CoreControls_Form:
+                    BorderColor: =RGBA(245, 245, 245, 1)
+                    DataSource: =HinesFallTrackerApp
+                    DefaultMode: =FormMode.New
+                    Fill: =RGBA(214, 221, 224, 1)
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =250
+                    LayoutMinWidth: =0
+                    NumberOfColumns: =2
+                    UseFluentV9Cards: =true
+                    ZIndex: =6
+
+                    Email_DataCard2 As typedDataCard.fluentV9TextualEditCard:
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="Title"
+                        Default: =ThisItem.Email
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,Email)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        MaxLength: =DataSourceInfo([@HinesFallTrackerApp], DataSourceInfo.MaxLength, Email)
+                        Required: =false
+                        Update: =DataCardValue44.Value
+                        Width: =650
+                        X: =0
+                        Y: =0
+                        ZIndex: =7
+
+                        DataCardKey44 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        "DataCardValue44 As 'Text input'":
+                            AccessibleLabel: =Parent.DisplayName
+                            BasePaletteColor: =
+                            BorderColor: =
+                            DisplayMode: =Parent.DisplayMode
+                            Fill: =
+                            FontColor: =
+                            Height: =32
+                            Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Value: =Parent.Default
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey44.Y + DataCardKey44.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage42 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue44.Y + DataCardValue44.Height
+                            ZIndex: =3
+
+                        StarVisible42 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey44.Y
+                            ZIndex: =4
+
+                    "'Patient Name: _DataCard2' As typedDataCard.fluentV9TextualEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_6"
+                        Default: |-
+                            =ThisItem.'Patient Name: '
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: |-
+                            =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Patient Name: ')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        MaxLength: |-
+                            =DataSourceInfo([@HinesFallTrackerApp], DataSourceInfo.MaxLength, 'Patient Name: ')
+                        Required: =false
+                        Update: =DataCardValue45.Value
+                        Width: =650
+                        X: =1
+                        Y: =0
+                        ZIndex: =7
+
+                        DataCardKey45 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        "DataCardValue45 As 'Text input'":
+                            AccessibleLabel: =Parent.DisplayName
+                            BasePaletteColor: =
+                            BorderColor: =
+                            DisplayMode: =Parent.DisplayMode
+                            Fill: =
+                            FontColor: =
+                            Height: =32
+                            Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Value: =Parent.Default
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey45.Y + DataCardKey45.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage43 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue45.Y + DataCardValue45.Height
+                            ZIndex: =3
+
+                        StarVisible43 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey45.Y
+                            ZIndex: =4
+
+                    "'Room Number: _DataCard2' As typedDataCard.fluentV9TextualEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_7"
+                        Default: |-
+                            =ThisItem.'Room Number: '
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: |-
+                            =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Room Number: ')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        MaxLength: |-
+                            =DataSourceInfo([@HinesFallTrackerApp], DataSourceInfo.MaxLength, 'Room Number: ')
+                        Required: =false
+                        Update: =DataCardValue46.Value
+                        Width: =650
+                        X: =0
+                        Y: =1
+                        ZIndex: =7
+
+                        DataCardKey46 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        "DataCardValue46 As 'Text input'":
+                            AccessibleLabel: =Parent.DisplayName
+                            BasePaletteColor: =
+                            BorderColor: =
+                            DisplayMode: =Parent.DisplayMode
+                            Fill: =
+                            FontColor: =
+                            Height: =32
+                            Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Value: =Parent.Default
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey46.Y + DataCardKey46.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage44 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue46.Y + DataCardValue46.Height
+                            ZIndex: =3
+
+                        StarVisible44 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey46.Y
+                            ZIndex: =4
+
+                    "'Unit:_DataCard2' As typedDataCard.fluentV9ComboBoxEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_8"
+                        Default: |-
+                            =ThisItem.'Pact Team, CBOC or Unit:'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: |-
+                            =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Pact Team, CBOC or Unit:')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue47.Selected
+                        Width: =650
+                        X: =1
+                        Y: =1
+                        ZIndex: =7
+
+                        DataCardKey47 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue47 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =[Parent.Default]
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: |-
+                                =Choices([@HinesFallTrackerApp].'Pact Team, CBOC or Unit:')
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey47.Y + DataCardKey47.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage45 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue47.Y + DataCardValue47.Height
+                            ZIndex: =3
+
+                        StarVisible45 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey47.Y
+                            ZIndex: =4
+
+                    "'Primary Nurse Name:_DataCard2' As typedDataCard.fluentV9TextualEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_9"
+                        Default: |-
+                            =ThisItem.'Primary Nurse Name:'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: |-
+                            =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Primary Nurse Name:')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        MaxLength: |-
+                            =DataSourceInfo([@HinesFallTrackerApp], DataSourceInfo.MaxLength, 'Primary Nurse Name:')
+                        Required: =false
+                        Update: =DataCardValue48.Value
+                        Width: =650
+                        X: =0
+                        Y: =2
+                        ZIndex: =7
+
+                        DataCardKey48 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        "DataCardValue48 As 'Text input'":
+                            AccessibleLabel: =Parent.DisplayName
+                            BasePaletteColor: =
+                            BorderColor: =
+                            DisplayMode: =Parent.DisplayMode
+                            Fill: =
+                            FontColor: =
+                            Height: =32
+                            Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Value: =Parent.Default
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey48.Y + DataCardKey48.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage46 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue48.Y + DataCardValue48.Height
+                            ZIndex: =3
+
+                        StarVisible46 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey48.Y
+                            ZIndex: =4
+
+                    "'HCT Name:_DataCard2' As typedDataCard.fluentV9TextualEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_10"
+                        Default: |-
+                            =ThisItem.'HCT Name:'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: |-
+                            =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'HCT Name:')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        MaxLength: |-
+                            =DataSourceInfo([@HinesFallTrackerApp], DataSourceInfo.MaxLength, 'HCT Name:')
+                        Required: =false
+                        Update: =DataCardValue49.Value
+                        Width: =650
+                        X: =1
+                        Y: =2
+                        ZIndex: =7
+
+                        DataCardKey49 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        "DataCardValue49 As 'Text input'":
+                            AccessibleLabel: =Parent.DisplayName
+                            BasePaletteColor: =
+                            BorderColor: =
+                            DisplayMode: =Parent.DisplayMode
+                            Fill: =
+                            FontColor: =
+                            Height: =32
+                            Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Value: =Parent.Default
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey49.Y + DataCardKey49.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage47 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue49.Y + DataCardValue49.Height
+                            ZIndex: =3
+
+                        StarVisible47 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey49.Y
+                            ZIndex: =4
+
+                    "'Admission date_DataCard2' As typedDataCard.fluentV9DateEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_12"
+                        Default: =ThisItem.'Admission date'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Admission date')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue50.SelectedDate
+                        Width: =650
+                        X: =0
+                        Y: =3
+                        ZIndex: =7
+
+                        DataCardKey50 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        "DataCardValue50 As 'Date picker'":
+                            AccessibleLabel: =Parent.DisplayName
+                            BasePaletteColor: =
+                            BorderColor: =
+                            DisplayMode: =Parent.DisplayMode
+                            EndDate: =Date(Year(Today())+100, 12, 31)
+                            Fill: =
+                            FontColor: =
+                            Height: =32
+                            Required: =Parent.Required
+                            SelectedDate: =Parent.Default
+                            StartDate: =Date(1900, 1, 1)
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey50.Y + DataCardKey50.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage48 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue50.Y + DataCardValue50.Height
+                            ZIndex: =3
+
+                        StarVisible48 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey50.Y
+                            ZIndex: =4
+
+                    "'Date of fall_DataCard2' As typedDataCard.fluentV9DateEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_14"
+                        Default: =ThisItem.'Date of fall'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Date of fall')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue51.SelectedDate
+                        Width: =650
+                        X: =1
+                        Y: =3
+                        ZIndex: =7
+
+                        DataCardKey51 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        "DataCardValue51 As 'Date picker'":
+                            AccessibleLabel: =Parent.DisplayName
+                            BasePaletteColor: =
+                            BorderColor: =
+                            DisplayMode: =Parent.DisplayMode
+                            EndDate: =Date(Year(Today())+100, 12, 31)
+                            Fill: =
+                            FontColor: =
+                            Height: =32
+                            Required: =Parent.Required
+                            SelectedDate: =Parent.Default
+                            StartDate: =Date(1900, 1, 1)
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey51.Y + DataCardKey51.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage49 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue51.Y + DataCardValue51.Height
+                            ZIndex: =3
+
+                        StarVisible49 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey51.Y
+                            ZIndex: =4
+
+                    "'Time of fall_DataCard2' As typedDataCard.fluentV9ComboBoxEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_15"
+                        Default: =ThisItem.'Time of fall'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Time of fall')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue52.Selected
+                        Width: =650
+                        X: =0
+                        Y: =4
+                        ZIndex: =7
+
+                        DataCardKey52 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue52 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =[Parent.Default]
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: =Choices([@HinesFallTrackerApp].'Time of fall')
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey52.Y + DataCardKey52.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage50 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue52.Y + DataCardValue52.Height
+                            ZIndex: =3
+
+                        StarVisible50 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey52.Y
+                            ZIndex: =4
+
+                    "'Fall risk score on Admission:_DataCard2' As typedDataCard.fluentV9TextualEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_17"
+                        Default: |-
+                            =ThisItem.'Fall risk score on Admission:'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: |-
+                            =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Fall risk score on Admission:')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        MaxLength: |-
+                            =DataSourceInfo([@HinesFallTrackerApp], DataSourceInfo.MaxLength, 'Fall risk score on Admission:')
+                        Required: =false
+                        Update: =DataCardValue53.Value
+                        Width: =650
+                        X: =1
+                        Y: =4
+                        ZIndex: =7
+
+                        DataCardKey53 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        "DataCardValue53 As 'Text input'":
+                            AccessibleLabel: =Parent.DisplayName
+                            BasePaletteColor: =
+                            BorderColor: =
+                            DisplayMode: =Parent.DisplayMode
+                            Fill: =
+                            FontColor: =
+                            Height: =32
+                            Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Value: =Parent.Default
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey53.Y + DataCardKey53.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage51 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue53.Y + DataCardValue53.Height
+                            ZIndex: =3
+
+                        StarVisible51 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey53.Y
+                            ZIndex: =4
+
+                    "'Fall risk score at the time of fall:_DataCard2' As typedDataCard.fluentV9TextualEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_18"
+                        Default: |-
+                            =ThisItem.'Fall risk score at the time of fall:'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: |-
+                            =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Fall risk score at the time of fall:')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        MaxLength: |-
+                            =DataSourceInfo([@HinesFallTrackerApp], DataSourceInfo.MaxLength, 'Fall risk score at the time of fall:')
+                        Required: =false
+                        Update: =DataCardValue54.Value
+                        Width: =650
+                        X: =0
+                        Y: =5
+                        ZIndex: =7
+
+                        DataCardKey54 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        "DataCardValue54 As 'Text input'":
+                            AccessibleLabel: =Parent.DisplayName
+                            BasePaletteColor: =
+                            BorderColor: =
+                            DisplayMode: =Parent.DisplayMode
+                            Fill: =
+                            FontColor: =
+                            Height: =32
+                            Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Value: =Parent.Default
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey54.Y + DataCardKey54.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage52 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue54.Y + DataCardValue54.Height
+                            ZIndex: =3
+
+                        StarVisible52 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey54.Y
+                            ZIndex: =4
+
+                    "'Date of the last fall risk assessment:_DataCard2' As typedDataCard.fluentV9DateEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_19"
+                        Default: |-
+                            =ThisItem.'Date of the last fall risk assessment:'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: |-
+                            =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Date of the last fall risk assessment:')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue55.SelectedDate
+                        Width: =650
+                        X: =1
+                        Y: =5
+                        ZIndex: =7
+
+                        DataCardKey55 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        "DataCardValue55 As 'Date picker'":
+                            AccessibleLabel: =Parent.DisplayName
+                            BasePaletteColor: =
+                            BorderColor: =
+                            DisplayMode: =Parent.DisplayMode
+                            EndDate: =Date(Year(Today())+100, 12, 31)
+                            Fill: =
+                            FontColor: =
+                            Height: =32
+                            Required: =Parent.Required
+                            SelectedDate: =Parent.Default
+                            StartDate: =Date(1900, 1, 1)
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey55.Y + DataCardKey55.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage53 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue55.Y + DataCardValue55.Height
+                            ZIndex: =3
+
+                        StarVisible53 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey55.Y
+                            ZIndex: =4
+
+                    "'Choose the fall bundle components that were in place for the patient:_DataCard2' As typedDataCard.fluentV9ComboBoxMultiSelectEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_20"
+                        Default: |-
+                            =ThisItem.'Choose the fall bundle components that were in place for the patient:'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: |-
+                            =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Choose the fall bundle components that were in place for the patient:')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue56.SelectedItems
+                        Width: =650
+                        X: =0
+                        Y: =6
+                        ZIndex: =7
+
+                        DataCardKey56 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue56 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =Parent.Default
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: |-
+                                =Choices([@HinesFallTrackerApp].'Choose the fall bundle components that were in place for the patient:')
+                            Required: =Parent.Required
+                            SelectMultiple: =true
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey56.Y + DataCardKey56.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage54 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue56.Y + DataCardValue56.Height
+                            ZIndex: =3
+
+                        StarVisible54 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey56.Y
+                            ZIndex: =4
+
+                    "'PIER education documented:_DataCard2' As typedDataCard.fluentV9ComboBoxEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_21"
+                        Default: |-
+                            =ThisItem.'PIER education documented:'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: |-
+                            =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'PIER education documented:')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue57.Selected
+                        Width: =650
+                        X: =1
+                        Y: =6
+                        ZIndex: =7
+
+                        DataCardKey57 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue57 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =[Parent.Default]
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: |-
+                                =Choices([@HinesFallTrackerApp].'PIER education documented:')
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey57.Y + DataCardKey57.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage55 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue57.Y + DataCardValue57.Height
+                            ZIndex: =3
+
+                        StarVisible55 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey57.Y
+                            ZIndex: =4
+
+                    "'Patient agreement signed?_DataCard2' As typedDataCard.fluentV9ComboBoxEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_22"
+                        Default: =ThisItem.'Patient agreement signed?'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Patient agreement signed?')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue58.Selected
+                        Width: =650
+                        X: =0
+                        Y: =7
+                        ZIndex: =7
+
+                        DataCardKey58 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue58 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =[Parent.Default]
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: =Choices([@HinesFallTrackerApp].'Patient agreement signed?')
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey58.Y + DataCardKey58.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage56 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue58.Y + DataCardValue58.Height
+                            ZIndex: =3
+
+                        StarVisible56 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey58.Y
+                            ZIndex: =4
+
+                    "'Most recent time of hourly rounding?_DataCard2' As typedDataCard.fluentV9ComboBoxEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_23"
+                        Default: =ThisItem.'Most recent time of hourly rounding?'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Most recent time of hourly rounding?')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue59.Selected
+                        Width: =650
+                        X: =1
+                        Y: =7
+                        ZIndex: =7
+
+                        DataCardKey59 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue59 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =[Parent.Default]
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: =Choices([@HinesFallTrackerApp].'Most recent time of hourly rounding?')
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey59.Y + DataCardKey59.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage57 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue59.Y + DataCardValue59.Height
+                            ZIndex: =3
+
+                        StarVisible57 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey59.Y
+                            ZIndex: =4
+
+                    "'Last time of patient toileting?_DataCard2' As typedDataCard.fluentV9ComboBoxEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_24"
+                        Default: =ThisItem.'Last time of patient toileting?'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Last time of patient toileting?')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue60.Selected
+                        Width: =650
+                        X: =0
+                        Y: =8
+                        ZIndex: =7
+
+                        DataCardKey60 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue60 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =[Parent.Default]
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: =Choices([@HinesFallTrackerApp].'Last time of patient toileting?')
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey60.Y + DataCardKey60.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage58 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue60.Y + DataCardValue60.Height
+                            ZIndex: =3
+
+                        StarVisible58 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey60.Y
+                            ZIndex: =4
+
+                    "'Was the patient in restraints at the time of the fall?_DataCard2' As typedDataCard.fluentV9ComboBoxEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_25"
+                        Default: =ThisItem.'Was the patient in restraints at the time of the fall?'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Was the patient in restraints at the time of the fall?')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue61.Selected
+                        Width: =650
+                        X: =1
+                        Y: =8
+                        ZIndex: =7
+
+                        DataCardKey61 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue61 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =[Parent.Default]
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: =Choices([@HinesFallTrackerApp].'Was the patient in restraints at the time of the fall?')
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey61.Y + DataCardKey61.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage59 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue61.Y + DataCardValue61.Height
+                            ZIndex: =3
+
+                        StarVisible59 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey61.Y
+                            ZIndex: =4
+
+                    "'Type of the fall_DataCard2' As typedDataCard.fluentV9ComboBoxEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_26"
+                        Default: =ThisItem.'Type of the fall'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Type of the fall')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue62.Selected
+                        Width: =650
+                        X: =0
+                        Y: =9
+                        ZIndex: =7
+
+                        DataCardKey62 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue62 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =[Parent.Default]
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: =Choices([@HinesFallTrackerApp].'Type of the fall')
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey62.Y + DataCardKey62.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage60 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue62.Y + DataCardValue62.Height
+                            ZIndex: =3
+
+                        StarVisible60 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey62.Y
+                            ZIndex: =4
+
+                    "'Ask Patient or Witness: Can you remember anything about the fall?_DataCard2' As typedDataCard.fluentV9ComboBoxEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_27"
+                        Default: |-
+                            =ThisItem.'Ask Patient or Witness: Can you remember anything about the fall?'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: |-
+                            =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Ask Patient or Witness: Can you remember anything about the fall?')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue63.Selected
+                        Width: =650
+                        X: =1
+                        Y: =9
+                        ZIndex: =7
+
+                        DataCardKey63 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue63 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =[Parent.Default]
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: |-
+                                =Choices([@HinesFallTrackerApp].'Ask Patient or Witness: Can you remember anything about the fall?')
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey63.Y + DataCardKey63.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage61 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue63.Y + DataCardValue63.Height
+                            ZIndex: =3
+
+                        StarVisible61 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey63.Y
+                            ZIndex: =4
+
+                    "'Ask Patient or Witness: Where did you fall?_DataCard2' As typedDataCard.fluentV9ComboBoxEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_28"
+                        Default: |-
+                            =ThisItem.'Ask Patient or Witness: Where did you fall?'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: |-
+                            =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Ask Patient or Witness: Where did you fall?')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue64.Selected
+                        Width: =650
+                        X: =0
+                        Y: =10
+                        ZIndex: =7
+
+                        DataCardKey64 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue64 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =[Parent.Default]
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: |-
+                                =Choices([@HinesFallTrackerApp].'Ask Patient or Witness: Where did you fall?')
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey64.Y + DataCardKey64.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage62 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue64.Y + DataCardValue64.Height
+                            ZIndex: =3
+
+                        StarVisible62 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey64.Y
+                            ZIndex: =4
+
+                    "'Ask Patient or Witness: What were you doing at the time of the fall?_DataCard2' As typedDataCard.fluentV9ComboBoxMultiSelectEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_29"
+                        Default: |-
+                            =ThisItem.'Ask Patient or Witness: What were you doing at the time of the fall?'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: |-
+                            =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Ask Patient or Witness: What were you doing at the time of the fall?')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue65.SelectedItems
+                        Width: =650
+                        X: =1
+                        Y: =10
+                        ZIndex: =7
+
+                        DataCardKey65 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue65 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =Parent.Default
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: |-
+                                =Choices([@HinesFallTrackerApp].'Ask Patient or Witness: What were you doing at the time of the fall?')
+                            Required: =Parent.Required
+                            SelectMultiple: =true
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey65.Y + DataCardKey65.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage63 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue65.Y + DataCardValue65.Height
+                            ZIndex: =3
+
+                        StarVisible63 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey65.Y
+                            ZIndex: =4
+
+                    "'Ask Patient or Witness: Why do you think you fell?_DataCard2' As typedDataCard.fluentV9ComboBoxMultiSelectEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_30"
+                        Default: |-
+                            =ThisItem.'Ask Patient or Witness: Why do you think you fell?'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: |-
+                            =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Ask Patient or Witness: Why do you think you fell?')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue66.SelectedItems
+                        Width: =650
+                        X: =0
+                        Y: =11
+                        ZIndex: =7
+
+                        DataCardKey66 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue66 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =Parent.Default
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: |-
+                                =Choices([@HinesFallTrackerApp].'Ask Patient or Witness: Why do you think you fell?')
+                            Required: =Parent.Required
+                            SelectMultiple: =true
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey66.Y + DataCardKey66.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage64 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue66.Y + DataCardValue66.Height
+                            ZIndex: =3
+
+                        StarVisible64 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey66.Y
+                            ZIndex: =4
+
+                    "'How did you find out that this patient fell?_DataCard2' As typedDataCard.fluentV9ComboBoxEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_31"
+                        Default: =ThisItem.'How did you find out that this patient fell?'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'How did you find out that this patient fell?')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue67.Selected
+                        Width: =650
+                        X: =1
+                        Y: =11
+                        ZIndex: =7
+
+                        DataCardKey67 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue67 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =[Parent.Default]
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: =Choices([@HinesFallTrackerApp].'How did you find out that this patient fell?')
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey67.Y + DataCardKey67.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage65 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue67.Y + DataCardValue67.Height
+                            ZIndex: =3
+
+                        StarVisible65 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey67.Y
+                            ZIndex: =4
+
+                    "'What was the patient doing at time of fall?_DataCard2' As typedDataCard.fluentV9ComboBoxEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_32"
+                        Default: =ThisItem.'What was the patient doing at time of fall?'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'What was the patient doing at time of fall?')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue68.Selected
+                        Width: =650
+                        X: =0
+                        Y: =12
+                        ZIndex: =7
+
+                        DataCardKey68 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue68 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =[Parent.Default]
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: =Choices([@HinesFallTrackerApp].'What was the patient doing at time of fall?')
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey68.Y + DataCardKey68.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage66 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue68.Y + DataCardValue68.Height
+                            ZIndex: =3
+
+                        StarVisible66 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey68.Y
+                            ZIndex: =4
+
+                    "'Why do we think the patient fell?_DataCard2' As typedDataCard.fluentV9ComboBoxEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_33"
+                        Default: =ThisItem.'Why do we think the patient fell?'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Why do we think the patient fell?')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue69.Selected
+                        Width: =650
+                        X: =1
+                        Y: =12
+                        ZIndex: =7
+
+                        DataCardKey69 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue69 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =[Parent.Default]
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: =Choices([@HinesFallTrackerApp].'Why do we think the patient fell?')
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey69.Y + DataCardKey69.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage67 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue69.Y + DataCardValue69.Height
+                            ZIndex: =3
+
+                        StarVisible67 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey69.Y
+                            ZIndex: =4
+
+                    "'Prior to the patient''s fall, what was his/her activity level?_DataCard2' As typedDataCard.fluentV9ComboBoxEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_34"
+                        Default: =ThisItem.'Prior to the patient''s fall, what was his/her activity level?'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Prior to the patient''s fall, what was his/her activity level?')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue70.Selected
+                        Width: =650
+                        X: =0
+                        Y: =13
+                        ZIndex: =7
+
+                        DataCardKey70 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue70 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =[Parent.Default]
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: =Choices([@HinesFallTrackerApp].'Prior to the patient''s fall, what was his/her activity level?')
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey70.Y + DataCardKey70.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage68 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue70.Y + DataCardValue70.Height
+                            ZIndex: =3
+
+                        StarVisible68 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey70.Y
+                            ZIndex: =4
+
+                    "'Prior to the fall, identify the ancillary walking aids the patient had available in the room_DataCard2' As typedDataCard.fluentV9ComboBoxEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_35"
+                        Default: =ThisItem.'Prior to the fall, identify the ancillary walking aids the patient had available in the room'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Prior to the fall, identify the ancillary walking aids the patient had available in the room')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue71.Selected
+                        Width: =650
+                        X: =1
+                        Y: =13
+                        ZIndex: =7
+
+                        DataCardKey71 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue71 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =[Parent.Default]
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: =Choices([@HinesFallTrackerApp].'Prior to the fall, identify the ancillary walking aids the patient had available in the room')
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey71.Y + DataCardKey71.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage69 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue71.Y + DataCardValue71.Height
+                            ZIndex: =3
+
+                        StarVisible69 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey71.Y
+                            ZIndex: =4
+
+                    "'What CONNECTED IVs/tubes were present at the time of the fall?_DataCard2' As typedDataCard.fluentV9ComboBoxMultiSelectEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_36"
+                        Default: =ThisItem.'What CONNECTED IVs/tubes were present at the time of the fall?'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'What CONNECTED IVs/tubes were present at the time of the fall?')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue72.SelectedItems
+                        Width: =650
+                        X: =0
+                        Y: =14
+                        ZIndex: =7
+
+                        DataCardKey72 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue72 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =Parent.Default
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: =Choices([@HinesFallTrackerApp].'What CONNECTED IVs/tubes were present at the time of the fall?')
+                            Required: =Parent.Required
+                            SelectMultiple: =true
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey72.Y + DataCardKey72.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage70 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue72.Y + DataCardValue72.Height
+                            ZIndex: =3
+
+                        StarVisible70 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey72.Y
+                            ZIndex: =4
+
+                    "'What was the outcome of the fall?_DataCard2' As typedDataCard.fluentV9ComboBoxEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_37"
+                        Default: =ThisItem.'What was the outcome of the fall?'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'What was the outcome of the fall?')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue73.Selected
+                        Width: =650
+                        X: =1
+                        Y: =14
+                        ZIndex: =7
+
+                        DataCardKey73 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue73 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =[Parent.Default]
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: =Choices([@HinesFallTrackerApp].'What was the outcome of the fall?')
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey73.Y + DataCardKey73.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage71 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue73.Y + DataCardValue73.Height
+                            ZIndex: =3
+
+                        StarVisible71 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey73.Y
+                            ZIndex: =4
+
+                    "'Other factors contributing to the fall or fall with injury?_DataCard2' As typedDataCard.fluentV9TextualEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="field_38"
+                        Default: =ThisItem.'Other factors contributing to the fall or fall with injury?'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Other factors contributing to the fall or fall with injury?')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        MaxLength: =DataSourceInfo([@HinesFallTrackerApp], DataSourceInfo.MaxLength, 'Other factors contributing to the fall or fall with injury?')
+                        Required: =false
+                        Update: =DataCardValue74.Value
+                        Width: =650
+                        X: =0
+                        Y: =15
+                        ZIndex: =7
+
+                        DataCardKey74 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        "DataCardValue74 As 'Text input'":
+                            AccessibleLabel: =Parent.DisplayName
+                            BasePaletteColor: =
+                            BorderColor: =
+                            DisplayMode: =Parent.DisplayMode
+                            Fill: =
+                            FontColor: =
+                            Height: =32
+                            Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Value: =Parent.Default
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey74.Y + DataCardKey74.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage72 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue74.Y + DataCardValue74.Height
+                            ZIndex: =3
+
+                        StarVisible72 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey74.Y
+                            ZIndex: =4
+
+                    "'What NEW interventions have been added_DataCard2' As typedDataCard.fluentV9ComboBoxMultiSelectEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="WhatNEWinterventionshavebeenadde"
+                        Default: =ThisItem.'What NEW interventions have been added'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'What NEW interventions have been added')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue75.SelectedItems
+                        Width: =650
+                        X: =1
+                        Y: =15
+                        ZIndex: =7
+
+                        DataCardKey75 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue75 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =Parent.Default
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: =Choices([@HinesFallTrackerApp].'What NEW interventions have been added')
+                            Required: =Parent.Required
+                            SelectMultiple: =true
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey75.Y + DataCardKey75.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage73 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue75.Y + DataCardValue75.Height
+                            ZIndex: =3
+
+                        StarVisible73 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey75.Y
+                            ZIndex: =4
+
+                    "'After reviewing the huddle from and completing this form, please ensure the following has been done_DataCard2' As typedDataCard.fluentV9ComboBoxMultiSelectEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="Afterreviewingthehuddlefromandco"
+                        Default: =ThisItem.'After reviewing the huddle from and completing this form, please ensure the following has been done'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'After reviewing the huddle from and completing this form, please ensure the following has been done')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue76.SelectedItems
+                        Width: =650
+                        X: =0
+                        Y: =16
+                        ZIndex: =7
+
+                        DataCardKey76 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue76 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =Parent.Default
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: =Choices([@HinesFallTrackerApp].'After reviewing the huddle from and completing this form, please ensure the following has been done')
+                            Required: =Parent.Required
+                            SelectMultiple: =true
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey76.Y + DataCardKey76.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage74 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue76.Y + DataCardValue76.Height
+                            ZIndex: =3
+
+                        StarVisible74 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey76.Y
+                            ZIndex: =4
+
+                    "'Day of Fall_DataCard2' As typedDataCard.fluentV9TextualViewCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="Day_x0020_of_x0020_Fall_x0020_1"
+                        Default: =ThisItem.'Day of Fall'
+                        DisplayMode: =DisplayMode.View
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Day of Fall')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Width: =650
+                        X: =1
+                        Y: =16
+                        ZIndex: =7
+
+                        DataCardKey77 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        "DataCardValue77 As 'Text input'":
+                            AccessibleLabel: =Parent.DisplayName
+                            BasePaletteColor: =
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.View
+                            Fill: =
+                            FontColor: =
+                            Height: =32
+                            Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Value: =Parent.Default
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey77.Y + DataCardKey77.Height + 4
+                            ZIndex: =2
+
+                    "'User Name_DataCard2' As typedDataCard.fluentV9TextualViewCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="User_x0020_Name"
+                        Default: =ThisItem.'User Name'
+                        DisplayMode: =DisplayMode.View
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'User Name')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Width: =650
+                        X: =0
+                        Y: =17
+                        ZIndex: =7
+
+                        DataCardKey78 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        "DataCardValue78 As 'Text input'":
+                            AccessibleLabel: =Parent.DisplayName
+                            BasePaletteColor: =
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.View
+                            Fill: =
+                            FontColor: =
+                            Height: =32
+                            Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Value: =Parent.Default
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey78.Y + DataCardKey78.Height + 4
+                            ZIndex: =2
+
+                    "'Who attended the post fall huddle_DataCard2' As typedDataCard.fluentV9ComboBoxMultiSelectEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="Whoattendedthepostfallhuddle"
+                        Default: =ThisItem.'Who attended the post fall huddle'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Who attended the post fall huddle')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue79.SelectedItems
+                        Width: =650
+                        X: =1
+                        Y: =17
+                        ZIndex: =7
+
+                        DataCardKey79 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue79 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =Parent.Default
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: =Choices([@HinesFallTrackerApp].'Who attended the post fall huddle')
+                            Required: =Parent.Required
+                            SelectMultiple: =true
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey79.Y + DataCardKey79.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage75 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue79.Y + DataCardValue79.Height
+                            ZIndex: =3
+
+                        StarVisible75 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey79.Y
+                            ZIndex: =4
+
+                    "'Ask Patient or Witness: Did you use the call light for help before falling?_DataCard2' As typedDataCard.fluentV9ComboBoxEditCard":
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="AskPatientorWitness_x003a_Didyou"
+                        Default: |-
+                            =ThisItem.'Ask Patient or Witness: Did you use the call light for help before falling?'
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: |-
+                            =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,'Ask Patient or Witness: Did you use the call light for help before falling?')
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue80.Selected
+                        Width: =650
+                        X: =0
+                        Y: =18
+                        ZIndex: =7
+
+                        DataCardKey80 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue80 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =[Parent.Default]
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: |-
+                                =Choices([@HinesFallTrackerApp].'Ask Patient or Witness: Did you use the call light for help before falling?')
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey80.Y + DataCardKey80.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage76 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue80.Y + DataCardValue80.Height
+                            ZIndex: =3
+
+                        StarVisible76 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey80.Y
+                            ZIndex: =4
+
+                    CareArea_DataCard2 As typedDataCard.fluentV9ComboBoxEditCard:
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="CareArea"
+                        Default: =ThisItem.CareArea
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,CareArea)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue81.Selected
+                        Width: =650
+                        X: =1
+                        Y: =18
+                        ZIndex: =7
+
+                        DataCardKey81 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue81 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =[Parent.Default]
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: =Choices([@HinesFallTrackerApp].CareArea)
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey81.Y + DataCardKey81.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage77 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue81.Y + DataCardValue81.Height
+                            ZIndex: =3
+
+                        StarVisible77 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey81.Y
+                            ZIndex: =4
+
+                    PactTeamOrUnit_DataCard2 As typedDataCard.fluentV9TextualEditCard:
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="PactTeamOrUnit"
+                        Default: =ThisItem.PactTeamOrUnit
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,PactTeamOrUnit)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        MaxLength: =DataSourceInfo([@HinesFallTrackerApp], DataSourceInfo.MaxLength, PactTeamOrUnit)
+                        Required: =false
+                        Update: =DataCardValue82.Value
+                        Width: =650
+                        X: =0
+                        Y: =19
+                        ZIndex: =7
+
+                        DataCardKey82 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        "DataCardValue82 As 'Text input'":
+                            AccessibleLabel: =Parent.DisplayName
+                            BasePaletteColor: =
+                            BorderColor: =
+                            DisplayMode: =Parent.DisplayMode
+                            Fill: =
+                            FontColor: =
+                            Height: =32
+                            Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Value: =Parent.Default
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey82.Y + DataCardKey82.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage78 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue82.Y + DataCardValue82.Height
+                            ZIndex: =3
+
+                        StarVisible78 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey82.Y
+                            ZIndex: =4
+
+                    AlertAndOrientedTo_DataCard2 As typedDataCard.fluentV9ComboBoxMultiSelectEditCard:
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="AlertAndOrientedTo"
+                        Default: =ThisItem.AlertAndOrientedTo
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,AlertAndOrientedTo)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue83.SelectedItems
+                        Width: =650
+                        X: =1
+                        Y: =19
+                        ZIndex: =7
+
+                        DataCardKey83 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue83 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =Parent.Default
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: =Choices([@HinesFallTrackerApp].AlertAndOrientedTo)
+                            Required: =Parent.Required
+                            SelectMultiple: =true
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey83.Y + DataCardKey83.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage79 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue83.Y + DataCardValue83.Height
+                            ZIndex: =3
+
+                        StarVisible79 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey83.Y
+                            ZIndex: =4
+
+                    OrthostaticVs_DataCard2 As typedDataCard.fluentV9ComboBoxEditCard:
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="OrthostaticVs"
+                        Default: =ThisItem.OrthostaticVs
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,OrthostaticVs)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue84.Selected
+                        Width: =650
+                        X: =0
+                        Y: =20
+                        ZIndex: =7
+
+                        DataCardKey84 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue84 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =[Parent.Default]
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: =Choices([@HinesFallTrackerApp].OrthostaticVs)
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey84.Y + DataCardKey84.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage80 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue84.Y + DataCardValue84.Height
+                            ZIndex: =3
+
+                        StarVisible80 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey84.Y
+                            ZIndex: =4
+
+                    AreaCondition_DataCard2 As typedDataCard.fluentV9ComboBoxEditCard:
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="AreaCondition"
+                        Default: =ThisItem.AreaCondition
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,AreaCondition)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue85.Selected
+                        Width: =650
+                        X: =1
+                        Y: =20
+                        ZIndex: =7
+
+                        DataCardKey85 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue85 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =[Parent.Default]
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: =Choices([@HinesFallTrackerApp].AreaCondition)
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey85.Y + DataCardKey85.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage81 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue85.Y + DataCardValue85.Height
+                            ZIndex: =3
+
+                        StarVisible81 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey85.Y
+                            ZIndex: =4
+
+                    PharmacyMedicationRecon_DataCard2 As typedDataCard.fluentV9ComboBoxEditCard:
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="PharmacyMedicationRecon"
+                        Default: =ThisItem.PharmacyMedicationRecon
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,PharmacyMedicationRecon)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =70
+                        Required: =false
+                        Update: =DataCardValue86.Selected
+                        Width: =650
+                        X: =0
+                        Y: =21
+                        ZIndex: =7
+
+                        DataCardKey86 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =22
+                            Text: =Parent.DisplayName
+                            Weight: ='TextCanvas.Weight'.Semibold
+                            Width: =Parent.Width - 48
+                            Wrap: =false
+                            X: =24
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue86 As Combobox.pcfdataset:
+                            AccessibleLabel: =Parent.DisplayName
+                            DefaultSelectedItems: =[Parent.Default]
+                            DisplayMode: =Parent.DisplayMode
+                            Height: =32
+                            Items: =Choices([@HinesFallTrackerApp].PharmacyMedicationRecon)
+                            Required: =Parent.Required
+                            ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                            Width: =Parent.Width - 48
+                            X: =24
+                            Y: =DataCardKey86.Y + DataCardKey86.Height + 4
+                            ZIndex: =2
+
+                        ErrorMessage82 As Text:
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =30
+                            Text: =Parent.Error
+                            Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =Parent.Width - 48
+                            Wrap: =true
+                            X: =24
+                            Y: =DataCardValue86.Y + DataCardValue86.Height
+                            ZIndex: =3
+
+                        StarVisible82 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            Height: =20
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            X: =0
+                            Y: =DataCardKey86.Y
+                            ZIndex: =4
+
+                    Attachments_DataCard1 As typedDataCard.attachmentsEditCard:
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="{Attachments}"
+                        Default: =ThisItem.Attachments
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@HinesFallTrackerApp],DataSourceInfo.DisplayName,Attachments)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =50
+                        Required: =false
+                        Update: =DataCardValue87.Attachments
+                        Width: =650
+                        X: =1
+                        Y: =21
+                        ZIndex: =7
+
+                        DataCardKey87 As label:
+                            AutoHeight: =true
+                            BorderColor: =RGBA(0, 0, 0, 0)
+                            BorderStyle: =BorderStyle.None
+                            BorderThickness: =2
+                            Color: =RGBA(50, 49, 48, 1)
+                            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                            DisabledColor: =RGBA(161, 159, 157, 1)
+                            FocusedBorderThickness: =4
+                            Font: =Font.'Segoe UI'
+                            FontWeight: =FontWeight.Semibold
+                            Height: =34
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            Wrap: =false
+                            X: =30
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue87 As attachments:
+                            BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                            BorderStyle: =BorderStyle.None
+                            BorderThickness: =2
+                            Color: =RGBA(50, 49, 48, 1)
+                            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                            DisabledColor: =RGBA(161, 159, 157, 1)
+                            DisabledFill: =RGBA(242, 242, 241, 0)
+                            DisplayMode: =Parent.DisplayMode
+                            Fill: =RGBA(245, 245, 245, 1)
+                            FocusedBorderThickness: =4
+                            Font: =Font.'Segoe UI'
+                            HoverColor: =RGBA(50, 49, 48, 1)
+                            HoverFill: =RGBA(245, 245, 245, 1)
+                            IsInDataCard: =true
+                            ItemColor: =RGBA(0, 0, 0, 1)
+                            ItemFill: =RGBA(0, 120, 212, 1)
+                            ItemHoverColor: =RGBA(50, 49, 48, 1)
+                            ItemHoverFill: =RGBA(245, 245, 245, 1)
+                            Items: =Parent.Default
+                            ItemSpacing: =12
+                            NoAttachmentsColor: =RGBA(161, 159, 157, 1)
+                            PaddingBottom: =5
+                            PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                            PaddingRight: =5
+                            PaddingTop: =5
+                            PressedColor: =RGBA(255, 255, 255, 1)
+                            PressedFill: =RGBA(0, 120, 212, 1)
+                            Tooltip: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            X: =30
+                            Y: =DataCardKey87.Y + DataCardKey87.Height + 5
+                            ZIndex: =2
+
+                        ErrorMessage83 As label:
+                            AutoHeight: =true
+                            BorderColor: =RGBA(0, 0, 0, 0)
+                            BorderStyle: =BorderStyle.None
+                            BorderThickness: =2
+                            Color: =RGBA(168, 0, 0, 1)
+                            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                            DisabledColor: =RGBA(168, 0, 0, 1)
+                            FocusedBorderThickness: =4
+                            Font: =Font.'Segoe UI'
+                            FontWeight: =FontWeight.Semibold
+                            Height: =10
+                            Live: =Live.Assertive
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =13
+                            Text: =Parent.Error
+                            Visible: =Parent.DisplayMode=DisplayMode.Edit
+                            Width: =Parent.Width - 60
+                            X: =30
+                            Y: =DataCardValue87.Y + DataCardValue87.Height
+                            ZIndex: =3
+
+                        StarVisible83 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(0, 0, 0, 0)
+                            BorderStyle: =BorderStyle.None
+                            BorderThickness: =2
+                            Color: =RGBA(50, 49, 48, 1)
+                            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                            DisabledColor: =RGBA(161, 159, 157, 1)
+                            FocusedBorderThickness: =4
+                            Font: =Font.'Segoe UI'
+                            FontWeight: =FontWeight.Semibold
+                            Height: =DataCardKey87.Height
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            Wrap: =false
+                            Y: =DataCardKey87.Y
+                            ZIndex: =4
+
+                ButtonContainer1 As groupContainer.horizontalAutoLayoutContainer:
+                    FillPortions: =0
+                    Height: =50
+                    LayoutGap: =10
+                    LayoutJustifyContent: =LayoutJustifyContent.End
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =0
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingBottom: =10
+                    PaddingRight: =24
+                    PaddingTop: =10
+                    ZIndex: =7
+
+                    CancelButton1 As Button:
+                        AccessibleLabel: ="Cancel form button"
+                        AlignInContainer: =AlignInContainer.Center
+                        Appearance: ='ButtonCanvas.Appearance'.Secondary
+                        BasePaletteColor: =
+                        BorderColor: =
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        OnSelect: =ResetForm(Form1)
+                        Text: ="Cancel"
+                        Width: =120
+                        X: =0
+                        Y: =0
+                        ZIndex: =8
+
+                    SubmitButton1 As Button:
+                        AccessibleLabel: ="Submit form button"
+                        AlignInContainer: =AlignInContainer.Center
+                        BasePaletteColor: =
+                        BorderColor: =
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =
+                        Height: =32
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        OnSelect: |
+                            =SubmitForm(Form1);
+                            ResetForm(Form1);
+                        Text: ="Submit"
+                        Width: =120
+                        X: =0
+                        Y: =0
+                        ZIndex: =9
+

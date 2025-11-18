@@ -1,3 +1,19 @@
+# [Unreleased]
+### Added
+- (placeholder)
+### Changed
+- (placeholder)
+### Fixed
+- (placeholder)
+
+# [v0.5.1] - 2025-11-18
+### Added
+- Unpacked Canvas App sources under `src/power-apps/.unpacked` (manifest, screens, themes, data sources) for HinesHBPCAdmDisApp.
+### Changed
+- README, Architecture, and artifact table updated to include Canvas App integration.
+### Fixed
+- Addressed documentation ordering (Unreleased moved to top for conventional format).
+
 # [v0.5.0] - 2025-11-18
 ### Added
 - HBPC Discharge Power Automate flow documentation and artifacts (see `src/power-automate/HBPC_Discharges/stages/test1_Success`).
@@ -7,13 +23,6 @@
 ### Changed
 - Updated README, architecture, and artifact tables to reflect new Discharge flow and v0.5.0 release.
 
-## [Unreleased]
-### Added
-- (placeholder)
-### Changed
-- (placeholder)
-### Fixed
-- (placeholder)
 
 # CHANGELOG
 

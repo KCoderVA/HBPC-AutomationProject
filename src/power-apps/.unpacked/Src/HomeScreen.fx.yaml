@@ -1,0 +1,343 @@
+"HomeScreen As screen.'autoLayout_HeaderFooter_ver1.0'":
+    LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+
+    ScreenContainer1 As groupContainer.verticalAutoLayoutContainer:
+        DropShadow: =DropShadow.Light
+        Fill: =RGBA(13, 50, 61, 1)
+        Height: =Parent.Height
+        LayoutAlignItems: =LayoutAlignItems.Stretch
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGap: =16
+        LayoutMode: =LayoutMode.Auto
+        PaddingBottom: =16
+        PaddingLeft: =16
+        PaddingRight: =16
+        PaddingTop: =16
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Width: =Parent.Width
+        ZIndex: =1
+
+        HeaderContainer1 As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.Center
+            Fill: =RGBA(255, 255, 255, 1)
+            FillPortions: =0
+            Height: =75
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =100
+            LayoutMinWidth: =50
+            LayoutMode: =LayoutMode.Auto
+            LayoutWrap: =true
+            Width: |-
+                =If(
+                    App.Width <= 600,
+                    Parent.Width, // Small Screens
+                    App.Width <= 1200,
+                    Parent.Width * 0.8, // Medium Screens
+                    App.Width <= 1600,
+                    Parent.Width * 0.7, // Large Screens
+                    Parent.Width * 0.6 // Extra Large Screens
+                )
+                
+                //If(
+                    //App.Width <= 600,
+                    //Parent.Width, // Small Screens
+                    //App.Width <= 1200,
+                    //Parent.Width * 0.8, // Medium Screens
+                    //App.Width <= 1600,
+                    //Parent.Width * 0.7, // Large Screens
+                    //Parent.Width * 0.6 // Extra Large Screens
+                //)
+                //Parent.Width * 0.9
+            X: |-
+                =0
+                
+                //varResponsiveX//0
+            ZIndex: =1
+
+            Image1 As image:
+                BorderColor: =RGBA(0, 0, 0, 0)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =2
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledFill: =RGBA(0, 0, 0, 0)
+                FocusedBorderThickness: =4
+                Height: =75
+                HoverBorderColor: =RGBA(0, 0, 0, 0)
+                HoverFill: =RGBA(0, 0, 0, 0)
+                Image: =protectionFallTracker
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =75
+                LayoutMinWidth: =30
+                PressedBorderColor: =RGBA(0, 0, 0, 0)
+                PressedFill: =RGBA(0, 0, 0, 0)
+                Width: =75
+                ZIndex: =1
+
+            Label1 As label:
+                Align: =Align.Center
+                AutoHeight: =true
+                BorderColor: =RGBA(0, 0, 0, 0)
+                BorderStyle: =BorderStyle.None
+                Color: =RGBA(255, 255, 255, 1)
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledColor: =RGBA(161, 159, 157, 1)
+                Fill: =RGBA(11, 77, 133, 1)
+                FillPortions: =1
+                Font: =Font.'Segoe UI'
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =75
+                Size: =15
+                Text: ="Hines HBPC Admission & Discharge Forms"
+                Width: =If(App.Width <= 600, App.Width, App.Width <= 1200, App.Width * 0.8, App.Width <= 1600, App.Width * 0.7, App.Width * 0.6)//150
+                ZIndex: =2
+
+            Image2 As image:
+                AlignInContainer: =AlignInContainer.Stretch
+                BorderColor: =RGBA(0, 0, 0, 0)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =2
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledFill: =RGBA(0, 0, 0, 0)
+                FocusedBorderThickness: =4
+                Height: =75
+                HoverBorderColor: =RGBA(0, 0, 0, 0)
+                HoverFill: =RGBA(0, 0, 0, 0)
+                Image: ='primary-care'
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =75
+                PaddingBottom: =5
+                PaddingLeft: =5
+                PaddingRight: =7
+                PaddingTop: =5
+                PressedBorderColor: =RGBA(0, 0, 0, 0)
+                PressedFill: =RGBA(0, 0, 0, 0)
+                Width: =75
+                ZIndex: =3
+
+        MainContainer1 As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.Center
+            DropShadow: =DropShadow.Light
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: |-
+                =If(
+                    App.Height <= 800,
+                    Parent.Height * 0.9,
+                    App.Height <= 1200,
+                    Parent.Height * 0.8,
+                    Parent.Height * 0.7
+                )
+                
+                
+                //200
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            LayoutWrap: =true
+            RadiusBottomLeft: =8
+            RadiusBottomRight: =8
+            RadiusTopLeft: =8
+            RadiusTopRight: =8
+            Width: |-
+                =If(
+                    App.Width <= 600,
+                    Parent.Width, // Small Screens
+                    App.Width <= 1200,
+                    Parent.Width * 0.8, // Medium Screens
+                    App.Width <= 1600,
+                    Parent.Width * 0.7, // Large Screens
+                    Parent.Width * 0.6 // Extra Large Screens
+                )
+                
+                //500
+            ZIndex: =2
+
+            Container1 As groupContainer.horizontalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                DropShadow: =DropShadow.Light
+                LayoutAlignItems: =LayoutAlignItems.Stretch
+                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                ZIndex: =3
+
+                Container2 As groupContainer.verticalAutoLayoutContainer:
+                    DropShadow: =DropShadow.Light
+                    LayoutAlignItems: =LayoutAlignItems.Stretch
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutGap: =50
+                    LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    LayoutWrap: =true
+                    PaddingBottom: =200
+                    PaddingLeft: =20
+                    PaddingRight: =20
+                    PaddingTop: =200
+                    RadiusBottomLeft: =4
+                    RadiusBottomRight: =4
+                    RadiusTopLeft: =4
+                    RadiusTopRight: =4
+                    ZIndex: =1
+
+                    btInpatient As Button:
+                        BasePaletteColor: =
+                        BorderColor: =
+                        BorderRadius: =75
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =
+                        FontSize: =15
+                        Height: =100
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        OnSelect: |+
+                            =//Set(varPatientFormType, "Inpatient");
+                            ResetForm(frmHBPCAdmissionForm);
+                            //Clear(colMissingFields);
+                            NewForm(frmHBPCAdmissionForm);
+                            Navigate(frmHBPCAdmissionForm, ScreenTransition.Fade);
+                            
+                            
+                            
+                            //Set(varPatientFormType, "Inpatient");
+                            //ResetForm(FallMainForm_1);
+                            //NewForm(FallMainForm_1);
+                            //Navigate(MainFormScreen_1, ScreenTransition.Fade);
+                            
+                            
+                        Text: ="HBPC Admission Form"
+                        Width: =96
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    btOutpatient As Button:
+                        BasePaletteColor: =
+                        BorderColor: =
+                        BorderRadius: =50
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =
+                        Height: =100
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        OnSelect: |+
+                            =//Set(varPatientFormType, "Outpatient");
+                            ResetForm(frmHBPCDischarge);
+                            NewForm(frmHBPCDischarge);
+                            Navigate(frmHBPCDischarge, ScreenTransition.Fade);
+                            
+                            
+                        Text: ="HBPC Discharge Form"
+                        Width: =96
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
+
+        FooterContainer1 As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.Center
+            BorderColor: =RGBA(15, 84, 140, 1)
+            BorderThickness: =1
+            DropShadow: =DropShadow.Light
+            Fill: =RGBA(255, 255, 255, 1)
+            FillPortions: =0
+            Height: =75
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            Width: |-
+                =If(
+                    App.Width <= 600,
+                    Parent.Width, // Small Screens
+                    App.Width <= 1200,
+                    Parent.Width * 0.8, // Medium Screens
+                    App.Width <= 1600,
+                    Parent.Width * 0.7, // Large Screens
+                    Parent.Width * 0.6 // Extra Large Screens
+                )
+            ZIndex: =3
+
+            Image3 As image:
+                BorderColor: =RGBA(0, 0, 0, 0)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =2
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledFill: =RGBA(0, 0, 0, 0)
+                FocusedBorderThickness: =4
+                Height: =75
+                HoverBorderColor: =RGBA(0, 0, 0, 0)
+                HoverFill: =RGBA(0, 0, 0, 0)
+                Image: =content
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                PressedBorderColor: =RGBA(0, 0, 0, 0)
+                PressedFill: =RGBA(0, 0, 0, 0)
+                Width: =75
+                ZIndex: =1
+
+            Label2_11 As label:
+                Align: =Align.Center
+                AlignInContainer: =AlignInContainer.Stretch
+                BorderColor: =App.Theme.Colors.Darker40
+                Color: =RGBA(255, 255, 255, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Fill: =RGBA(11, 77, 133, 1)
+                FillPortions: =1
+                Font: =App.Theme.Font
+                Height: =48
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =75
+                Size: |
+                    =// Set the font size based on the parent container's width
+                    If(Parent.Width > 1300, 24, 
+                       Parent.Width <= 1300 && Parent.Width > 800, 18, 
+                       10)
+                Text: ="Welcome " & User().FullName
+                Width: =FooterContainer1.Width
+                Y: =37
+                ZIndex: =2
+
+            Image1_7 As image:
+                AlignInContainer: =AlignInContainer.Start
+                BorderColor: =App.Theme.Colors.Darker40
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =
+                Height: =75
+                Image: =User().Image
+                ImagePosition: =ImagePosition.Fill
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =75
+                Width: =80
+                X: =FooterContainer1.Width-100
+                ZIndex: =3
+

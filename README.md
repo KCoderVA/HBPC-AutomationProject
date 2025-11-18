@@ -11,7 +11,13 @@
 <!-- BUILDINFO:START --><div><em>Build Info</em>: Commit <code>26f8a08</code> • UTC <code>2025-11-18</code> • Last Tag <code>v0.5.0</code> • Commits Since Tag <code>0</code> • Files Since Tag <code>0</code> • Schema Fields Snapshot <code>11</code></div><!-- BUILDINFO:END -->
 
 ## Overview
-This repository houses governance, forensic, and maintenance artifacts for the **Veteran Admission Email With Saved Form** and **Veteran Discharge Email With Saved Form** Power Automate flows. Each flow generates a structured HTML summary populated from SharePoint list item data. Reconstruction (v0.1.0 baseline) restored truncated middle sections for Admission; v0.5.0 adds Discharge flow remediation and documentation. Governance, tracked exports, architecture documentation, and config scaffolding are maintained for both flows.
+This repository houses governance, forensic, and maintenance artifacts for the **Veteran Admission Email With Saved Form** and **Veteran Discharge Email With Saved Form** Power Automate flows, plus the companion Canvas App (**HinesHBPCAdmDisApp**) now source-controlled in unpacked form. Each flow generates a structured HTML summary populated from SharePoint list item data; the Canvas App provides clinical data entry and validation scaffolding. Reconstruction (v0.1.0 baseline) restored truncated middle sections for Admission; v0.5.0 added Discharge remediation; v0.5.1 introduces full Canvas App source tracking for transparent review and future automation.
+| `HinesHBPCAdmDisApp.msapp` | `src/power-apps/.msapp/` | Binary packaged Canvas App (authoritative export). |
+| `.unpacked/CanvasManifest.json` | `src/power-apps/.unpacked/` | App manifest (flags, version, feature toggles). |
+| `.unpacked/Src/App.fx.yaml` | `src/power-apps/.unpacked/Src/` | Global OnStart + theme logic (responsive width config). |
+| `.unpacked/Src/MainFormAdmission.fx.yaml` | `src/power-apps/.unpacked/Src/` | Admission screen layout & dynamic visibility logic. |
+| `.unpacked/Src/MainFormDischarge.fx.yaml` | `src/power-apps/.unpacked/Src/` | Discharge screen layout & validation controls. |
+| `.unpacked/Src/Themes.json` | `src/power-apps/.unpacked/Src/` | Theme and styling definitions for consistent UI. |
 <!-- PHI MASKED: All example names replaced with 'Veteran' -->
 
 ## Quickstart (60 Seconds)

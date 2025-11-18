@@ -11,6 +11,7 @@ Manual tracking of release cadence & surface area until automation added.
 | 2025-11-18 | v0.4.0 | 5 | 11 | Source namespace replacement + forensic baselines |
 | 2025-11-18 | v0.4.1 | 5 | 11 | Pre-commit PHI refinements & README refresh |
 | 2025-11-18 | v0.5.0 | 13 | 11 | Added Discharge flow remediation artifacts |
+| 2025-11-18 | v0.5.1 | 10 | 11 | Added Canvas App unpacked sources & docs |
 
 Metrics guidance:
 - Files Changed: committed file paths touched in release preparation.
@@ -24,6 +25,7 @@ _Last updated: 2025-11-18_
 | 2025-11-18 | v0.4.0 | 5 | 11 | Source namespace replacement + forensic baselines |
 | 2025-11-18 | v0.4.1 | 5 | 11 | Pre-commit PHI refinements & README refresh |
 | 2025-11-18 | v0.5.0 | 13 | 11 | Added Discharge flow remediation artifacts |
+| 2025-11-18 | v0.5.1 | 10 | 11 | Added Canvas App unpacked sources & docs |
 
 <!-- VELOCITY-TREND:START -->
 FIELD COUNT SPARKLINE: ▁█▄▁▁ (min=--------------- max=12)

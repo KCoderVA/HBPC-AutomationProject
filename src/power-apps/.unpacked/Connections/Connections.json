@@ -1,0 +1,71 @@
+{
+  "4de647f7-15e4-45f3-a26e-62ea9d83c84a": {
+    "appActions": [],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Office 365 Outlook",
+      "iconUri": "https://connectorsiconsfairfax.z5.web.core.usgovcloudapi.net/v1.0.1763/1.0.1763.4311/office365/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_office365",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [
+      "Office365Outlook"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "4de647f7-15e4-45f3-a26e-62ea9d83c84a"
+  },
+  "9dad690d-1147-4141-bd28-0807ff298c3a": {
+    "appActions": [],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Office 365 Users",
+      "iconUri": "https://connectorsiconsfairfax.z5.web.core.usgovcloudapi.net/v1.0.1767/1.0.1767.4341/office365users/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_office365users",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [
+      "Office365Users"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "9dad690d-1147-4141-bd28-0807ff298c3a"
+  },
+  "c8c234ed-9cfa-49cc-9d94-c6259beb0b5c": {
+    "appActions": [
+      "providers/PowerPlatform.Governance/Operations/Read",
+      "providers/PowerPlatform.Governance/Operations/Write"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/releases/v1.0.1732/1.0.1732.4070/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://dvagov.sharepoint.com/sites/vhahinesclinicalinformaticsanalyticsandinnovation": {
+        "dataSources": {
+          "HBHCAdmissionFormData": {
+            "tableName": "9cdb5627-e5cd-4f29-af50-6f44fce2b7bf"
+          },
+          "HBHCDischargeFormData": {
+            "tableName": "a9ba4ad7-7212-433a-a13a-e9700dab37dd"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "HBHCAdmissionFormData",
+      "HBHCDischargeFormData"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "c8c234ed-9cfa-49cc-9d94-c6259beb0b5c"
+  }
+}

@@ -1,0 +1,3265 @@
+"MainFormDischarge As screen.'headerFormLayout_ver1.0'":
+    LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+    OnVisible: |
+        =Set(PatientFormType, PatientFormType);
+        Set(varFormattedSSN, "")
+
+    ScreenContainer2_2 As groupContainer.verticalAutoLayoutContainer:
+        DropShadow: =DropShadow.Light
+        Fill: =RGBA(245, 245, 245, 1)
+        Height: =Parent.Height
+        LayoutAlignItems: =LayoutAlignItems.Stretch
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGap: =16
+        LayoutJustifyContent: =LayoutJustifyContent.Center
+        LayoutMode: =LayoutMode.Auto
+        PaddingBottom: =16
+        PaddingLeft: =16
+        PaddingRight: =16
+        PaddingTop: =16
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Width: =Parent.Width
+        ZIndex: =1
+
+        HeaderContainer1_5 As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.Center
+            Fill: =RGBA(255, 255, 255, 1)
+            FillPortions: =0
+            Height: =75
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =75
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            Width: |-
+                =If(
+                    App.Width <= 600,
+                    Parent.Width, // Small Screens
+                    App.Width <= 1200,
+                    Parent.Width * 0.8, // Medium Screens
+                    App.Width <= 1600,
+                    Parent.Width * 0.7, // Large Screens
+                    Parent.Width * 0.6 // Extra Large Screens
+                )
+            ZIndex: =1
+
+            Image1_5 As image:
+                AlignInContainer: =AlignInContainer.Center
+                BorderColor: =RGBA(0, 0, 0, 0)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =2
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledFill: =RGBA(0, 0, 0, 0)
+                FocusedBorderThickness: =4
+                Height: =75
+                HoverBorderColor: =RGBA(0, 0, 0, 0)
+                HoverFill: =RGBA(0, 0, 0, 0)
+                Image: =protectionFallTracker
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinWidth: =30
+                PressedBorderColor: =RGBA(0, 0, 0, 0)
+                PressedFill: =RGBA(0, 0, 0, 0)
+                Width: =75
+                ZIndex: =2
+
+            Label1_5 As label:
+                Align: =Align.Center
+                AlignInContainer: =AlignInContainer.Stretch
+                AutoHeight: =true
+                BorderColor: =RGBA(0, 0, 0, 0)
+                BorderStyle: =BorderStyle.None
+                Color: =RGBA(255, 255, 255, 1)
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledColor: =RGBA(161, 159, 157, 1)
+                Fill: =RGBA(11, 77, 133, 1)
+                FillPortions: =3
+                Font: =Font.'Segoe UI'
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                PaddingTop: =10
+                Size: =18
+                Text: ="Hines HBPC Discharge Form"
+                ZIndex: =3
+
+            Image2_5 As image:
+                AlignInContainer: =AlignInContainer.Center
+                BorderColor: =RGBA(0, 0, 0, 0)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =2
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledFill: =RGBA(0, 0, 0, 0)
+                FocusedBorderThickness: =4
+                Height: =75
+                HoverBorderColor: =RGBA(0, 0, 0, 0)
+                HoverFill: =RGBA(0, 0, 0, 0)
+                Image: ='primary-care'
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                PaddingBottom: =5
+                PaddingLeft: =5
+                PaddingRight: =7
+                PaddingTop: =5
+                PressedBorderColor: =RGBA(0, 0, 0, 0)
+                PressedFill: =RGBA(0, 0, 0, 0)
+                Width: =75
+                ZIndex: =4
+
+        MainContainer2_2 As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.Center
+            Fill: =RGBA(13, 50, 61, 1)
+            Height: |-
+                =If(
+                    App.Height <= 800,
+                    Parent.Height * 0.9,
+                    App.Height <= 1200,
+                    Parent.Height * 0.8,
+                    Parent.Height * 0.7
+                )
+                //200
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =16
+            LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+            LayoutMaxHeight: =
+            LayoutMaxWidth: =
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            LayoutWrap: =true
+            PaddingBottom: =2
+            PaddingLeft: =2
+            PaddingRight: =2
+            PaddingTop: =2
+            Width: |-
+                =If(
+                    App.Width <= 600,
+                    Parent.Width, // Small Screens
+                    App.Width <= 1200,
+                    Parent.Width * 0.8, // Medium Screens
+                    App.Width <= 1600,
+                    Parent.Width * 0.7, // Large Screens
+                    Parent.Width * 0.6 // Extra Large Screens
+                )
+                
+                
+                //500
+            ZIndex: =5
+
+            Container4_1 As groupContainer.horizontalAutoLayoutContainer:
+                DropShadow: =DropShadow.Light
+                LayoutAlignItems: =LayoutAlignItems.Stretch
+                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                LayoutMaxHeight: =
+                LayoutMaxWidth: =
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                X: =40
+                Y: =40
+                ZIndex: =6
+
+                FormContainer1_2 As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    DropShadow: =DropShadow.Light
+                    FillPortions: =7
+                    LayoutAlignItems: =LayoutAlignItems.Stretch
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutGap: =16
+                    LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                    LayoutMaxHeight: =
+                    LayoutMaxWidth: =
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    LayoutOverflowY: =LayoutOverflow.Scroll
+                    LayoutWrap: =true
+                    PaddingBottom: =15
+                    PaddingLeft: =15
+                    PaddingRight: =15
+                    PaddingTop: =15
+                    RadiusBottomLeft: =8
+                    RadiusBottomRight: =8
+                    RadiusTopLeft: =8
+                    RadiusTopRight: =8
+                    ZIndex: =7
+
+                    frmHBPCDischarge As form.PowerApps_CoreControls_Form:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        BorderColor: =RGBA(245, 245, 245, 1)
+                        DataSource: =HBHCDischargeFormData
+                        DefaultMode: =FormMode.New
+                        Fill: =RGBA(214, 221, 224, 1)
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =250
+                        LayoutMinWidth: =0
+                        NumberOfColumns: =2
+                        OnSuccess: |
+                            =If(
+                                varPatientFormType = "Inpatient",
+                                Notify("Inpatient form submitted successfully!", NotificationType.Success),
+                                varPatientFormType = "Outpatient",
+                                Notify("Outpatient form submitted successfully!", NotificationType.Success)
+                            );
+                            ResetForm(frmHBPCDischarge);
+                            Set(varPatientFormType, "");
+                            Navigate(HomeScreen, ScreenTransition.Fade);
+                        UseFluentV9Cards: =true
+                        Width: |
+                            =800
+                        ZIndex: =1
+
+                        MainHeading As typedDataCard.blankCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            Width: =922
+                            WidthFit: =true
+                            X: =0
+                            Y: =0
+                            ZIndex: =1
+
+                            lblFormMainLabel As label:
+                                Align: =Align.Center
+                                BorderColor: =RGBA(0, 0, 0, 0)
+                                BorderStyle: =BorderStyle.None
+                                Color: =RGBA(255, 255, 255, 1)
+                                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                                DisabledColor: =RGBA(161, 159, 157, 1)
+                                Fill: =RGBA(15, 84, 140, 1)
+                                Font: =Font.'Segoe UI'
+                                Height: =47
+                                PaddingRight: =30
+                                Size: =15
+                                Text: ="Hospital Based Home Care Discharge Form"
+                                Width: =FormContainer1_2.Width
+                                ZIndex: =1
+
+                        DischarageQuestions As typedDataCard.blankCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =83
+                            Width: =922
+                            WidthFit: =true
+                            X: =0
+                            Y: =5
+                            ZIndex: =1
+
+                            lblDischargeQuestions As label:
+                                Align: =Align.Center
+                                BorderColor: =RGBA(0, 0, 0, 0)
+                                BorderStyle: =BorderStyle.None
+                                Color: =RGBA(255, 255, 255, 1)
+                                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                                DisabledColor: =RGBA(161, 159, 157, 1)
+                                Fill: =RGBA(15, 84, 140, 1)
+                                Font: =Font.'Segoe UI'
+                                Height: =48
+                                Size: =15
+                                Text: ="Discharge Questions"
+                                Width: =FormContainer1_2.Width
+                                Y: =5
+                                ZIndex: =1
+
+                        "'ADL Bathing or Shower_DataCard2' As typedDataCard.fluentV9ComboBoxEditCard":
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="ADLBathingorShower"
+                            Default: =ThisItem.'ADL Bathing or Shower'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'ADL Bathing or Shower')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            Required: =false
+                            Update: =DataCardValue6.Selected
+                            Visible: =!IsBlank(drpDischargeStatus.Selected) && drpDischargeStatus.Selected.Value <> "4 DIED ON HBHC"
+                            Width: =461
+                            WidthFit: =true
+                            X: =1
+                            Y: =12
+                            ZIndex: =1
+
+                            DataCardKey6 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue6 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].'ADL Bathing or Shower')
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey6.Y + DataCardKey6.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage6 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue6.Y + DataCardValue6.Height
+                                ZIndex: =3
+
+                            StarVisible6 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey6.Y
+                                ZIndex: =4
+
+                        "'ADL Dressing_DataCard2' As typedDataCard.fluentV9ComboBoxEditCard":
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="ADLDressing"
+                            Default: =ThisItem.'ADL Dressing'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'ADL Dressing')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            Required: =false
+                            Update: =DataCardValue7.Selected
+                            Visible: =!IsBlank(drpDischargeStatus.Selected) && drpDischargeStatus.Selected.Value <> "4 DIED ON HBHC"
+                            Width: =461
+                            WidthFit: =true
+                            X: =0
+                            Y: =13
+                            ZIndex: =1
+
+                            DataCardKey7 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue7 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].'ADL Dressing')
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey7.Y + DataCardKey7.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage7 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue7.Y + DataCardValue7.Height
+                                ZIndex: =3
+
+                            StarVisible7 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey7.Y
+                                ZIndex: =4
+
+                        "'ADL Using Toilet_DataCard2' As typedDataCard.fluentV9ComboBoxEditCard":
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="ADLUsingToilet"
+                            Default: =ThisItem.'ADL Using Toilet'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'ADL Using Toilet')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            Required: =false
+                            Update: =DataCardValue9.Selected
+                            Visible: =!IsBlank(drpDischargeStatus.Selected) && drpDischargeStatus.Selected.Value <> "4 DIED ON HBHC"
+                            Width: =461
+                            WidthFit: =true
+                            X: =1
+                            Y: =13
+                            ZIndex: =1
+
+                            DataCardKey9 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue9 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].'ADL Using Toilet')
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey9.Y + DataCardKey9.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage9 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue9.Y + DataCardValue9.Height
+                                ZIndex: =3
+
+                            StarVisible9 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey9.Y
+                                ZIndex: =4
+
+                        "'ADL Eating_DataCard2' As typedDataCard.fluentV9ComboBoxEditCard":
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="ADLEating"
+                            Default: =ThisItem.'ADL Eating'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'ADL Eating')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            Required: =false
+                            Update: =DataCardValue8.Selected
+                            Visible: =!IsBlank(drpDischargeStatus.Selected) && drpDischargeStatus.Selected.Value <> "4 DIED ON HBHC"
+                            Width: =461
+                            WidthFit: =true
+                            X: =1
+                            Y: =14
+                            ZIndex: =1
+
+                            DataCardKey8 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue8 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].'ADL Eating')
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey8.Y + DataCardKey8.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage8 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue8.Y + DataCardValue8.Height
+                                ZIndex: =3
+
+                            StarVisible8 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey8.Y
+                                ZIndex: =4
+
+                        "'ADL Walking_DataCard2' As typedDataCard.fluentV9ComboBoxEditCard":
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="ADLWalking"
+                            Default: =ThisItem.'ADL Walking'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'ADL Walking')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            Required: =false
+                            Update: =DataCardValue10.Selected
+                            Visible: =!IsBlank(drpDischargeStatus.Selected) && drpDischargeStatus.Selected.Value <> "4 DIED ON HBHC"
+                            Width: =461
+                            WidthFit: =true
+                            X: =0
+                            Y: =15
+                            ZIndex: =1
+
+                            DataCardKey10 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue10 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].'ADL Walking')
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey10.Y + DataCardKey10.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage10 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue10.Y + DataCardValue10.Height
+                                ZIndex: =3
+
+                            StarVisible10 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey10.Y
+                                ZIndex: =4
+
+                        "'HBPC PACT Team_DataCard2' As typedDataCard.fluentV9ComboBoxEditCard":
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="HBPCPACTTeam"
+                            Default: =ThisItem.'HBPC PACT Team'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,HBPCPACTTeam)
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            Required: =false
+                            Update: =DataCardValue12.Selected
+                            Width: =461
+                            WidthFit: =true
+                            X: =0
+                            Y: =1
+                            ZIndex: =1
+
+                            DataCardKey18 As Text:
+                                DisplayMode: =DisplayMode.Edit
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue12 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].HBPCPACTTeam)
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey18.Y + DataCardKey18.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage18 As Text:
+                                DisplayMode: =DisplayMode.Edit
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue12.Y + DataCardValue12.Height
+                                ZIndex: =3
+
+                            StarVisible18 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                DisplayMode: =DisplayMode.Edit
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey18.Y
+                                ZIndex: =4
+
+                        "'Continence Bladder_DataCard1' As typedDataCard.fluentV9ComboBoxEditCard":
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="ContinenceBladder"
+                            Default: =ThisItem.'Continence Bladder'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Continence Bladder')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            Required: =false
+                            Update: =DataCardValue11.Selected
+                            Visible: =!IsBlank(drpDischargeStatus.Selected) && drpDischargeStatus.Selected.Value <> "4 DIED ON HBHC"
+                            Width: =461
+                            WidthFit: =true
+                            X: =0
+                            Y: =16
+                            ZIndex: =1
+
+                            DataCardKey11 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue11 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].'Continence Bladder')
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey11.Y + DataCardKey11.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage11 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue11.Y + DataCardValue11.Height
+                                ZIndex: =3
+
+                            StarVisible11 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey11.Y
+                                ZIndex: =4
+
+                        BeareavementNameAndAddress_DataCard1 As typedDataCard.fluentV9TextualEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="BeareavementNameAndAddress"
+                            Default: =ThisItem.'Bereavement Name And Address'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Bereavement Name And Address')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =139
+                            MaxLength: =DataSourceInfo([@HBHCDischargeFormData], DataSourceInfo.MaxLength, 'Bereavement Name And Address')
+                            Required: =false
+                            Update: =DataCardValue121.Value
+                            Visible: |-
+                                =!IsBlank(drpDischargeStatus.Selected) && 
+                                drpDischargeStatus.Selected.Value = "4 DIED ON HBHC"
+                                
+                                //) || (
+                                    //!IsBlank(DataCardValue115.Selected.Value) && 
+                                    //DataCardValue115.Selected.Value = "Yes"
+                                //)
+                            Width: =461
+                            WidthFit: =true
+                            X: =0
+                            Y: =22
+                            ZIndex: =1
+
+                            DataCardKey121 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            "DataCardValue121 As 'Text input'":
+                                AccessibleLabel: =Parent.DisplayName
+                                BasePaletteColor: =
+                                BorderColor: =
+                                DisplayMode: =Parent.DisplayMode
+                                Fill: =
+                                FontColor: =
+                                Height: =80
+                                Mode: ='TextInputCanvas.Mode'.Multiline
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Value: =Parent.Default
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey121.Y + DataCardKey121.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage119 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue121.Y + DataCardValue121.Height
+                                ZIndex: =3
+
+                            StarVisible119 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey121.Y
+                                ZIndex: =4
+
+                        EnterNewPCPProviderData_DataCard1 As typedDataCard.fluentV9TextualEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="EnterNewPCPProviderData"
+                            Default: =ThisItem.'Enter New PCP Provider Data'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Enter New PCP Provider Data')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =126
+                            MaxLength: =DataSourceInfo([@HBHCDischargeFormData], DataSourceInfo.MaxLength, 'Enter New PCP Provider Data')
+                            Required: =false
+                            Update: =DataCardValue122.Value
+                            Visible: =!IsBlank(drpDischargeStatus.Selected) && drpDischargeStatus.Selected.Value <> "4 DIED ON HBHC"
+                            Width: =461
+                            WidthFit: =true
+                            X: =0
+                            Y: =24
+                            ZIndex: =1
+
+                            DataCardKey122 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            "DataCardValue122 As 'Text input'":
+                                AccessibleLabel: =Parent.DisplayName
+                                BasePaletteColor: =
+                                BorderColor: =
+                                DisplayMode: =Parent.DisplayMode
+                                Fill: =
+                                FontColor: =
+                                Height: =73
+                                Mode: ='TextInputCanvas.Mode'.Multiline
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Value: =Parent.Default
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey122.Y + DataCardKey122.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage120 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue122.Y + DataCardValue122.Height
+                                ZIndex: =3
+
+                            StarVisible120 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey122.Y
+                                ZIndex: =4
+
+                        PatientFullName_DataCard2 As typedDataCard.fluentV9TextualEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="PatientFullName"
+                            Default: =ThisItem.'Patient Full Name'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Patient Full Name')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =74
+                            MaxLength: =DataSourceInfo([@HBHCDischargeFormData], DataSourceInfo.MaxLength, 'Patient Full Name')
+                            Required: =false
+                            Update: =DataCardValue95.Value
+                            Width: =461
+                            WidthFit: =true
+                            X: =0
+                            Y: =2
+                            ZIndex: =2
+
+                            DataCardKey95 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            "DataCardValue95 As 'Text input'":
+                                AccessibleLabel: =Parent.DisplayName
+                                BasePaletteColor: =
+                                BorderColor: =
+                                DisplayMode: =Parent.DisplayMode
+                                Fill: =
+                                FontColor: =
+                                Height: =32
+                                Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Value: =Parent.Default
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey95.Y + DataCardKey95.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage93 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue95.Y + DataCardValue95.Height
+                                ZIndex: =3
+
+                            StarVisible93 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey95.Y
+                                ZIndex: =4
+
+                        PatientFullSSN_DataCard2 As typedDataCard.fluentV9TextualEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="PatientFullSSN"
+                            Default: =If(IsBlank(varFormattedSSNDsch), "", varFormattedSSNDsch)
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Patient Full SSN')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            MaxLength: =DataSourceInfo([@HBHCDischargeFormData], DataSourceInfo.MaxLength, 'Patient Full SSN')
+                            Required: =false
+                            Update: =DataCardValue96.Value
+                            Width: =461
+                            WidthFit: =true
+                            X: =0
+                            Y: =3
+                            ZIndex: =2
+
+                            DataCardKey96 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            "DataCardValue96 As 'Text input'":
+                                AccessibleLabel: =Parent.DisplayName
+                                BasePaletteColor: =
+                                BorderColor: =
+                                DisplayMode: =Parent.DisplayMode
+                                Fill: =
+                                FontColor: =
+                                Height: =32
+                                MaxLength: =11
+                                Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                                OnChange: |-
+                                    =// Clean the input (remove dashes and spaces, keep only numeric)
+                                    Set(varCleanSSNDsch, 
+                                        Substitute(
+                                            Substitute(Self.Value, "-", ""), 
+                                            " ", ""
+                                        )
+                                    );
+                                    
+                                    // Only allow numeric characters and limit to 9 digits
+                                    If(
+                                        (IsNumeric(varCleanSSN) || IsBlank(varCleanSSN)) && Len(varCleanSSN) <= 9,
+                                        // Format if exactly 9 digits
+                                        If(
+                                            Len(varCleanSSNDsch) = 9,
+                                            Set(varFormattedSSNDsch, 
+                                                Left(varCleanSSNDsch, 3) & "-" & 
+                                                Mid(varCleanSSNDsch, 4, 2) & "-" & 
+                                                Right(varCleanSSNDsch, 4)
+                                            ),
+                                            Set(varFormattedSSNDsch, varCleanSSNDsch)
+                                        )
+                                    )
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Value: =varFormattedSSNDsch
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey96.Y + DataCardKey96.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage94 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue96.Y + DataCardValue96.Height
+                                ZIndex: =3
+
+                            StarVisible94 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey96.Y
+                                ZIndex: =4
+
+                        DischargeDate_DataCard1 As typedDataCard.fluentV9DateEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="DateEvaluated"
+                            Default: =ThisItem.'Discharge Date'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Discharge Date')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            Required: =false
+                            Update: =DataCardValue90.SelectedDate
+                            Width: =461
+                            WidthFit: =true
+                            X: =1
+                            Y: =3
+                            ZIndex: =2
+
+                            DataCardKey90 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            "DataCardValue90 As 'Date picker'":
+                                AccessibleLabel: =Parent.DisplayName
+                                BasePaletteColor: =
+                                BorderColor: =
+                                DisplayMode: =Parent.DisplayMode
+                                EndDate: =Date(Year(Today())+100, 12, 31)
+                                Fill: =
+                                FontColor: =
+                                Format: ='DatePickerCanvas.Format'.Short
+                                Height: =32
+                                Required: =Parent.Required
+                                SelectedDate: |-
+                                    =Today()
+                                    
+                                    //Parent.Default
+                                StartDate: =Date(1900, 1, 1)
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey90.Y + DataCardKey90.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage88 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue90.Y + DataCardValue90.Height
+                                ZIndex: =3
+
+                            StarVisible88 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey90.Y
+                                ZIndex: =4
+
+                        MaritalStatus_DataCard2 As typedDataCard.fluentV9ComboBoxEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="MaritalStatus"
+                            Default: =ThisItem.'Marital Status'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Marital Status')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =84
+                            Required: =false
+                            Update: =DataCardValue92.Selected
+                            Width: =461
+                            WidthFit: =true
+                            X: =0
+                            Y: =4
+                            ZIndex: =2
+
+                            DataCardKey92 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue92 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].'Marital Status')
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey92.Y + DataCardKey92.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage90 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue92.Y + DataCardValue92.Height
+                                ZIndex: =3
+
+                            StarVisible90 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey92.Y
+                                ZIndex: =4
+
+                        UsualLivingArrangements_DataCard2 As typedDataCard.fluentV9ComboBoxEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="UsualLivingArrangements"
+                            Default: =ThisItem.'Usual Living Arrangements'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Usual Living Arrangements')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            Required: =false
+                            Update: =DataCardValue93.Selected
+                            Width: =461
+                            WidthFit: =true
+                            X: =1
+                            Y: =4
+                            ZIndex: =2
+
+                            DataCardKey93 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue93 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].'Usual Living Arrangements')
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey93.Y + DataCardKey93.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage91 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue93.Y + DataCardValue93.Height
+                                ZIndex: =3
+
+                            StarVisible91 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey93.Y
+                                ZIndex: =4
+
+                        DischargeStatus_DataCard1 As typedDataCard.fluentV9ComboBoxEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="DischargeStatus"
+                            Default: =ThisItem.'Discharge Status'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Discharge Status')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =83
+                            Required: =false
+                            Update: =drpDischargeStatus.Selected
+                            Width: =461
+                            WidthFit: =true
+                            X: =0
+                            Y: =6
+                            ZIndex: =2
+
+                            DataCardKey111 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            drpDischargeStatus As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].'Discharge Status')
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey111.Y + DataCardKey111.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage109 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =drpDischargeStatus.Y + drpDischargeStatus.Height
+                                ZIndex: =3
+
+                            StarVisible109 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey111.Y
+                                ZIndex: =4
+
+                        TransferDestination_DataCard1 As typedDataCard.fluentV9ComboBoxEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="TransferDestination"
+                            Default: =ThisItem.'Transfer Destination'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Transfer Destination')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            Required: =false
+                            Update: =DataCardValue112.Selected
+                            Visible: =!IsBlank(drpDischargeStatus.Selected) && drpDischargeStatus.Selected.Value <> "4 DIED ON HBHC"
+                            Width: =461
+                            WidthFit: =true
+                            X: =0
+                            Y: =7
+                            ZIndex: =2
+
+                            DataCardKey112 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue112 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].'Transfer Destination')
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey112.Y + DataCardKey112.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage110 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue112.Y + DataCardValue112.Height
+                                ZIndex: =3
+
+                            StarVisible110 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey112.Y
+                                ZIndex: =4
+
+                        TypeOfAgency_DataCard2 As typedDataCard.fluentV9ComboBoxEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="TypeOfAgency"
+                            Default: =ThisItem.'Type Of Agency'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Type Of Agency')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            Required: =false
+                            Update: =DataCardValue94.Selected
+                            Visible: =!IsBlank(drpDischargeStatus.Selected) && drpDischargeStatus.Selected.Value <> "4 DIED ON HBHC"
+                            Width: =461
+                            WidthFit: =true
+                            X: =1
+                            Y: =7
+                            ZIndex: =2
+
+                            DataCardKey94 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue94 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].'Type Of Agency')
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey94.Y + DataCardKey94.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage92 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue94.Y + DataCardValue94.Height
+                                ZIndex: =3
+
+                            StarVisible92 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey94.Y
+                                ZIndex: =4
+
+                        CauseOfDeath_DataCard1 As typedDataCard.fluentV9TextualEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="CauseOfDeath"
+                            Default: =ThisItem.'Cause Of Death'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Cause Of Death')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =134
+                            MaxLength: =DataSourceInfo([@HBHCDischargeFormData], DataSourceInfo.MaxLength, 'Cause Of Death')
+                            Required: =false
+                            Update: =DataCardValue113.Value
+                            Visible: |-
+                                =!IsBlank(drpDischargeStatus.Selected) && 
+                                drpDischargeStatus.Selected.Value = "4 DIED ON HBHC" &&
+                                !(drpDischargeStatus.Selected.Value in ["1 TRANSFERRED TO OTHER PROVIDER", "2 ANTICIPATED INSTITUTIONALIZATION"])
+                            Width: =461
+                            WidthFit: =true
+                            X: =0
+                            Y: =8
+                            ZIndex: =2
+
+                            DataCardKey113 As Text:
+                                AutoHeight: =false
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            "DataCardValue113 As 'Text input'":
+                                AccessibleLabel: =Parent.DisplayName
+                                BasePaletteColor: =
+                                BorderColor: =
+                                DisplayMode: =Parent.DisplayMode
+                                Fill: =
+                                FontColor: =
+                                Height: =77
+                                Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Value: =Parent.Default
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =36
+                                ZIndex: =2
+
+                            ErrorMessage111 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue113.Y + DataCardValue113.Height
+                                ZIndex: =3
+
+                            StarVisible111 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey113.Y
+                                ZIndex: =4
+
+                        PrimaryDiagnosis_DataCard2 As typedDataCard.fluentV9TextualEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="PrimaryDiagnosis"
+                            Default: =ThisItem.'Primary Diagnosis'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Primary Diagnosis')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =78
+                            MaxLength: =DataSourceInfo([@HBHCDischargeFormData], DataSourceInfo.MaxLength, 'Primary Diagnosis')
+                            Required: =false
+                            Update: =DataCardValue97.Value
+                            Visible: =!IsBlank(drpDischargeStatus.Selected) && drpDischargeStatus.Selected.Value <> "4 DIED ON HBHC"
+                            Width: =Parent.Width - 48
+                            WidthFit: =true
+                            X: =0
+                            Y: =9
+                            ZIndex: =2
+
+                            DataCardKey97 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            "DataCardValue97 As 'Text input'":
+                                AccessibleLabel: =Parent.DisplayName
+                                BasePaletteColor: =
+                                BorderColor: =
+                                DisplayMode: =Parent.DisplayMode
+                                Fill: =
+                                FontColor: =
+                                Height: =32
+                                Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Value: =Parent.Default
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey97.Y + DataCardKey97.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage95 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue97.Y + DataCardValue97.Height
+                                ZIndex: =3
+
+                            StarVisible95 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey97.Y
+                                ZIndex: =4
+
+                        SecondaryDiagnoses_DataCard2 As typedDataCard.fluentV9TextualEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="SecondaryDiagnoses"
+                            Default: =ThisItem.'Secondary Diagnoses'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Secondary Diagnoses')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            MaxLength: =DataSourceInfo([@HBHCDischargeFormData], DataSourceInfo.MaxLength, 'Secondary Diagnoses')
+                            Required: =false
+                            Update: =DataCardValue98.Value
+                            Visible: =!IsBlank(drpDischargeStatus.Selected) && drpDischargeStatus.Selected.Value <> "4 DIED ON HBHC"
+                            Width: =461
+                            WidthFit: =true
+                            X: =0
+                            Y: =10
+                            ZIndex: =2
+
+                            DataCardKey98 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            "DataCardValue98 As 'Text input'":
+                                AccessibleLabel: =Parent.DisplayName
+                                BasePaletteColor: =
+                                BorderColor: =
+                                DisplayMode: =Parent.DisplayMode
+                                Fill: =
+                                FontColor: =
+                                Height: =32
+                                Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Value: =Parent.Default
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey98.Y + DataCardKey98.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage96 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue98.Y + DataCardValue98.Height
+                                ZIndex: =3
+
+                            StarVisible96 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey98.Y
+                                ZIndex: =4
+
+                        Vision_DataCard2 As typedDataCard.fluentV9ComboBoxEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="Vision"
+                            Default: =ThisItem.Vision
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,Vision)
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            Required: =false
+                            Update: =DataCardValue99.Selected
+                            Visible: =!IsBlank(drpDischargeStatus.Selected) && drpDischargeStatus.Selected.Value <> "4 DIED ON HBHC"
+                            Width: =461
+                            WidthFit: =true
+                            X: =1
+                            Y: =10
+                            ZIndex: =2
+
+                            DataCardKey99 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue99 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].Vision)
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey99.Y + DataCardKey99.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage97 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue99.Y + DataCardValue99.Height
+                                ZIndex: =3
+
+                            StarVisible97 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey99.Y
+                                ZIndex: =4
+
+                        Hearing_DataCard2 As typedDataCard.fluentV9ComboBoxEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="Hearing"
+                            Default: =ThisItem.Hearing
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,Hearing)
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            Required: =false
+                            Update: =DataCardValue100.Selected
+                            Visible: =!IsBlank(drpDischargeStatus.Selected) && drpDischargeStatus.Selected.Value <> "4 DIED ON HBHC"
+                            Width: =461
+                            WidthFit: =true
+                            X: =0
+                            Y: =11
+                            ZIndex: =2
+
+                            DataCardKey100 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue100 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].Hearing)
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey100.Y + DataCardKey100.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage98 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue100.Y + DataCardValue100.Height
+                                ZIndex: =3
+
+                            StarVisible98 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey100.Y
+                                ZIndex: =4
+
+                        ExpressiveCommunication_DataCard2 As typedDataCard.fluentV9ComboBoxEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="ExpressiveCommunication"
+                            Default: =ThisItem.'Expressive Communication'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Expressive Communication')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            Required: =false
+                            Update: =DataCardValue101.Selected
+                            Visible: =!IsBlank(drpDischargeStatus.Selected) && drpDischargeStatus.Selected.Value <> "4 DIED ON HBHC"
+                            Width: =461
+                            WidthFit: =true
+                            X: =1
+                            Y: =11
+                            ZIndex: =2
+
+                            DataCardKey101 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue101 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].'Expressive Communication')
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey101.Y + DataCardKey101.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage99 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue101.Y + DataCardValue101.Height
+                                ZIndex: =3
+
+                            StarVisible99 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey101.Y
+                                ZIndex: =4
+
+                        ReceptiveCommunication_DataCard2 As typedDataCard.fluentV9ComboBoxEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="ReceptiveCommunication"
+                            Default: =ThisItem.'Receptive Communication'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Receptive Communication')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            Required: =false
+                            Update: =DataCardValue102.Selected
+                            Visible: =!IsBlank(drpDischargeStatus.Selected) && drpDischargeStatus.Selected.Value <> "4 DIED ON HBHC"
+                            Width: =461
+                            WidthFit: =true
+                            X: =0
+                            Y: =12
+                            ZIndex: =2
+
+                            DataCardKey102 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue102 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].'Receptive Communication')
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey102.Y + DataCardKey102.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage100 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue102.Y + DataCardValue102.Height
+                                ZIndex: =3
+
+                            StarVisible100 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey102.Y
+                                ZIndex: =4
+
+                        ActivitiesOfDailyLiving_DataCard2 As typedDataCard.fluentV9ComboBoxEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="ActivitiesOfDailyLiving"
+                            Default: =ThisItem.'ADL Transfer'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'ADL Transfer')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            Required: =false
+                            Update: =DataCardValue103.Selected
+                            Visible: =!IsBlank(drpDischargeStatus.Selected) && drpDischargeStatus.Selected.Value <> "4 DIED ON HBHC"
+                            Width: =461
+                            WidthFit: =true
+                            X: =0
+                            Y: =14
+                            ZIndex: =2
+
+                            DataCardKey103 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue103 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].'ADL Transfer')
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey103.Y + DataCardKey103.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage101 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue103.Y + DataCardValue103.Height
+                                ZIndex: =3
+
+                            StarVisible101 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey103.Y
+                                ZIndex: =4
+
+                        "'Adaptive Tasks_DataCard2' As typedDataCard.fluentV9ComboBoxEditCard":
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="AdaptiveTasks"
+                            Default: =ThisItem.'Adaptive Tasks'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Adaptive Tasks')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            Required: =false
+                            Update: =DataCardValue106.Selected
+                            Visible: =!IsBlank(drpDischargeStatus.Selected) && drpDischargeStatus.Selected.Value <> "4 DIED ON HBHC"
+                            Width: =461
+                            WidthFit: =true
+                            X: =0
+                            Y: =17
+                            ZIndex: =2
+
+                            DataCardKey106 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue106 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].'Adaptive Tasks')
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey106.Y + DataCardKey106.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage104 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue106.Y + DataCardValue106.Height
+                                ZIndex: =3
+
+                            StarVisible104 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey106.Y
+                                ZIndex: =4
+
+                        DisorientationMemoryImpairment_DataCard2 As typedDataCard.fluentV9ComboBoxEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="DisorientationMemoryImpairment"
+                            Default: =ThisItem.'Disorientation Memory Impairment'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Disorientation Memory Impairment')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            Required: =false
+                            Update: =DataCardValue108.Selected
+                            Visible: =!IsBlank(drpDischargeStatus.Selected) && drpDischargeStatus.Selected.Value <> "4 DIED ON HBHC"
+                            Width: =461
+                            WidthFit: =true
+                            X: =0
+                            Y: =18
+                            ZIndex: =2
+
+                            DataCardKey108 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue108 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].'Disorientation Memory Impairment')
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey108.Y + DataCardKey108.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage106 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue108.Y + DataCardValue108.Height
+                                ZIndex: =3
+
+                            StarVisible106 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey108.Y
+                                ZIndex: =4
+
+                        CaregiverLimitations_DataCard2 As typedDataCard.fluentV9ComboBoxEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="CaregiverLimitations"
+                            Default: =ThisItem.'Caregiver Limitations'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Caregiver Limitations')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =84
+                            Required: =false
+                            Update: =DataCardValue110.Selected
+                            Visible: =!IsBlank(drpDischargeStatus.Selected) && drpDischargeStatus.Selected.Value <> "4 DIED ON HBHC"
+                            Width: =461
+                            WidthFit: =true
+                            X: =0
+                            Y: =19
+                            ZIndex: =2
+
+                            DataCardKey110 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue110 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].'Caregiver Limitations')
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey110.Y + DataCardKey110.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage108 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue110.Y + DataCardValue110.Height
+                                ZIndex: =3
+
+                            StarVisible108 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey110.Y
+                                ZIndex: =4
+
+                        DischargeDueToDeath_DataCard1 As typedDataCard.fluentV9ComboBoxEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="DischargeDueToDeath"
+                            Default: =ThisItem.'Discharge Due To Death'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Discharge Due To Death')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =78
+                            Required: =false
+                            Update: =DataCardValue115.Selected
+                            Visible: |-
+                                =false
+                                //!IsBlank(drpDischargeStatus.Selected) && drpDischargeStatus.Selected.Value = "DIED ON HBHC"
+                            Width: =461
+                            WidthFit: =true
+                            X: =0
+                            Y: =20
+                            ZIndex: =2
+
+                            DataCardKey115 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue115 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].'Discharge Due To Death')
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey115.Y + DataCardKey115.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage113 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue115.Y + DataCardValue115.Height
+                                ZIndex: =3
+
+                            StarVisible113 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey115.Y
+                                ZIndex: =4
+
+                        WasTheVeteranEnrolledInHospice_DataCard1 As typedDataCard.fluentV9ComboBoxEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="WasTheVeteranEnrolledInHospice"
+                            Default: =ThisItem.'Was The Veteran Enrolled In Hospice'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Was The Veteran Enrolled In Hospice')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            Required: =false
+                            Update: =DataCardValue117.Selected
+                            Visible: |-
+                                =!IsBlank(drpDischargeStatus.Selected) && 
+                                drpDischargeStatus.Selected.Value = "4 DIED ON HBHC"
+                                
+                                //true
+                            Width: =461
+                            WidthFit: =true
+                            X: =0
+                            Y: =21
+                            ZIndex: =2
+
+                            DataCardKey117 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue117 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].'Was The Veteran Enrolled In Hospice')
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey117.Y + DataCardKey117.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage115 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue117.Y + DataCardValue117.Height
+                                ZIndex: =3
+
+                            StarVisible115 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey117.Y
+                                ZIndex: =4
+
+                        NewPCPProviderInformation_DataCard1 As typedDataCard.fluentV9ComboBoxMultiSelectEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="NewPCPProviderInformation"
+                            Default: =ThisItem.'New PCP Provider Information'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'New PCP Provider Information')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =124
+                            Required: =false
+                            Update: =DataCardValue119.SelectedItems
+                            Visible: =!IsBlank(drpDischargeStatus.Selected) && drpDischargeStatus.Selected.Value <> "4 DIED ON HBHC"
+                            Width: =Parent.Width - 48
+                            WidthFit: =true
+                            X: =0
+                            Y: =23
+                            ZIndex: =2
+
+                            DataCardKey119 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue119 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =Parent.Default
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =36
+                                Items: =Choices([@HBHCDischargeFormData].'New PCP Provider Information')
+                                Required: =Parent.Required
+                                SelectMultiple: =true
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey119.Y + DataCardKey119.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage117 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue119.Y + DataCardValue119.Height
+                                ZIndex: =3
+
+                            StarVisible117 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey119.Y
+                                ZIndex: =4
+
+                        Continence_DataCard2 As typedDataCard.fluentV9ComboBoxEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="Continence"
+                            Default: =ThisItem.'Continence Bowel'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Continence Bowel')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            Required: =false
+                            Update: =DataCardValue104.Selected
+                            Visible: =!IsBlank(drpDischargeStatus.Selected) && drpDischargeStatus.Selected.Value <> "4 DIED ON HBHC"
+                            Width: =461
+                            WidthFit: =true
+                            X: =1
+                            Y: =15
+                            ZIndex: =2
+
+                            DataCardKey104 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue104 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].'Continence Bowel')
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey104.Y + DataCardKey104.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage102 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue104.Y + DataCardValue104.Height
+                                ZIndex: =3
+
+                            StarVisible102 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey104.Y
+                                ZIndex: =4
+
+                        Mobility_DataCard2 As typedDataCard.fluentV9ComboBoxEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="Mobility"
+                            Default: =ThisItem.Mobility
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,Mobility)
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            Required: =false
+                            Update: =DataCardValue105.Selected
+                            Visible: =!IsBlank(drpDischargeStatus.Selected) && drpDischargeStatus.Selected.Value <> "4 DIED ON HBHC"
+                            Width: =461
+                            WidthFit: =true
+                            X: =1
+                            Y: =16
+                            ZIndex: =2
+
+                            DataCardKey105 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue105 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].Mobility)
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey105.Y + DataCardKey105.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage103 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue105.Y + DataCardValue105.Height
+                                ZIndex: =3
+
+                            StarVisible103 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey105.Y
+                                ZIndex: =4
+
+                        BehaviorProblems_DataCard2 As typedDataCard.fluentV9ComboBoxEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="BehaviorProblems"
+                            Default: =ThisItem.'Behavior Problems'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Behavior Problems')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            Required: =false
+                            Update: =DataCardValue107.Selected
+                            Visible: =!IsBlank(drpDischargeStatus.Selected) && drpDischargeStatus.Selected.Value <> "4 DIED ON HBHC"
+                            Width: =461
+                            WidthFit: =true
+                            X: =1
+                            Y: =17
+                            ZIndex: =2
+
+                            DataCardKey107 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue107 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].'Behavior Problems')
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey107.Y + DataCardKey107.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage105 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue107.Y + DataCardValue107.Height
+                                ZIndex: =3
+
+                            StarVisible105 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey107.Y
+                                ZIndex: =4
+
+                        DisturbanceOfMood_DataCard2 As typedDataCard.fluentV9ComboBoxEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="DisturbanceOfMood"
+                            Default: =ThisItem.'Disturbance Of Mood'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Disturbance Of Mood')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            Required: =false
+                            Update: =DataCardValue109.Selected
+                            Visible: =!IsBlank(drpDischargeStatus.Selected) && drpDischargeStatus.Selected.Value <> "4 DIED ON HBHC"
+                            Width: =461
+                            WidthFit: =true
+                            X: =1
+                            Y: =18
+                            ZIndex: =2
+
+                            DataCardKey109 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue109 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].'Disturbance Of Mood')
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey109.Y + DataCardKey109.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage107 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue109.Y + DataCardValue109.Height
+                                ZIndex: =3
+
+                            StarVisible107 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey109.Y
+                                ZIndex: =4
+
+                        DischargeType_DataCard1 As typedDataCard.fluentV9ComboBoxEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="DischargeType"
+                            Default: =ThisItem.'Discharge Type'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Discharge Type')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =102
+                            Required: =false
+                            Update: =DataCardValue114.Selected
+                            Visible: =!IsBlank(drpDischargeStatus.Selected) && drpDischargeStatus.Selected.Value <> "4 DIED ON HBHC"
+                            Width: =461
+                            WidthFit: =true
+                            X: =1
+                            Y: =19
+                            ZIndex: =2
+
+                            DataCardKey114 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue114 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].'Discharge Type')
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey114.Y + DataCardKey114.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage112 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue114.Y + DataCardValue114.Height
+                                ZIndex: =3
+
+                            StarVisible112 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey114.Y
+                                ZIndex: =4
+
+                        WhereDidTheDeathOccur_DataCard1 As typedDataCard.fluentV9ComboBoxEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="WhereDidTheDeathOccur"
+                            Default: =ThisItem.'Where Did The Death Occur'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Where Did The Death Occur')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =70
+                            Required: =false
+                            Update: =DataCardValue116.Selected
+                            Visible: |-
+                                =(
+                                    !IsBlank(drpDischargeStatus.Selected) && 
+                                    drpDischargeStatus.Selected.Value = "DIED ON HBHC"
+                                ) || (
+                                    !IsBlank(DataCardValue115.Selected.Value) && 
+                                    DataCardValue115.Selected.Value = "Yes"
+                                )
+                                //true
+                            Width: =461
+                            WidthFit: =true
+                            X: =1
+                            Y: =20
+                            ZIndex: =2
+
+                            DataCardKey116 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue116 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].'Where Did The Death Occur')
+                                Required: =Parent.Required
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey116.Y + DataCardKey116.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage114 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue116.Y + DataCardValue116.Height
+                                ZIndex: =3
+
+                            StarVisible114 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey116.Y
+                                ZIndex: =4
+
+                        IsFamilyInterestedInBereavementLetters_DataCard1 As typedDataCard.fluentV9ComboBoxMultiSelectEditCard:
+                            BorderColor: =RGBA(245, 245, 245, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="IsFamilyInterestedInBereavementL"
+                            Default: =ThisItem.'Is Family Interested In Bereavement Letters'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@HBHCDischargeFormData],DataSourceInfo.DisplayName,'Is Family Interested In Bereavement Letters')
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =83
+                            Required: =false
+                            Update: =DataCardValue118.SelectedItems
+                            Visible: |-
+                                =!IsBlank(drpDischargeStatus.Selected) && 
+                                drpDischargeStatus.Selected.Value = "4 DIED ON HBHC"
+                                
+                                //(
+                                    //!IsBlank(drpDischargeStatus.Selected) && 
+                                    //drpDischargeStatus.Selected.Value = "DIED ON HBHC"
+                                //) || (
+                                    //!IsBlank(DataCardValue115.Selected.Value) && 
+                                    //DataCardValue115.Selected.Value = "Yes"
+                                //)
+                            Width: =461
+                            WidthFit: =true
+                            X: =1
+                            Y: =21
+                            ZIndex: =2
+
+                            DataCardKey118 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =22
+                                Text: =Parent.DisplayName
+                                Weight: ='TextCanvas.Weight'.Semibold
+                                Width: =Parent.Width - 48
+                                Wrap: =false
+                                X: =24
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue118 As Combobox.pcfdataset:
+                                AccessibleLabel: =Parent.DisplayName
+                                DefaultSelectedItems: =Parent.Default
+                                DisplayMode: =Parent.DisplayMode
+                                Height: =32
+                                Items: =Choices([@HBHCDischargeFormData].'Is Family Interested In Bereavement Letters')
+                                Required: =Parent.Required
+                                SelectMultiple: =true
+                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                Width: =Parent.Width - 48
+                                X: =24
+                                Y: =DataCardKey118.Y + DataCardKey118.Height + 4
+                                ZIndex: =2
+
+                            ErrorMessage116 As Text:
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =30
+                                Text: =Parent.Error
+                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =Parent.Width - 48
+                                Wrap: =true
+                                X: =24
+                                Y: =DataCardValue118.Y + DataCardValue118.Height
+                                ZIndex: =3
+
+                            StarVisible116 As Text:
+                                Align: ='TextCanvas.Align'.Center
+                                BorderColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FontColor: =
+                                Height: =20
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                X: =0
+                                Y: =DataCardKey118.Y
+                                ZIndex: =4
+
+                    ButtonContainer1_2 As groupContainer.horizontalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        FillPortions: =0
+                        Height: =50
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutGap: =3
+                        LayoutJustifyContent: =LayoutJustifyContent.Center
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =100
+                        LayoutMinWidth: =0
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingBottom: =10
+                        PaddingRight: =24
+                        PaddingTop: =10
+                        ZIndex: =2
+
+                        Icon2 As icon.Reset:
+                            AlignInContainer: =AlignInContainer.Center
+                            BorderColor: =RGBA(0, 0, 0, 0)
+                            Color: =RGBA(0, 120, 212, 1)
+                            DisabledBorderColor: =RGBA(245, 245, 245, 1)
+                            DisabledColor: =RGBA(225, 223, 221, 1)
+                            DisabledFill: =RGBA(0, 0, 0, 0)
+                            FocusedBorderThickness: =4
+                            Height: =50
+                            HoverBorderColor: =RGBA(0, 0, 0, 0)
+                            HoverColor: =RGBA(16, 110, 190, 1)
+                            HoverFill: =RGBA(0, 0, 0, 0)
+                            Icon: =Icon.Reset
+                            LayoutMaxHeight: =
+                            LayoutMaxWidth: =
+                            LayoutMinHeight: =50
+                            OnSelect: |-
+                                =ResetForm(frmHBPCDischarge);
+                                // Reset the form
+                                
+                                // Clear the SSN variable
+                                Set(varFormattedSSNDsch, "");
+                                
+                                
+                                // Show success message
+                                Notify("Form has been reset", NotificationType.Success)
+                            PaddingBottom: =10
+                            PaddingLeft: =5
+                            PaddingRight: =5
+                            PaddingTop: =10
+                            PressedBorderColor: =RGBA(0, 0, 0, 0)
+                            PressedColor: =RGBA(16, 110, 190, 1)
+                            PressedFill: =RGBA(0, 0, 0, 0)
+                            Width: =50
+                            ZIndex: =1
+
+                        Icon1_2 As icon.Home:
+                            AlignInContainer: =AlignInContainer.Center
+                            BorderColor: =RGBA(0, 0, 0, 0)
+                            Color: =RGBA(0, 120, 212, 1)
+                            DisabledBorderColor: =RGBA(245, 245, 245, 1)
+                            DisabledColor: =RGBA(225, 223, 221, 1)
+                            DisabledFill: =RGBA(0, 0, 0, 0)
+                            FocusedBorderThickness: =4
+                            Height: =50
+                            HoverBorderColor: =RGBA(0, 0, 0, 0)
+                            HoverColor: =RGBA(16, 110, 190, 1)
+                            HoverFill: =RGBA(0, 0, 0, 0)
+                            Icon: =Icon.Home
+                            LayoutMaxHeight: =
+                            LayoutMaxWidth: =
+                            OnSelect: =Navigate(HomeScreen, ScreenTransition.Fade)
+                            PaddingBottom: =5
+                            PaddingLeft: =5
+                            PaddingRight: =5
+                            PaddingTop: =5
+                            PressedBorderColor: =RGBA(0, 0, 0, 0)
+                            PressedColor: =RGBA(16, 110, 190, 1)
+                            PressedFill: =RGBA(0, 0, 0, 0)
+                            Width: =50
+                            ZIndex: =2
+
+                        CancelButton1_2 As Button:
+                            AccessibleLabel: ="Cancel form button"
+                            Appearance: ='ButtonCanvas.Appearance'.Secondary
+                            BasePaletteColor: =
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =32
+                            LayoutMaxHeight: =
+                            LayoutMaxWidth: =
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =96
+                            OnSelect: |-
+                                =ResetForm(frmHBPCDischarge);
+                                UpdateContext({PatientFormType: ""});
+                                Navigate(HomeScreen, ScreenTransition.Fade)
+                            Text: ="Cancel"
+                            Width: =100
+                            X: =0
+                            Y: =0
+                            ZIndex: =3
+
+                        SubmitButton1_2 As Button:
+                            AccessibleLabel: ="Submit form button"
+                            BasePaletteColor: =
+                            BorderColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =32
+                            LayoutMaxHeight: =
+                            LayoutMaxWidth: =
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =96
+                            OnSelect: |
+                                =SubmitForm(frmHBPCDischarge);
+                                // Show success notification
+                                        Notify(
+                                            "Your HBPC Discharge form has been submitted successfully", 
+                                            NotificationType.Success
+                                        );
+                                ResetForm(frmHBPCDischarge);
+                                Navigate(HomeScreen, ScreenTransition.Fade)
+                            Text: ="Submit"
+                            Width: =100
+                            X: =0
+                            Y: =0
+                            ZIndex: =4
+
