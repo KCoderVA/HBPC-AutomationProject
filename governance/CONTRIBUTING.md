@@ -35,7 +35,7 @@ Tags: `v0.1.1`, `v0.1.2`, etc. Use release script (future) or manual: `git tag -
 
 ## 5. Flow Export Handling
 After merge:
-1. Export current flow (solution package or direct export) – store zip in `tests/flowSuccess/`.
+1. Export current flow (solution package or direct export) – store zip in `docs/tests/flowSuccess/`.
 2. Name pattern: `exportedSuccess_HBPCNewAdmissionEmailWithSavedForm_<UTCYYYYMMDDHHmmss>.zip`.
 3. Update CHANGELOG Unreleased section → version.
 4. Tag release.
@@ -54,7 +54,7 @@ All dynamic value lines should follow pattern:
 Exceptions only documented via PR (e.g., using `Unknown`).
 
 ## 8. Field Schema Updates
-Update `config/fieldSchema.json` first. Run generator (future) to rebuild `docs/FIELD_SCHEMA.md`. Keep changes atomic.
+Update `docs/config/fieldSchema.json` first. Run generator (future) to rebuild `docs/FIELD_SCHEMA.md`. Keep changes atomic.
 
 ## 9. CI Expectations
 CI must pass prior to merge:
@@ -76,7 +76,7 @@ Add approvers in CODEOWNERS. Clinical stakeholder required for changes that add 
 4. New PR with explanation and validation runs.
 
 ## 12. Large HTML String Editing Guidelines
-- Prefer editing template (`tests/altered/altered_rawHTMLParameters.html`) before raw JSON.
+- Prefer editing template (`docs/tests/altered/altered_rawHTMLParameters.html`) before raw JSON.
 - Regenerate `inputs_pretty` using `scripts/regenerate_inputs_pretty.ps1`.
 - Avoid introducing multiline indentation that could break tokenization.
 - After edits, run upcoming `scripts/audit-compose.ps1` (once implemented) to validate expressions.

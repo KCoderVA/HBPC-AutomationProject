@@ -33,7 +33,7 @@ root/
 	docs/                  <-- Detailed reports, schema & commit narratives
 	scripts/               <-- Utility scripts (e.g., inputs_pretty regeneration)
 	src/                   <-- (Reserved for future automation or tooling code)
-	tests/                 <-- Reference artifacts (success/failure & altered states)
+	docs/tests/             <-- Reference artifacts (success/failure & altered states)
 		altered/             <-- Repaired outputs & authoritative JSON
 		flowFailure/         <-- Failing historical artifacts & export package
 		flowSuccess/         <-- Successful historical artifacts & export package
@@ -43,12 +43,12 @@ root/
 <!-- ARTIFACT-TABLE:START -->
 | File | Location | Purpose |
 |------|----------|---------|
-| `altered_RawCodeView.json` | `tests/altered/` | Repaired Compose action JSON (authoritative mid-body pattern). |
-| `altered_rawHTMLParameters.html` | `tests/altered/` | Editable HTML+expression template used during refactor. |
-| `flowFailure_RawCodeView.json` | `tests/flowFailure/` | Truncated failing version for forensic comparison. |
-| `flowSuccess_SaveHTML_INPUTS.html` | `tests/flowSuccess/` | Historical successful full HTML (blueprint for restore). |
-| `exportedFailure_*.zip` | `tests/flowFailure/` | Full environment flow export at failing state. |
-| `exportedSuccess_*.zip` | `tests/flowSuccess/` | Full environment flow export at successful state. |
+| `altered_RawCodeView.json` | `docs/tests/altered/` | Repaired Compose action JSON (authoritative mid-body pattern). |
+| `altered_rawHTMLParameters.html` | `docs/tests/altered/` | Editable HTML+expression template used during refactor. |
+| `flowFailure_RawCodeView.json` | `docs/tests/flowFailure/` | Truncated failing version for forensic comparison. |
+| `flowSuccess_SaveHTML_INPUTS.html` | `docs/tests/flowSuccess/` | Historical successful full HTML (blueprint for restore). |
+| `exportedFailure_*.zip` | `docs/tests/flowFailure/` | Full environment flow export at failing state. |
+| `exportedSuccess_*.zip` | `docs/tests/flowSuccess/` | Full environment flow export at successful state. |
 | `FLOW_RECONSTRUCTION_REPORT.md` | `docs/` | Verbose technical remediation & analysis. |
 | `FLOW_RECONSTRUCTION_REPORT_QUICK.md` | `docs/` | Concise stakeholder summary. |
 | `FIELD_SCHEMA.md` | `docs/` | Data dictionary / PHI classification scaffold (generated/enriched). |
@@ -58,7 +58,7 @@ root/
 | `PULL_REQUEST_TEMPLATE.md` | `.github/` | Standardized PR review checklist. |
 | `regenerate_inputs_pretty.ps1` | `scripts/` | Regenerates readable mirror of escaped HTML string. |
 | `changelog-finalize.ps1` | `scripts/` | Promotes Unreleased section in CHANGELOG to version + optional tag. |
-| `fieldSchema.json` | `config/` | Machine-readable authoritative field schema scaffold (drives future audits). |
+| `fieldSchema.json` | `docs/config/` | Machine-readable authoritative field schema scaffold (drives future audits). |
 | `GOVERNANCE.md` | `governance/` | Roles, versioning rules, release flow, incident response. |
 | `CONTRIBUTING.md` | `governance/` | Branching, commit conventions, PR requirements, PHI rules. |
 | `SECURITY.md` | `governance/` | Security & PHI reporting guidance. |

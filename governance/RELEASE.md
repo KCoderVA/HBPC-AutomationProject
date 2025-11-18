@@ -4,7 +4,7 @@ This document describes the manual release process (no CI dependency yet).
 
 ## 1. Pre-Release Checklist
 - [ ] Working tree clean (`git status`)
-- [ ] Field schema updated (`config/fieldSchema.json`)
+- [ ] Field schema updated (`docs/config/fieldSchema.json`)
 - [ ] Expression normalization (if planned) completed
 - [ ] CHANGELOG has `[Unreleased]` section populated
 - [ ] No PHI in newly added examples or docs
@@ -20,7 +20,7 @@ Pre-release tags (optional): `v0.2.0-rc.1`, `v0.2.0-rc.2` for candidate stabiliz
 
 ## 3. Steps
 1. Run manual audits (scripts forthcoming): expression fallback, `/Value` paths.
-2. Export flow → save as `tests/flowSuccess/exportedSuccess_HBPCNewAdmissionEmailWithSavedForm_<UTCSTAMP>.zip`.
+2. Export flow → save as `docs/tests/flowSuccess/exportedSuccess_HBPCNewAdmissionEmailWithSavedForm_<UTCSTAMP>.zip`.
 3. Update CHANGELOG `[Unreleased]` with final bullet points.
 4. Run `./scripts/changelog-finalize.ps1 -Version <x.y.z>`.
 5. Tag release: `git tag -a vX.Y.Z -m "vX.Y.Z: summary"`.

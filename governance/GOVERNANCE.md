@@ -19,7 +19,7 @@ MAJOR.MINOR.PATCH
 
 ## Release Flow
 1. Merge changes to `main` after PR approval.
-2. Run export of updated flow; place zip in `tests/flowSuccess/` with timestamped name (retain latest 3 success & 3 failure exports).
+2. Run export of updated flow; place zip in `docs/tests/flowSuccess/` with timestamped name (retain latest 3 success & 3 failure exports).
 3. Run expression audit script (pending implementation) – must pass.
 4. For pre-release stabilization use tags: `vX.Y.Z-rc.N` (release candidates) prior to final.
 5. Promote `[Unreleased]` section in CHANGELOG via `scripts/changelog-finalize.ps1 -Version <x.y.z>`.
@@ -38,7 +38,7 @@ MAJOR.MINOR.PATCH
 | altered_RawCodeView.json | Authoritative Compose action mid-body patterns. |
 | FIELD_SCHEMA.md | Data dictionary and PHI classification. |
 | CHANGELOG.md | Chronological human-readable history. |
-| config/fieldSchema.json | Machine-readable schema scaffold for automation. |
+| docs/config/fieldSchema.json | Machine-readable schema scaffold for automation. |
 | CI workflow (ci.yml) | Validates schema, README Quickstart, CHANGELOG Unreleased presence. |
 
 ## Deferred / Experimental Changes

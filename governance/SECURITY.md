@@ -47,7 +47,7 @@ If PHI is accidentally committed:
 | MRN | MRN000123 (generic pattern) |
 
 ## Sensitive Field Tracking
-Reference `config/fieldSchema.json` field objects will include:
+Reference `docs/config/fieldSchema.json` field objects will include:
 ```json
 {
   "name": "PatientFullSSN",

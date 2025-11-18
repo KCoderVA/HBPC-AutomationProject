@@ -20,8 +20,8 @@ jobs:
       - name: Validate fieldSchema.json
         shell: pwsh
         run: |
-          $schemaPath = 'config/fieldSchema.json'
-          $schemaSpec = 'config/fieldSchema.schema.json'
+          $schemaPath = 'docs/config/fieldSchema.json'
+          $schemaSpec = 'docs/config/fieldSchema.schema.json'
           if(!(Test-Path $schemaPath)){ Write-Error 'fieldSchema.json missing'; exit 1 }
           $json = Get-Content $schemaPath -Raw | ConvertFrom-Json
           if(-not $json.fields){ Write-Error 'No fields array found'; exit 1 }
@@ -49,7 +49,7 @@ jobs:
       - name: Auto-update README badge schema field count
         shell: pwsh
         run: |
-          $schemaPath = 'config/fieldSchema.json'
+          $schemaPath = 'docs/config/fieldSchema.json'
           $readmePath = 'README.md'
           if(!(Test-Path $schemaPath)){ Write-Error 'Schema file missing for badge update'; exit 1 }
           if(!(Test-Path $readmePath)){ Write-Error 'README.md missing'; exit 1 }
@@ -84,7 +84,7 @@ jobs:
           if($content -notmatch '<!-- BUILDINFO:START -->'){ Write-Error 'Build info markers missing'; exit 1 }
           $shortSha = (git rev-parse --short HEAD).Trim()
           $utcDate = (Get-Date).ToUniversalTime().ToString('yyyy-MM-dd')
-          $schemaPath = 'config/fieldSchema.json'
+          $schemaPath = 'docs/config/fieldSchema.json'
           $schemaCount = if(Test-Path $schemaPath){ (Get-Content $schemaPath -Raw | ConvertFrom-Json).fields.Count } else { 0 }
           # Determine last semantic tag
           $lastTag = (git tag --list 'v*' --sort=-creatordate | Select-Object -First 1)
@@ -115,7 +115,7 @@ jobs:
       - name: Generate build-manifest.json
         shell: pwsh
         run: |
-          $schemaPath = 'config/fieldSchema.json'
+          $schemaPath = 'docs/config/fieldSchema.json'
           $schemaCount = if(Test-Path $schemaPath){ (Get-Content $schemaPath -Raw | ConvertFrom-Json).fields.Count } else { 0 }
           $shortSha = (git rev-parse --short HEAD).Trim()
           $lastTag = (git tag --list 'v*' --sort=-creatordate | Select-Object -First 1)
@@ -136,8 +136,8 @@ jobs:
             schemaFieldCount = $schemaCount
           } | ConvertTo-Json -Depth 4
           if(!(Test-Path metrics)){ New-Item -ItemType Directory -Path metrics | Out-Null }
-          Set-Content metrics/build-manifest.json -Value $manifest -Encoding UTF8
-          git add metrics/build-manifest.json; git commit -m 'chore(metrics): update build-manifest snapshot' | Out-Null
+          Set-Content docs/metrics/build-manifest.json -Value $manifest -Encoding UTF8
+          git add docs/metrics/build-manifest.json; git commit -m 'chore(metrics): update build-manifest snapshot' | Out-Null
       - name: Policy version bump if changed (governance relocation)
         shell: pwsh
         run: |
@@ -168,7 +168,7 @@ jobs:
           $artifactLines = ($readme -split "`n") | Where-Object { $_ -match '^\| `.+` \| ' }
           $mentioned = @()
           foreach($l in $artifactLines){ $m = [regex]::Match($l,'`([^`]+)`'); if($m.Success){ $mentioned += $m.Groups[1].Value } }
-          $testFiles = Get-ChildItem tests -Recurse -File | ForEach-Object { $_.Name }
+          $testFiles = Get-ChildItem docs/tests -Recurse -File | ForEach-Object { $_.Name }
           $orphans = $testFiles | Where-Object { $_ -notin $mentioned }
           if($orphans){ Write-Warning "Orphaned test artifacts not referenced in README: $($orphans -join ', ')" } else { Write-Host 'No orphaned test artifacts' }
       - name: Orphaned docs detection (non-fatal)
@@ -210,7 +210,7 @@ jobs:
         shell: pwsh
         run: |
           $bad = @()
-          $files = git ls-files | Where-Object { $_ -notlike 'tests/flowSuccess/*' -and $_ -notlike 'tests/flowFailure/*' }
+          $files = git ls-files | Where-Object { $_ -notlike 'docs/tests/flowSuccess/*' -and $_ -notlike 'docs/tests/flowFailure/*' }
           foreach($f in $files){
             $text = Get-Content $f -Raw
             # SSN
@@ -227,7 +227,7 @@ jobs:
         shell: pwsh
         run: |
           $warn = @()
-          $files = git ls-files | Where-Object { $_ -notlike 'tests/flowSuccess/*' -and $_ -notlike 'tests/flowFailure/*' }
+          $files = git ls-files | Where-Object { $_ -notlike 'docs/tests/flowSuccess/*' -and $_ -notlike 'docs/tests/flowFailure/*' }
           $whitelistNames = @('Veteran Affairs','Health System','Admission Flow','Build Info','Power Automate','Saved Form')
           $whitelistPatterns = $whitelistNames | ForEach-Object { [regex]::Escape($_) }
           $joined = ($whitelistPatterns -join '|')
@@ -271,7 +271,7 @@ jobs:
       - name: Expression audit (Compose JSON)
         shell: pwsh
         run: |
-          $path = 'tests/altered/altered_RawCodeView.json'
+          $path = 'docs/tests/altered/altered_RawCodeView.json'
           if(!(Test-Path $path)){ Write-Host 'Compose JSON not found, skipping audit'; exit 0 }
           $raw = Get-Content $path -Raw
           $errors = @()
@@ -292,7 +292,7 @@ jobs:
       - name: Auto-sort schema fields
         shell: pwsh
         run: |
-          $path = 'config/fieldSchema.json'
+          $path = 'docs/config/fieldSchema.json'
           $orig = Get-Content $path -Raw | ConvertFrom-Json
           $sorted = ($orig.fields | Sort-Object internalName)
           $needs = $false
@@ -303,13 +303,13 @@ jobs:
             git add $path; git commit -m 'chore(schema): auto-sort fields' | Out-Null
           } else { Write-Host 'Schema already sorted' }
           # If build-manifest exists append build info reference slug to README build block
-          if(Test-Path 'metrics/build-manifest.json'){
+          if(Test-Path 'docs/metrics/build-manifest.json'){
             $readmePath = 'README.md'
             if(Test-Path $readmePath){
               $content = Get-Content $readmePath -Raw
               if($content -match '<!-- BUILDINFO:START -->'){ 
                 if($content -notmatch 'Metrics Manifest'){ 
-                  $content = [regex]::Replace($content,'(<!-- BUILDINFO:START -->.*?</div>)',"$1".Replace('</div>',' • Metrics Manifest <code>metrics/build-manifest.json</code></div>'))
+                  $content = [regex]::Replace($content,'(<!-- BUILDINFO:START -->.*?</div>)',"$1".Replace('</div>',' • Metrics Manifest <code>docs/metrics/build-manifest.json</code></div>'))
                   Set-Content $readmePath -Value $content -Encoding UTF8; git add $readmePath; git commit -m 'chore(readme): add metrics manifest reference' | Out-Null 
                 }
               }
@@ -320,7 +320,7 @@ jobs:
         run: |
           $mdPath = 'docs/FIELD_SCHEMA.md'
           if(!(Test-Path $mdPath)){ Write-Host 'FIELD_SCHEMA.md not present'; exit 0 }
-          $json = Get-Content config/fieldSchema.json -Raw | ConvertFrom-Json
+          $json = Get-Content docs/config/fieldSchema.json -Raw | ConvertFrom-Json
           $rows = foreach($f in $json.fields){ "| $($f.internalName) | $($f.displayLabel) | $($f.section) | $($f.category) | $($f.sensitivity) | $($f.dataType) |" }
           $table = @("<!-- SCHEMA-SUMMARY:START -->","| Internal | Label | Section | Category | Sensitivity | Type |","|---------|-------|---------|----------|------------|------|") + $rows + '<!-- SCHEMA-SUMMARY:END -->'
           $content = Get-Content $mdPath -Raw
@@ -404,15 +404,15 @@ jobs:
           $preview += "`n### Changed`n" + (($changed | ForEach-Object { "- $_" }) -join "`n")
           $preview += "`n### Fixed`n" + (($fixed | ForEach-Object { "- $_" }) -join "`n") + "`n"
           if(!(Test-Path metrics)){ New-Item metrics -ItemType Directory | Out-Null }
-          Set-Content metrics/release-notes-preview.md -Value $preview -Encoding UTF8
-          git add metrics/release-notes-preview.md; git commit -m 'docs(changelog): update release notes preview' | Out-Null
+          Set-Content docs/metrics/release-notes-preview.md -Value $preview -Encoding UTF8
+          git add docs/metrics/release-notes-preview.md; git commit -m 'docs(changelog): update release notes preview' | Out-Null
       - name: Metrics history append
         shell: pwsh
         run: |
-          $manifestPath = 'metrics/build-manifest.json'
+          $manifestPath = 'docs/metrics/build-manifest.json'
           if(!(Test-Path $manifestPath)){ Write-Host 'No build-manifest.json yet (earlier step may not have produced)'; exit 0 }
           $json = Get-Content $manifestPath -Raw
-          $history = 'metrics/build-history.jsonl'
+          $history = 'docs/metrics/build-history.jsonl'
           if(!(Test-Path $history)){ New-Item -ItemType File -Path $history | Out-Null }
           # Avoid duplicate commit entries
           $commit = (ConvertFrom-Json $json).commit
@@ -426,7 +426,7 @@ jobs:
           $whitelistPatterns = $whitelistNames | ForEach-Object { [regex]::Escape($_) }
           $joined = ($whitelistPatterns -join '|')
           $warn = @()
-          $files = git ls-files | Where-Object { $_ -notlike 'tests/flowSuccess/*' -and $_ -notlike 'tests/flowFailure/*' }
+          $files = git ls-files | Where-Object { $_ -notlike 'docs/tests/flowSuccess/*' -and $_ -notlike 'docs/tests/flowFailure/*' }
           foreach($f in $files){
             $text = Get-Content $f -Raw
             $phones = [regex]::Matches($text,'\b\d{3}[ -]?\d{3}[ -]?\d{4}\b') | ForEach-Object { $_.Value } | Where-Object { $_ -notmatch '[Xx\*]{3}-?[Xx\*]{2}-?[Xx\*]{4}' }
@@ -440,7 +440,7 @@ jobs:
       - name: Artifact table regeneration
         shell: pwsh
         run: |
-          $manifest = 'config/artifacts.manifest.json'
+          $manifest = 'docs/config/artifacts.manifest.json'
           if(!(Test-Path $manifest)){ Write-Host 'Artifact manifest missing'; exit 0 }
           $data = Get-Content $manifest -Raw | ConvertFrom-Json
           $rows = foreach($a in $data.artifacts){ "| `$($a.file)` | `$($a.location)` | $($a.purpose) |" }
@@ -462,7 +462,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          $schemaCount = (Get-Content config/fieldSchema.json -Raw | ConvertFrom-Json).fields.Count
+          $schemaCount = (Get-Content docs/config/fieldSchema.json -Raw | ConvertFrom-Json).fields.Count
           $fileCount = (git diff --name-only origin/main...HEAD | Measure-Object).Count
           $sha = (git rev-parse --short HEAD)
           $body = "PR Metrics:\n- Files Changed: $fileCount\n- Schema Fields Now: $schemaCount\n- Head: $sha"

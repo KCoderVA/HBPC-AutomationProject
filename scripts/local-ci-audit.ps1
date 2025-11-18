@@ -33,8 +33,8 @@ $fatal = @()
 $warn  = @()
 
 # 1. Schema validation
-$schemaPath = 'config/fieldSchema.json'
-$schemaSpec = 'config/fieldSchema.schema.json'
+$schemaPath = 'docs/config/fieldSchema.json'
+$schemaSpec = 'docs/config/fieldSchema.schema.json'
 if(!(Test-Path $schemaPath)){ Write-Fatal 'fieldSchema.json missing'; $fatal += 'schema-missing' } else {
   try { $schemaJson = Get-Content $schemaPath -Raw | ConvertFrom-Json } catch { Write-Fatal 'Invalid JSON in fieldSchema.json'; $fatal += 'schema-json' }
   if($schemaJson){

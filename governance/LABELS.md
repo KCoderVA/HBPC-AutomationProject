@@ -4,7 +4,7 @@ Standard labels to classify work and aid triage.
 
 | Label | Purpose | Usage Guidance |
 |-------|---------|----------------|
-| schema | Field schema changes or additions | Any modification to `config/fieldSchema.json` |
+| schema | Field schema changes or additions | Any modification to `docs/config/fieldSchema.json` |
 | expression | Flow expression normalization | Adjusting fallback or dereferencing patterns |
 | compliance | Security / PHI / license adherence | Touches `SECURITY.md` or license headers |
 | release-blocker | Must be resolved before tagging | Critical regression or missing required audit |
