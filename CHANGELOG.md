@@ -3,13 +3,14 @@
 All notable changes to the Veteran Admission Compose action & supporting repository artifacts.
 <!-- PHI MASKED: All example names replaced with 'Veteran' -->
 
-## [Unreleased]
+
+## [v0.4.1] - 2025-11-18
 ### Added
-- Pre-commit hook added to block unmasked PHI patterns (SSN, phone, name) in staged files.
+- Pre-commit hook now blocks only PHI identifier prefixes (Patient Name, Name, Veteran Name, etc.)
 ### Changed
-- README.md build info and last updated date refreshed for latest commit.
+- README.md build info and last updated date refreshed for latest commit
 ### Fixed
-- Expression audit artifacts populated; workspace file references aligned; duplicate Unreleased section removed.
+- Expression audit artifacts populated; workspace file references aligned; duplicate Unreleased section removed
 
 ## [v0.4.0] - 2025-11-07
 ### Added
