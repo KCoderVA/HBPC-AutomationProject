@@ -5,56 +5,30 @@
   "generated": "2025-11-07T00:00:00Z",
   "fields": [
     {
-      "internalName": "PatientFullName",
-      "displayLabel": "Patient Full Name",
+      "internalName": "AdmissionDate",
+      "displayLabel": "Admission Date",
       "section": "Identity",
-      "category": "DirectIdentifier",
-      "dataType": "Text",
+      "category": "Encounter",
+      "dataType": "DateTime",
       "choice": false,
       "requiresValueSuffix": false,
       "phi": true,
-      "sensitivity": "High",
+      "sensitivity": "Moderate",
       "fallback": "Not provided",
-      "notes": "Masked externally"
+      "notes": "May be shifted in redacted examples"
     },
     {
-      "internalName": "PatientFullSSN",
-      "displayLabel": "Patient Full SSN",
-      "section": "Identity",
-      "category": "DirectIdentifier",
-      "dataType": "Text",
-      "choice": false,
-      "requiresValueSuffix": false,
-      "phi": true,
-      "sensitivity": "High",
-      "fallback": "Not provided",
-      "notes": "Store masked"
-    },
-    {
-      "internalName": "PrimaryDiagnosis",
-      "displayLabel": "Primary Diagnosis",
+      "internalName": "CarePlanSummary",
+      "displayLabel": "Care Plan Summary",
       "section": "Clinical",
-      "category": "Condition",
+      "category": "Plan",
       "dataType": "Text",
       "choice": false,
       "requiresValueSuffix": false,
       "phi": true,
       "sensitivity": "Moderate",
       "fallback": "Not provided",
-      "notes": "Clinical condition"
-    },
-    {
-      "internalName": "Vision",
-      "displayLabel": "Vision",
-      "section": "Assessment",
-      "category": "Functional",
-      "dataType": "Choice",
-      "choice": true,
-      "requiresValueSuffix": true,
-      "phi": false,
-      "sensitivity": "Low",
-      "fallback": "Not provided",
-      "notes": "Single-choice"
+      "notes": "Narrative; avoid specifics"
     },
     {
       "internalName": "Hearing",
@@ -83,6 +57,32 @@
       "notes": "Wheelchair / Ambulatory / Bedbound"
     },
     {
+      "internalName": "PatientFullName",
+      "displayLabel": "Patient Full Name",
+      "section": "Identity",
+      "category": "DirectIdentifier",
+      "dataType": "Text",
+      "choice": false,
+      "requiresValueSuffix": false,
+      "phi": true,
+      "sensitivity": "High",
+      "fallback": "Not provided",
+      "notes": "Masked externally"
+    },
+    {
+      "internalName": "PatientFullSSN",
+      "displayLabel": "Patient Full SSN",
+      "section": "Identity",
+      "category": "DirectIdentifier",
+      "dataType": "Text",
+      "choice": false,
+      "requiresValueSuffix": false,
+      "phi": true,
+      "sensitivity": "High",
+      "fallback": "Not provided",
+      "notes": "Store masked"
+    },
+    {
       "internalName": "PrimaryCaregiverRelationship",
       "displayLabel": "Primary Caregiver Relationship",
       "section": "Social",
@@ -96,30 +96,17 @@
       "notes": "Spouse / Child / Other"
     },
     {
-      "internalName": "PreferredLanguage",
-      "displayLabel": "Preferred Language",
-      "section": "Identity",
-      "category": "Demographic",
-      "dataType": "Choice",
-      "choice": true,
-      "requiresValueSuffix": true,
-      "phi": false,
-      "sensitivity": "Low",
-      "fallback": "Not provided",
-      "notes": "Localization planning"
-    },
-    {
-      "internalName": "AdmissionDate",
-      "displayLabel": "Admission Date",
-      "section": "Identity",
-      "category": "Encounter",
-      "dataType": "DateTime",
+      "internalName": "PrimaryDiagnosis",
+      "displayLabel": "Primary Diagnosis",
+      "section": "Clinical",
+      "category": "Condition",
+      "dataType": "Text",
       "choice": false,
       "requiresValueSuffix": false,
       "phi": true,
       "sensitivity": "Moderate",
       "fallback": "Not provided",
-      "notes": "May be shifted in redacted examples"
+      "notes": "Clinical condition"
     },
     {
       "internalName": "PrimaryProviderName",
@@ -135,17 +122,30 @@
       "notes": "Mask in examples"
     },
     {
-      "internalName": "CarePlanSummary",
-      "displayLabel": "Care Plan Summary",
-      "section": "Clinical",
-      "category": "Plan",
-      "dataType": "Text",
-      "choice": false,
-      "requiresValueSuffix": false,
-      "phi": true,
-      "sensitivity": "Moderate",
+      "internalName": "PreferredLanguage",
+      "displayLabel": "Preferred Language",
+      "section": "Identity",
+      "category": "Demographic",
+      "dataType": "Choice",
+      "choice": true,
+      "requiresValueSuffix": true,
+      "phi": false,
+      "sensitivity": "Low",
       "fallback": "Not provided",
-      "notes": "Narrative; avoid specifics"
+      "notes": "Localization planning"
+    },
+    {
+      "internalName": "Vision",
+      "displayLabel": "Vision",
+      "section": "Assessment",
+      "category": "Functional",
+      "dataType": "Choice",
+      "choice": true,
+      "requiresValueSuffix": true,
+      "phi": false,
+      "sensitivity": "Low",
+      "fallback": "Not provided",
+      "notes": "Single-choice"
     }
   ],
   "fallbackStandard": "if(empty(value),'Not provided',value)",

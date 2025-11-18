@@ -1,5 +1,5 @@
 # Governance & Versioning
-<!-- POLICY-VERSION:START -->Policy Version: 1 (hash: INIT)<!-- POLICY-VERSION:END -->
+<!-- POLICY-VERSION:START -->Policy Version: 1 (hash: 6e9e333a0bfb9e1c4018883a774042673a23e16b4056f79690586f5079f72560)<!-- POLICY-VERSION:END -->
 
 ## Purpose
 Defines how changes are proposed, reviewed, versioned, and audited for the HBPC Admission Flow artifacts. Licensed under Apache 2.0 (see `LICENSE.txt`). Joint Copyright © 2025 Kyle J. Coder & Ara A. Zakarian.
