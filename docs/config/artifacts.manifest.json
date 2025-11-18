@@ -1,0 +1,31 @@
+{
+  "artifacts": [
+    {"file": "altered_RawCodeView.json", "location": "tests/altered/", "purpose": "Repaired Compose action JSON (authoritative mid-body pattern)."},
+    {"file": "altered_rawHTMLParameters.html", "location": "tests/altered/", "purpose": "Editable HTML+expression template used during refactor."},
+    {"file": "flowFailure_RawCodeView.json", "location": "tests/flowFailure/", "purpose": "Truncated failing version for forensic comparison."},
+    {"file": "flowSuccess_SaveHTML_INPUTS.html", "location": "tests/flowSuccess/", "purpose": "Historical successful full HTML (blueprint for restore)."},
+    {"file": "exportedFailure_*.zip", "location": "tests/flowFailure/", "purpose": "Full environment flow export at failing state."},
+    {"file": "exportedSuccess_*.zip", "location": "tests/flowSuccess/", "purpose": "Full environment flow export at successful state."},
+    {"file": "FLOW_RECONSTRUCTION_REPORT.md", "location": "docs/", "purpose": "Verbose technical remediation & analysis."},
+    {"file": "FLOW_RECONSTRUCTION_REPORT_QUICK.md", "location": "docs/", "purpose": "Concise stakeholder summary."},
+    {"file": "FIELD_SCHEMA.md", "location": "docs/", "purpose": "Data dictionary / PHI classification scaffold (generated/enriched)."},
+    {"file": "VERBOSE_COMMIT_MESSAGE.txt", "location": "docs/", "purpose": "Initial verbose commit narrative (baseline)."},
+    {"file": "QUICK_COMMIT_MESSAGE.txt", "location": "docs/", "purpose": "Abbreviated baseline commit message."},
+    {"file": "hbpc_admission_flow_issue.md", "location": ".github/ISSUE_TEMPLATE/", "purpose": "Structured issue reporting template."},
+    {"file": "PULL_REQUEST_TEMPLATE.md", "location": ".github/", "purpose": "Standardized PR review checklist."},
+    {"file": "regenerate_inputs_pretty.ps1", "location": "scripts/", "purpose": "Regenerates readable mirror of escaped HTML string."},
+    {"file": "changelog-finalize.ps1", "location": "scripts/", "purpose": "Promotes Unreleased section in CHANGELOG to version + optional tag."},
+    {"file": "fieldSchema.json", "location": "config/", "purpose": "Machine-readable authoritative field schema scaffold (drives future audits)."},
+    {"file": "GOVERNANCE.md", "location": "governance/", "purpose": "Roles, versioning rules, release flow, incident response."},
+    {"file": "CONTRIBUTING.md", "location": "governance/", "purpose": "Branching, commit conventions, PR requirements, PHI rules."},
+    {"file": "SECURITY.md", "location": "governance/", "purpose": "Security & PHI reporting guidance."},
+    {"file": "RELEASE.md", "location": "governance/", "purpose": "Release procedure & tagging policy."},
+    {"file": "LABELS.md", "location": "governance/", "purpose": "Issue label taxonomy."},
+  {"file": "copilot-instructions.md", "location": ".github/", "purpose": "Full AI collaboration contract & guardrails (authoritative)."},
+    {"file": "copilot-quickref.md", "location": "dev/", "purpose": "Condensed Copilot checklist."},
+  {"file": "HBPC_Automation.code-workspace", "location": "dev/", "purpose": "VS Code workspace settings."},
+    {"file": "CODEOWNERS", "location": "root", "purpose": "Automatic review assignment."},
+    {"file": "LICENSE.txt", "location": "root", "purpose": "Apache 2.0 license (joint copyright: Kyle J. Coder & Ara A. Zakarian)."},
+    {"file": "ARCHITECTURE.md", "location": "docs/", "purpose": "Flow component diagram & extension points."}
+  ]
+}

@@ -32,6 +32,11 @@ docs/*
 !docs/maintenance/
 !docs/metrics/
 !docs/tests/
+!docs/FIELD_SCHEMA.md
+!docs/CHANGE_VELOCITY_LOG.md
+!docs/ARCHITECTURE.md
+!docs/STRUCTURE_MAP.md
+
 
 # Explicit .git ignore (redundant: Git never tracks .git/, added for clarity per governance request)
 .git/
