@@ -1,6 +1,0 @@
-{
-  "greenMax": 10,
-  "yellowMax": 20,
-  "orangeMax": 30,
-  "description": "Adjust thresholds to shift badge color scaling for schema field count."
-}

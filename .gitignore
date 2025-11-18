@@ -22,9 +22,16 @@ __pycache__/
 # PowerShell transient files
 *.ps1xml
 
-# Archives / exports
-# Ignore entire archives directory recursively (historical baseline + forensic diffs not versioned going forward)
+
+# Hide archives/ recursively
 archives/
+
+# Hide everything in docs/ except config, maintenance, metrics, tests
+docs/*
+!docs/config/
+!docs/maintenance/
+!docs/metrics/
+!docs/tests/
 
 # Explicit .git ignore (redundant: Git never tracks .git/, added for clarity per governance request)
 .git/
