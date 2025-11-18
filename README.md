@@ -8,7 +8,7 @@
 <!-- BADGES:END -->
 <p><img alt="Schema Fields" src="assets/badges/schema-field-count.svg" /></p>
 
-<!-- BUILDINFO:START --><div><em>Build Info</em>: Commit <code>latest</code> • UTC <code>2025-11-18</code> • Last Tag <code>v0.5.0</code> • Commits Since Tag <code>0</code> • Files Since Tag <code>0</code> • Schema Fields Snapshot <code>11</code></div><!-- BUILDINFO:END -->
+<!-- BUILDINFO:START --><div><em>Build Info</em>: Commit <code>26f8a08</code> • UTC <code>2025-11-18</code> • Last Tag <code>v0.5.0</code> • Commits Since Tag <code>0</code> • Files Since Tag <code>0</code> • Schema Fields Snapshot <code>11</code></div><!-- BUILDINFO:END -->
 
 ## Overview
 This repository houses governance, forensic, and maintenance artifacts for the **Veteran Admission Email With Saved Form** and **Veteran Discharge Email With Saved Form** Power Automate flows. Each flow generates a structured HTML summary populated from SharePoint list item data. Reconstruction (v0.1.0 baseline) restored truncated middle sections for Admission; v0.5.0 adds Discharge flow remediation and documentation. Governance, tracked exports, architecture documentation, and config scaffolding are maintained for both flows.

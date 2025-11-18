@@ -7,6 +7,14 @@
 ### Changed
 - Updated README, architecture, and artifact tables to reflect new Discharge flow and v0.5.0 release.
 
+## [Unreleased]
+### Added
+- (placeholder)
+### Changed
+- (placeholder)
+### Fixed
+- (placeholder)
+
 # CHANGELOG
 
 All notable changes to the Veteran Admission Compose action & supporting repository artifacts.
