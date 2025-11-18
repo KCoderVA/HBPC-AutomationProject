@@ -8,10 +8,11 @@
 <!-- BADGES:END -->
 <p><img alt="Schema Fields" src="assets/badges/schema-field-count.svg" /></p>
 
-<!-- BUILDINFO:START --><div><em>Build Info</em>: Commit <code>5f68396</code> • UTC <code>2025-11-07</code> • Last Tag <code>v0.4.0</code> • Commits Since Tag <code>0</code> • Files Since Tag <code>0</code> • Schema Fields Snapshot <code>11</code></div><!-- BUILDINFO:END -->
+<!-- BUILDINFO:START --><div><em>Build Info</em>: Commit <code>d8ceb18</code> • UTC <code>2025-11-18</code> • Last Tag <code>v0.4.0</code> • Commits Since Tag <code>2</code> • Files Since Tag <code>5</code> • Schema Fields Snapshot <code>11</code></div><!-- BUILDINFO:END -->
 
 ## Overview
-This repository houses governance, forensic, and maintenance artifacts for the **HBPC New Admission Email With Saved Form** Power Automate flow. The flow generates a structured HTML admission summary populated from SharePoint list item data. Reconstruction (v0.1.0 baseline) restored truncated middle sections; subsequent governance (v0.1.1) introduced tracked exports, architecture documentation, and config scaffolding; current end-of-day adds formal governance + CI + semantic versioning support.
+This repository houses governance, forensic, and maintenance artifacts for the **Veteran Admission Email With Saved Form** Power Automate flow. The flow generates a structured HTML admission summary populated from SharePoint list item data. Reconstruction (v0.1.0 baseline) restored truncated middle sections; subsequent governance (v0.1.1) introduced tracked exports, architecture documentation, and config scaffolding; current end-of-day adds formal governance + CI + semantic versioning support.
+<!-- PHI MASKED: All example names replaced with 'Veteran' -->
 
 ## Quickstart (60 Seconds)
 1. Clone: `git clone <repo>` & checkout `main`.
@@ -148,5 +149,5 @@ Artifacts reference HBPC clinical workflows. All committed examples must be de-i
 EOD 2025-11-07: Baseline reconstruction (v0.1.0) + governance/structure enhancements (v0.1.1) + formal contributor, versioning, CI, architecture & schema scaffolds now in place. Pending automation (audit + normalization) slated for v0.1.2. Badge schema field count will be updated via future automation script.
 
 ---
-_Last updated: 2025-11-07 (EOD)_
+_Last updated: 2025-11-18 (EOD)_
 

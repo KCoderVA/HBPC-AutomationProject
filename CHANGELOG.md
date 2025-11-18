@@ -1,14 +1,15 @@
 # CHANGELOG
 
-All notable changes to the HBPC Admission Compose action & supporting repository artifacts.
+All notable changes to the Veteran Admission Compose action & supporting repository artifacts.
+<!-- PHI MASKED: All example names replaced with 'Veteran' -->
 
 ## [Unreleased]
 ### Added
-- (placeholder)
+- Pre-commit hook added to block unmasked PHI patterns (SSN, phone, name) in staged files.
 ### Changed
-- (placeholder)
+- README.md build info and last updated date refreshed for latest commit.
 ### Fixed
-- (placeholder)
+- Expression audit artifacts populated; workspace file references aligned; duplicate Unreleased section removed.
 
 ## [v0.4.0] - 2025-11-07
 ### Added
