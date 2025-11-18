@@ -45,3 +45,8 @@ scratch/
 # flow_export_*/
 
 # End of file
+\n+# ----- Sensitive Artifacts (must never be reintroduced) -----
+# Folder contains hash inventory and related metadata not for public sharing
+docs/metadata/
+# Script enumerates and verifies hashes; keep internal only
+scripts/verify_hashes.ps1
