@@ -23,7 +23,7 @@
     {"file": "LABELS.md", "location": "governance/", "purpose": "Issue label taxonomy."},
   {"file": "copilot-instructions.md", "location": ".github/", "purpose": "Full AI collaboration contract & guardrails (authoritative)."},
     {"file": "copilot-quickref.md", "location": "dev/", "purpose": "Condensed Copilot checklist."},
-    {"file": "HBPC_AdmitsDischarges.code-workspace", "location": "dev/", "purpose": "VS Code workspace settings."},
+  {"file": "HBPC_Automation.code-workspace", "location": "dev/", "purpose": "VS Code workspace settings."},
     {"file": "CODEOWNERS", "location": "root", "purpose": "Automatic review assignment."},
     {"file": "LICENSE.txt", "location": "root", "purpose": "Apache 2.0 license (joint copyright: Kyle J. Coder & Ara A. Zakarian)."},
     {"file": "ARCHITECTURE.md", "location": "docs/", "purpose": "Flow component diagram & extension points."}

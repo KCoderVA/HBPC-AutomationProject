@@ -4,11 +4,6 @@ All notable changes to the HBPC Admission Compose action & supporting repository
 
 ## [Unreleased]
 ### Added
-### Changed
-### Fixed
-
-## [Unreleased]
-### Added
 - (placeholder)
 ### Changed
 - (placeholder)

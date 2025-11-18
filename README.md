@@ -65,7 +65,7 @@ root/
 | `LABELS.md` | `governance/` | Issue label taxonomy. |
 | `copilot-instructions.md` | `.github/` | Full AI collaboration contract & guardrails (authoritative). |
 | `copilot-quickref.md` | `dev/` | Condensed Copilot checklist. |
-| `HBPC_AdmitsDischarges.code-workspace` | `dev/` | VS Code workspace settings. |
+| `HBPC_Automation.code-workspace` | `dev/` | VS Code workspace settings. |
 | `CODEOWNERS` | root | Automatic review assignment. |
 | `LICENSE.txt` | root | Apache 2.0 license (joint copyright: Kyle J. Coder & Ara A. Zakarian). |
 | `ARCHITECTURE.md` | `docs/` | Flow component diagram & extension points. |
