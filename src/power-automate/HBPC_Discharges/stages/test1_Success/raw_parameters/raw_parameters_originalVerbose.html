@@ -1,0 +1,453 @@
+<!--
+    File Description:   Extracted flow raw code prior to initiation of Test #1, detailing the additional lines of code and dynamic content added to rebuild the missing sections that previously existed during the last successful run of the flow
+    File Purpose:   To help with debugging flow issues by providing a snapshot of the raw Power Automate "Compose" input body that is used to compile the final .html document that will be created when Test #1 is initiated
+    Flow name: HBPc Discharge Notification
+    Flow Direct Edit URL:   https://make.gov.powerautomate.us/environments/Default-e95f1b23-abaf-45ee-821d-b7ab251ab3bf/flows/shared/964fc9b5-b540-4940-ba88-1e998138e7d2
+    Flow Step Type:  Compose
+    Flow Step Name:  Save-HTML-Document
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HBPC_Discharge_@{coalesce(if(empty(triggerOutputs()?['body/HBPCPACTTeam']), 'Hines', if(contains(string(triggerOutputs()?['body/HBPCPACTTeam']), 'Value'), split(split(string(triggerOutputs()?['body/HBPCPACTTeam']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/HBPCPACTTeam']))), 'Hines')}_@{coalesce(triggerOutputs()?['body/PatientFullName'], 'Unknown Patient')}</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            line-height: 1.4;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header { 
+            background-color: #1f4e79; 
+            color: white; 
+            padding: 20px; 
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0 0 10px 0;
+            font-size: 28px;
+        }
+        .header h2 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: normal;
+        }
+        .document-title {
+            background-color: #f8f9fa;
+            border: 2px solid #dc3545;
+            padding: 15px;
+            margin: 0;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            font-weight: bold;
+            color: #dc3545;
+            letter-spacing: 1px;
+        }
+        .team-badge-section {
+            text-align: center;
+            padding: 15px;
+            background-color: #fff;
+        }
+        .team-badge {
+            display: inline-block;
+            background-color: #dc3545;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border: 3px solid #dc3545;
+        }
+        .content {
+            padding: 30px;
+        }
+        .section { 
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+        }
+        .section-title { 
+            background-color: #1f4e79;
+            color: white;
+            padding: 12px 15px;
+            margin: -20px -20px 15px -20px;
+            font-weight: bold;
+            font-size: 16px;
+            border-radius: 8px 8px 0 0;
+        }
+        .field-row { 
+            display: flex; 
+            margin: 8px 0; 
+            border-bottom: 1px dotted #dee2e6;
+            padding-bottom: 8px;
+            align-items: flex-start;
+        }
+        .field-label { 
+            font-weight: bold; 
+            width: 250px; 
+            flex-shrink: 0;
+            color: #1f4e79;
+        }
+        .field-value { 
+            flex: 1; 
+            padding-left: 15px;
+            word-break: break-word;
+        }
+        .summary-section {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+        .summary-section h3 {
+            color: #856404;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .summary-table th {
+            background-color: #1f4e79;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+        .summary-table td {
+            padding: 12px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .summary-table tr:last-child td {
+            border-bottom: none;
+        }
+        .footer { 
+            background-color: #1f4e79;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+        .highlight-box {
+            background-color: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .highlight-box h4 {
+            color: #721c24;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .highlight-box p {
+            color: #721c24;
+            margin: 0;
+        }
+        .death-section {
+            background-color: #f8f9fa;
+            border-left: 4px solid #6c757d;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .death-section h4 {
+            color: #495057;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        @media print {
+            body { 
+                margin: 0; 
+                background-color: white;
+            }
+            .container {
+                box-shadow: none;
+                max-width: none;
+            }
+            .section { 
+                page-break-inside: avoid; 
+                border: 1px solid #ccc;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Department of Veterans Affairs</h1>
+            <h2>Hines VA Medical Center</h2>
+            <h2>Home Based Primary Care (HBPC) Discharge Form</h2>
+        </div>
+        
+        <div class="document-title">
+            HBPC_Discharge_@{coalesce(if(empty(triggerOutputs()?['body/HBPCPACTTeam']), 'Hines', if(contains(string(triggerOutputs()?['body/HBPCPACTTeam']), 'Value'), split(split(string(triggerOutputs()?['body/HBPCPACTTeam']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/HBPCPACTTeam']))), 'Hines')}_@{coalesce(triggerOutputs()?['body/PatientFullName'], 'Unknown Patient')}
+        </div>
+        
+        <div class="team-badge-section">
+            <div class="team-badge">
+                @{coalesce(if(empty(triggerOutputs()?['body/HBPCPACTTeam']), 'HINES TEAM', if(contains(string(triggerOutputs()?['body/HBPCPACTTeam']), 'Value'), concat(split(split(string(triggerOutputs()?['body/HBPCPACTTeam']), '"Value":"')[1], '"')[0], ' TEAM'), concat(string(triggerOutputs()?['body/HBPCPACTTeam']), ' TEAM'))), 'HINES TEAM')}
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="highlight-box">
+                <h4>📋 Official HBPC Discharge Document</h4>
+                <p>This document contains the complete discharge form data for the termination of Home Based Primary Care services.</p>
+            </div>
+
+            <div class="summary-section">
+                <h3>📋 Discharge Summary</h3>
+                <table class="summary-table">
+                    <tr>
+                        <th>Patient Name</th>
+                        <td>@{coalesce(triggerOutputs()?['body/PatientFullName'], 'Not provided')}</td>
+                    </tr>
+                    <tr>
+                        <th>PACT Team</th>
+                        <td>@{coalesce(if(empty(triggerOutputs()?['body/HBPCPACTTeam']), 'Hines', if(contains(string(triggerOutputs()?['body/HBPCPACTTeam']), 'Value'), split(split(string(triggerOutputs()?['body/HBPCPACTTeam']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/HBPCPACTTeam']))), 'Hines')}</td>
+                    </tr>
+                    <tr>
+                        <th>Record ID</th>
+                        <td>#@{triggerOutputs()?['body/ID']}</td>
+                    </tr>
+                    <tr>
+                        <th>Discharge Date</th>
+                        <td>@{if(and(not(empty(triggerOutputs()?['body/DateEvaluated'])), not(equals(triggerOutputs()?['body/DateEvaluated'], null))), formatDateTime(convertTimeZone(triggerOutputs()?['body/DateEvaluated'], 'UTC', 'Central Standard Time'), 'MM/dd/yyyy'), 'Not provided')}</td>
+                    </tr>
+                    <tr>
+                        <th>Marital Status</th>
+                        <td>@{if(empty(triggerOutputs()?['body/MaritalStatus']), 'Not specified', if(contains(string(triggerOutputs()?['body/MaritalStatus']), 'Value'), split(split(string(triggerOutputs()?['body/MaritalStatus']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/MaritalStatus'])))}</td>
+                    </tr>
+                    <tr>
+                        <th>Usual Living Arrangements</th>
+                        <td>@{if(empty(triggerOutputs()?['body/UsualLivingArrangements']), 'Not specified', if(contains(string(triggerOutputs()?['body/UsualLivingArrangements']), 'Value'), split(split(string(triggerOutputs()?['body/UsualLivingArrangements']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/UsualLivingArrangements'])))}</td>
+                    </tr>
+                    <tr>
+                        <th>Form Submitted</th>
+                        <td>@{if(empty(outputs('Get_item')?['body/Created']), 'Not available', formatDateTime(convertTimeZone(outputs('Get_item')?['body/Created'], 'UTC', 'Central Standard Time'), 'MM/dd/yyyy hh:mm tt'))} CST</td>
+                    </tr>
+                    <tr>
+                        <th>Submitted By</th>
+                        <td>@{coalesce(outputs('Get_item')?['body/Author/DisplayName'], 'Unknown')}</td>
+                    </tr>
+                    <tr>
+                        <th>Discharge Status</th>
+                        <td>@{if(empty(triggerOutputs()?['body/DischargeStatus']), 'Not specified', if(contains(string(triggerOutputs()?['body/DischargeStatus']), 'Value'), split(split(string(triggerOutputs()?['body/DischargeStatus']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/DischargeStatus'])))}</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">Patient Information</div>
+                <div class="field-row">
+                    <div class="field-label">Patient Full Name:</div>
+                    <div class="field-value">@{coalesce(triggerOutputs()?['body/PatientFullName'], 'Not provided')}</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Patient Full SSN:</div>
+                    <div class="field-value">@{coalesce(triggerOutputs()?['body/PatientFullSSN'], 'Not provided')}</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Discharge Details</div>
+                <div class="field-row">
+                    <div class="field-label">Discharge Date:</div>
+                    <div class="field-value">@{if(and(not(empty(triggerOutputs()?['body/DateEvaluated'])), not(equals(triggerOutputs()?['body/DateEvaluated'], null))), formatDateTime(convertTimeZone(triggerOutputs()?['body/DateEvaluated'], 'UTC', 'Central Standard Time'), 'MM/dd/yyyy'), 'Not provided')}</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Discharge Status:</div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/DischargeStatus']), 'Not specified', if(contains(string(triggerOutputs()?['body/DischargeStatus']), 'Value'), split(split(string(triggerOutputs()?['body/DischargeStatus']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/DischargeStatus'])))}</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Discharge Type:</div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/DischargeType']), 'Not specified', if(contains(string(triggerOutputs()?['body/DischargeType']), 'Value'), split(split(string(triggerOutputs()?['body/DischargeType']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/DischargeType'])))}</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Transfer Destination: </div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/TransferDestination']), 'Not specified', if(contains(string(triggerOutputs()?['body/TransferDestination']), 'Value'), split(split(string(triggerOutputs()?['body/TransferDestination']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/TransferDestination'])))}</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Type Of Agency:</div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/TypeOfAgency']), 'Not specified', if(contains(string(triggerOutputs()?['body/TypeOfAgency']), 'Value'), split(split(string(triggerOutputs()?['body/TypeOfAgency']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/TypeOfAgency'])))}</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Medical Information</div>
+                <div class="field-row">
+                    <div class="field-label">Primary Diagnosis:</div>
+                    <div class="field-value">@{coalesce(triggerOutputs()?['body/PrimaryDiagnosis'], 'Not provided')}</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Secondary Diagnosis:</div>
+                    <div class="field-value">@{coalesce(triggerOutputs()?['body/SecondaryDiagnoses'], 'Not provided')}</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Functional Assessment at Discharge</div>
+                <div class="field-row">
+                    <div class="field-label">Vision:</div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/Vision']), 'Not assessed', if(contains(string(triggerOutputs()?['body/Vision']), 'Value'), split(split(string(triggerOutputs()?['body/Vision']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/Vision'])))}</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Hearing:</div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/Hearing']), 'Not assessed', if(contains(string(triggerOutputs()?['body/Hearing']), 'Value'), split(split(string(triggerOutputs()?['body/Hearing']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/Hearing'])))}</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Expressive Communication:</div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/ExpressiveCommunication']), 'Not assessed', if(contains(string(triggerOutputs()?['body/ExpressiveCommunication']), 'Value'), split(split(string(triggerOutputs()?['body/ExpressiveCommunication']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/ExpressiveCommunication'])))}</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Receptive Communication:</div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/ReceptiveCommunication']), 'Not assessed', if(contains(string(triggerOutputs()?['body/ReceptiveCommunication']), 'Value'), split(split(string(triggerOutputs()?['body/ReceptiveCommunication']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/ReceptiveCommunication'])))}</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Activities of Daily Living (ADL) at Discharge</div>
+                <div class="field-row">
+                    <div class="field-label">ADL Bathing or Shower:</div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/ADLBathingorShower']), 'Not assessed', if(contains(string(triggerOutputs()?['body/ADLBathingorShower']), 'Value'), split(split(string(triggerOutputs()?['body/ADLBathingorShower']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/ADLBathingorShower'])))}</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">ADL Dressing:</div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/ADLDressing']), 'Not assessed', if(contains(string(triggerOutputs()?['body/ADLDressing']), 'Value'), split(split(string(triggerOutputs()?['body/ADLDressing']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/ADLDressing'])))}</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">ADL Using Toilet:</div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/ADLUsingToilet']), 'Not assessed', if(contains(string(triggerOutputs()?['body/ADLUsingToilet']), 'Value'), split(split(string(triggerOutputs()?['body/ADLUsingToilet']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/ADLUsingToilet'])))}</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">ADL Transfer:</div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/ActivitiesOfDailyLiving']), 'Not assessed', if(contains(string(triggerOutputs()?['body/ActivitiesOfDailyLiving']), 'Value'), split(split(string(triggerOutputs()?['body/ActivitiesOfDailyLiving']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/ActivitiesOfDailyLiving'])))}</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">ADL Eating:</div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/ADLEating']), 'Not assessed', if(contains(string(triggerOutputs()?['body/ADLEating']), 'Value'), split(split(string(triggerOutputs()?['body/ADLEating']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/ADLEating'])))}</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">ADL Walking:</div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/ADLWalking']), 'Not assessed', if(contains(string(triggerOutputs()?['body/ADLWalking']), 'Value'), split(split(string(triggerOutputs()?['body/ADLWalking']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/ADLWalking'])))}</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Continence Assessment at Discharge</div>
+                <div class="field-row">
+                    <div class="field-label">Continence Bowel:</div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/Continence']), 'Not assessed', if(contains(string(triggerOutputs()?['body/Continence']), 'Value'), split(split(string(triggerOutputs()?['body/Continence']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/Continence'])))}</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Continence Bladder:</div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/ContinenceBladder']), 'Not assessed', if(contains(string(triggerOutputs()?['body/ContinenceBladder']), 'Value'), split(split(string(triggerOutputs()?['body/ContinenceBladder']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/ContinenceBladder'])))}</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Behavioral and Cognitive Assessment at Discharge</div>
+                <div class="field-row">
+                    <div class="field-label">Mobility:</div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/Mobility']), 'Not assessed', if(contains(string(triggerOutputs()?['body/Mobility']), 'Value'), split(split(string(triggerOutputs()?['body/Mobility']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/Mobility'])))}</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Adaptive Tasks:</div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/AdaptiveTasks']), 'Not assessed', if(contains(string(triggerOutputs()?['body/AdaptiveTasks']), 'Value'), split(split(string(triggerOutputs()?['body/AdaptiveTasks']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/AdaptiveTasks'])))}</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Behavior Problems:</div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/BehaviorProblems']), 'Not assessed', if(contains(string(triggerOutputs()?['body/BehaviorProblems']), 'Value'), split(split(string(triggerOutputs()?['body/BehaviorProblems']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/BehaviorProblems'])))}</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Disorientation Memory Impairment:</div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/DisorientationMemoryImpairment']), 'Not assessed', if(contains(string(triggerOutputs()?['body/DisorientationMemoryImpairment']), 'Value'), split(split(string(triggerOutputs()?['body/DisorientationMemoryImpairment']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/DisorientationMemoryImpairment'])))}</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Disturbance Of Mood:</div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/DisturbanceOfMood']), 'Not assessed', if(contains(string(triggerOutputs()?['body/DisturbanceOfMood']), 'Value'), split(split(string(triggerOutputs()?['body/DisturbanceOfMood']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/DisturbanceOfMood'])))}</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Caregiver Limitations:</div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/CaregiverLimitations']), 'Not assessed', if(contains(string(triggerOutputs()?['body/CaregiverLimitations']), 'Value'), split(split(string(triggerOutputs()?['body/CaregiverLimitations']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/CaregiverLimitations'])))}</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Care Transition Information</div>
+                <div class="field-row">
+                    <div class="field-label">New PCP Provider Information:</div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/NewPCPProviderInformation']), 'Not provided', if(contains(string(triggerOutputs()?['body/NewPCPProviderInformation']), 'Value'), split(split(string(triggerOutputs()?['body/NewPCPProviderInformation']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/NewPCPProviderInformation'])))}</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Enter New PCP Provider Data:</div>
+                    <div class="field-value">@{coalesce(triggerOutputs()?['body/EnterNewPCPProviderData'], 'Not provided')}</div>
+                </div>
+            </div>
+
+            <!-- Death-Related Information Section (Conditional Display) -->
+            <div class="death-section">
+                <h4>⚫ Death-Related Information (If Applicable)</h4>
+                <div class="field-row">
+                    <div class="field-label">Discharge Due To Death:</div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/DischargeDueToDeath']), 'Not specified', if(contains(string(triggerOutputs()?['body/DischargeDueToDeath']), 'Value'), split(split(string(triggerOutputs()?['body/DischargeDueToDeath']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/DischargeDueToDeath'])))}</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Cause Of Death:</div>
+                    <div class="field-value">@{coalesce(triggerOutputs()?['body/CauseOfDeath'], 'Not applicable')}</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Where Did The Death Occur:</div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/WhereDidTheDeathOccur']), 'Not specified', if(contains(string(triggerOutputs()?['body/WhereDidTheDeathOccur']), 'Value'), split(split(string(triggerOutputs()?['body/WhereDidTheDeathOccur']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/WhereDidTheDeathOccur'])))}</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Was The Veteran Enrolled In Hospice:</div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/WasTheVeteranEnrolledInHospice']), 'Not specified', if(contains(string(triggerOutputs()?['body/WasTheVeteranEnrolledInHospice']), 'Value'), split(split(string(triggerOutputs()?['body/WasTheVeteranEnrolledInHospice']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/WasTheVeteranEnrolledInHospice'])))}</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Is Family Interested In Bereavement Letters:</div>
+                    <div class="field-value">@{if(empty(triggerOutputs()?['body/IsFamilyInterestedInBereavementLetters']), 'Not specified', if(contains(string(triggerOutputs()?['body/IsFamilyInterestedInBereavementLetters']), 'Value'), split(split(string(triggerOutputs()?['body/IsFamilyInterestedInBereavementLetters']), '"Value":"')[1], '"')[0], string(triggerOutputs()?['body/IsFamilyInterestedInBereavementLetters'])))}</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Bereavement Name And Address:</div>
+                    <div class="field-value">@{coalesce(triggerOutputs()?['body/BereavementNameAndAddress'], 'Not provided')}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Document Generated:</strong> @{formatDateTime(convertTimeZone(utcNow(), 'UTC', 'Central Standard Time'), 'MM/dd/yyyy hh:mm tt')} CST</p>
+            <p><strong>Form Submitted:</strong> @{if(empty(outputs('Get_item')?['body/Created']), 'Not available', formatDateTime(convertTimeZone(outputs('Get_item')?['body/Created'], 'UTC', 'Central Standard Time'), 'MM/dd/yyyy hh:mm tt'))} CST</p>
+            <p><strong>Record ID:</strong> @{triggerOutputs()?['body/ID']}</p>
+            <p>Department of Veterans Affairs - Hines VA Medical Center</p>
+            <p>Home Based Primary Care Program - Discharge Documentation</p>
+            <p><em>This document can be printed to PDF using your browser's print function</em></p>
+        </div>
+    </div>
+</body>
+</html>

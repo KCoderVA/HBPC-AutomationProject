@@ -1,0 +1,25 @@
+FIX: Add missing "Marital Status" & "Usual Living Arrangements" rows to HBPC Discharge HTML summary (Compose step)
+
+Summary:
+During validation of the HBPC Discharge flow (test1_Success) two social history fields were absent from the generated HTML document and email: Marital Status and Usual Living Arrangements. These dynamic rows were never inserted into the "Discharge Summary" table of the Compose (Save-HTML-Document) action after earlier template copying.
+
+Key Changes:
+- Inserted 2 <tr> rows (lines 242–249 in raw_parameters_originalVerbose.html) with standard fallback pattern: if(empty(...),'Not specified', value).
+- Used same parsing logic applied to other choice fields (split/contains pattern retained for consistency with surrounding code).
+- Verified presence in both the summary table and downstream rendered output (compose_outputs & final report artifact).
+
+Impact:
+Restores complete discharge demographic/social context; eliminates manual SharePoint lookup for these two fields.
+
+Risk:
+Minimal (additive only). Failure mode if regression occurs: rows render "Not specified" but do not break layout.
+
+Validation:
+Test run (test1_Success) shows populated values when source list item contains data; fallback text appears for intentionally blank test item.
+
+Next Steps (Optional):
+Normalize remaining choice field extraction to direct /Value paths; introduce automated diff watcher for Compose HTML.
+
+Refs:
+- verbose_commit_originalSource.txt (detailed narrative)
+- verbose_report_originalSource.md (focused remediation report)

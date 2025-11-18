@@ -1,3 +1,12 @@
+# [v0.5.0] - 2025-11-18
+### Added
+- HBPC Discharge Power Automate flow documentation and artifacts (see `src/power-automate/HBPC_Discharges/stages/test1_Success`).
+- Remediation report and commit logs for Discharge flow bug fix (missing Marital Status and Usual Living Arrangements fields).
+### Fixed
+- Discharge flow Compose action now includes all required summary fields; validated fallback and rendering logic.
+### Changed
+- Updated README, architecture, and artifact tables to reflect new Discharge flow and v0.5.0 release.
+
 # CHANGELOG
 
 All notable changes to the Veteran Admission Compose action & supporting repository artifacts.

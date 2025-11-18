@@ -1,0 +1,107 @@
+[HBPC Discharge] Missing Summary Fields – Marital Status & Usual Living Arrangements (Resolved)
+
+## 1. Reporter Demographics (VA Employee)
+Employee Name: (Redacted)
+Title / Role: Analyst / Flow Co-Owner
+Team / Service Line: HBPC Program
+Work Email Address: (Redacted)
+Office / Location: Hines VA Medical Center
+Phone / Extension: (Redacted)
+Date/Time Reported (Local CST): 2025-11-18 ~08:30 CST
+Time Zone of Reporter: CST
+Is Reporter a Flow Co-Owner? (Yes/No): Yes
+
+## 2. Issue Classification
+Type: Omission (Configuration Defect)
+Severity (Initial): Medium
+Patient Safety Impact?: No
+PHI/PII Exposure Risk?: None (absence, not leakage)
+Operational Impact Summary: Discharge document/email lacked two social context fields, requiring manual SharePoint lookup for care coordination.
+
+## 3. Flow Context
+Flow Name: HBPc Discharge Notification
+Environment Name: Default (Production-equivalent)
+Stage: test1_Success
+Compose Action Name: Save-HTML-Document
+Trigger: SharePoint – When an item is created
+SharePoint List Name: HBPC Discharge Form (internal)
+Connectors Used: SharePoint, Data Operations
+Dependent Flows: None
+
+## 4. Affected Content Area
+[X] Discharge Summary Table
+[ ] Patient Information
+[ ] Medical Information
+[ ] Footer / Metadata
+[ ] Styling / Layout
+
+## 5. Field-Level Impact
+Marital Status: Missing → Added
+Usual Living Arrangements: Missing → Added
+Other fields: Present and unchanged
+
+## 6. Reproduction (Original Failure)
+1. Create discharge list item with Marital Status + Usual Living Arrangements populated.
+2. Flow runs; open generated HTML/email.
+3. Summary table lacks both rows.
+
+## 7. Expected vs Actual
+Expected: Both fields appear with their values or fallback text.
+Actual: Fields absent; no fallback provided.
+User Workaround: Manually open SharePoint list item.
+
+## 8. Attachments & Evidence
+Updated Source: raw_parameters_originalVerbose.html (lines 242–249)
+Rendered Validation: compose_outputs/output.html (post-fix) – shows added rows.
+Commit Artifacts: quick_commit_originalSource.txt, verbose_commit_originalSource.txt
+Report: verbose_report_originalSource.md
+
+## 9. Timeline
+2025-11-18 08:30 CST – Issue reported.
+2025-11-18 09:00 CST – Lines inserted, local validation.
+2025-11-18 09:10 CST – Test run confirms presence (test1_Success).
+
+## 10. Root Cause (Confirmed)
+Fields never added after folder clone from Admissions remediation template; absence not flagged due to missing discharge summary requirements checklist.
+
+## 11. Remediation Actions
+- Added two <tr> rows using pattern: if(empty(field),'Not specified', parsed value).
+- Retained existing summary parsing style (split/contains pattern) for consistency.
+- Verified fallback behavior by submitting a test item with blanks.
+
+## 12. Validation
+Populated scenario → Values displayed.
+Empty scenario → "Not specified" displayed.
+HTML integrity → Table structure intact; no CSS regression.
+No unintended side-effects on other summary rows.
+
+## 13. Risk Assessment
+Change Type: Additive.
+Rollback: Remove added lines (242–249) or restore prior artifact from commit history.
+Residual Risk: Low; future changes could still miss fields without automated validation.
+
+## 14. Preventative / Follow-Up Recommendations
+1. Create discharge summary field checklist (governance doc update).
+2. Add script to assert presence of required labels inside raw_parameters HTML.
+3. Normalize choice field extraction globally (replace split/contains with direct /Value dereference).
+4. Add export hashing to metadata/hashes.json post successful stage commits.
+
+## 15. Triage & Assignment
+Triage Owner: Analyst
+Assigned Engineer: Analyst
+SLA Target Date: Met (same day)
+Resolution Date: 2025-11-18
+Close Code: Fixed
+
+## 16. Additional Notes
+Only two rows changed; unrelated admissions reconstruction language removed from artifacts to avoid confusion.
+
+## 17. Submission Checklist
+[X] Problem described
+[X] Impact assessed
+[X] Root cause identified
+[X] Remediation documented
+[X] Validation performed
+[X] Recommendations listed
+
+-- End of Filled Issue --

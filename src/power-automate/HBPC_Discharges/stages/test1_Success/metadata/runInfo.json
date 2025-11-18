@@ -1,0 +1,41 @@
+{
+  "stage": "test4_partialSuccess",
+  "status": "PARTIAL_SUCCESS",
+  "symptoms": ["Two mis-populating data blocks (HBPC Admission Date, Does the Veteran Use)", "Otherwise sections restored"],
+  "sourceArtifacts": {
+    "compose_inputs": "inputs.html",
+    "compose_outputs": "outputs.html",
+    "peek_raw_code": "peek_raw_code.json (partial metadata)",
+    "raw_parameters": "raw_parameters.html",
+    "reports": ["verbose_report.md", "quick_report.md"],
+    "commits": ["verbose_commit.txt", "quick_commit.txt"],
+    "issue": "issue.md"
+  },
+  "placeholders": [],
+  "migration": {
+    "copiedFrom": [
+      "test4_PartialSuccess_Compose(SaveHTML)_INPUTS.html",
+      "test4_PartialSuccess_Compose(SaveHTML)_OUTPUTS.html",
+      "test4_PartialSuccess_Compose(SaveHTML)_peekRawCode.json",
+      "test4_PartialSuccess_SaveHTML_rawHTMLParameters.html",
+      "test4_partialSuccess_Troubleshooting&Solution_verboseReport.md",
+      "test4_partialSuccess_Troubleshooting&Solution_quickReport.md",
+      "test4_partialSuccess_Troubleshooting&Solution_verboseCommitMessage.txt",
+      "test4_partialSuccess_Troubleshooting&Solution_quickCommitMessage.txt",
+      "test4_partialSuccess_Troubleshooting&Solution_filledIssue.txt"
+    ],
+    "performedOn": "2025-11-07",
+    "policy": "copy-only"
+  },
+  "exports": {
+    "zip": "exports/flow_export.zip",
+    "status": "present",
+    "normalizedOn": "2025-11-07",
+    "originalName": "test4_PartialSuccess_exportedFlowSourceCode.zip"
+  },
+  "archival": {
+    "policy": "non-destructive parallel + archive",
+    "hashFile": "metadata/hashes.json",
+    "placeholderRelocated": []
+  }
+}

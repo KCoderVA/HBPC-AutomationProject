@@ -8,10 +8,10 @@
 <!-- BADGES:END -->
 <p><img alt="Schema Fields" src="assets/badges/schema-field-count.svg" /></p>
 
-<!-- BUILDINFO:START --><div><em>Build Info</em>: Commit <code>d8ceb18</code> • UTC <code>2025-11-18</code> • Last Tag <code>v0.4.0</code> • Commits Since Tag <code>2</code> • Files Since Tag <code>5</code> • Schema Fields Snapshot <code>11</code></div><!-- BUILDINFO:END -->
+<!-- BUILDINFO:START --><div><em>Build Info</em>: Commit <code>latest</code> • UTC <code>2025-11-18</code> • Last Tag <code>v0.5.0</code> • Commits Since Tag <code>0</code> • Files Since Tag <code>0</code> • Schema Fields Snapshot <code>11</code></div><!-- BUILDINFO:END -->
 
 ## Overview
-This repository houses governance, forensic, and maintenance artifacts for the **Veteran Admission Email With Saved Form** Power Automate flow. The flow generates a structured HTML admission summary populated from SharePoint list item data. Reconstruction (v0.1.0 baseline) restored truncated middle sections; subsequent governance (v0.1.1) introduced tracked exports, architecture documentation, and config scaffolding; current end-of-day adds formal governance + CI + semantic versioning support.
+This repository houses governance, forensic, and maintenance artifacts for the **Veteran Admission Email With Saved Form** and **Veteran Discharge Email With Saved Form** Power Automate flows. Each flow generates a structured HTML summary populated from SharePoint list item data. Reconstruction (v0.1.0 baseline) restored truncated middle sections for Admission; v0.5.0 adds Discharge flow remediation and documentation. Governance, tracked exports, architecture documentation, and config scaffolding are maintained for both flows.
 <!-- PHI MASKED: All example names replaced with 'Veteran' -->
 
 ## Quickstart (60 Seconds)
@@ -43,17 +43,21 @@ root/
 <!-- ARTIFACT-TABLE:START -->
 | File | Location | Purpose |
 |------|----------|---------|
-| `altered_RawCodeView.json` | `docs/tests/altered/` | Repaired Compose action JSON (authoritative mid-body pattern). |
-| `altered_rawHTMLParameters.html` | `docs/tests/altered/` | Editable HTML+expression template used during refactor. |
-| `flowFailure_RawCodeView.json` | `docs/tests/flowFailure/` | Truncated failing version for forensic comparison. |
-| `flowSuccess_SaveHTML_INPUTS.html` | `docs/tests/flowSuccess/` | Historical successful full HTML (blueprint for restore). |
-| `exportedFailure_*.zip` | `docs/tests/flowFailure/` | Full environment flow export at failing state. |
-| `exportedSuccess_*.zip` | `docs/tests/flowSuccess/` | Full environment flow export at successful state. |
-| `FLOW_RECONSTRUCTION_REPORT.md` | `docs/` | Verbose technical remediation & analysis. |
-| `FLOW_RECONSTRUCTION_REPORT_QUICK.md` | `docs/` | Concise stakeholder summary. |
+| `altered_RawCodeView.json` | `docs/tests/altered/` | Repaired Compose action JSON (authoritative mid-body pattern, Admission). |
+| `altered_rawHTMLParameters.html` | `docs/tests/altered/` | Editable HTML+expression template used during Admission refactor. |
+| `flowFailure_RawCodeView.json` | `docs/tests/flowFailure/` | Truncated failing version for forensic comparison (Admission). |
+| `flowSuccess_SaveHTML_INPUTS.html` | `docs/tests/flowSuccess/` | Historical successful full HTML (Admission blueprint for restore). |
+| `test1_Success/` | `src/power-automate/HBPC_Discharges/stages/` | Remediated Discharge flow artifacts (HTML, inputs, outputs, commit logs, reports). |
+| `exports/flow_export.zip` | `src/power-automate/HBPC_Discharges/stages/test1_Success/` | Discharge flow export package (post-remediation). |
+| `verbose_report_originalSource.md` | `src/power-automate/HBPC_Discharges/stages/test1_Success/reports/` | Discharge remediation report. |
+| `verbose_commit_originalSource.txt` | `src/power-automate/HBPC_Discharges/stages/test1_Success/commits/` | Discharge verbose commit log. |
+| `exportedFailure_*.zip` | `docs/tests/flowFailure/` | Full environment flow export at failing state (Admission). |
+| `exportedSuccess_*.zip` | `docs/tests/flowSuccess/` | Full environment flow export at successful state (Admission). |
+| `FLOW_RECONSTRUCTION_REPORT.md` | `docs/` | Verbose technical remediation & analysis (Admission). |
+| `FLOW_RECONSTRUCTION_REPORT_QUICK.md` | `docs/` | Concise stakeholder summary (Admission). |
 | `FIELD_SCHEMA.md` | `docs/` | Data dictionary / PHI classification scaffold (generated/enriched). |
-| `VERBOSE_COMMIT_MESSAGE.txt` | `docs/` | Initial verbose commit narrative (baseline). |
-| `QUICK_COMMIT_MESSAGE.txt` | `docs/` | Abbreviated baseline commit message. |
+| `VERBOSE_COMMIT_MESSAGE.txt` | `docs/` | Initial verbose commit narrative (Admission baseline). |
+| `QUICK_COMMIT_MESSAGE.txt` | `docs/` | Abbreviated baseline commit message (Admission). |
 | `hbpc_admission_flow_issue.md` | `.github/ISSUE_TEMPLATE/` | Structured issue reporting template. |
 | `PULL_REQUEST_TEMPLATE.md` | `.github/` | Standardized PR review checklist. |
 | `regenerate_inputs_pretty.ps1` | `scripts/` | Regenerates readable mirror of escaped HTML string. |
@@ -146,7 +150,7 @@ Licensed under Apache 2.0 (see `LICENSE.txt`). Joint Copyright (c) 2025 Kyle J. 
 Artifacts reference HBPC clinical workflows. All committed examples must be de-identified. Do **not** include PHI (names, full addresses, unmasked SSN, MRNs) in issues, PRs, or screenshots. Use anonymization tooling (planned) for any real output prior to sharing externally.
 
 ## Status
-EOD 2025-11-07: Baseline reconstruction (v0.1.0) + governance/structure enhancements (v0.1.1) + formal contributor, versioning, CI, architecture & schema scaffolds now in place. Pending automation (audit + normalization) slated for v0.1.2. Badge schema field count will be updated via future automation script.
+EOD 2025-11-18: v0.5.0 released. HBPC Admission and Discharge flows now both remediated and documented. Governance, structure, CI, architecture, and schema scaffolds in place for both flows. Pending automation (audit + normalization) slated for future releases. Badge schema field count will be updated via future automation script.
 
 ---
 _Last updated: 2025-11-18 (EOD)_

@@ -1,0 +1,58 @@
+FIX: HBPC Discharge HTML Summary – Insert Missing "Marital Status" and "Usual Living Arrangements" Dynamic Rows
+
+SUMMARY
+The HBPC Discharge flow (Compose step: Save-HTML-Document) omitted two required social context fields in the "Discharge Summary" HTML table. These omissions reduced informational completeness for downstream reviewers and forced manual SharePoint list lookups. Added two <tr> rows with robust fallback logic; validated output across populated and empty field scenarios in test1_Success stage.
+
+PROBLEM STATEMENT
+Generated Discharge HTML document lacked "Marital Status" and "Usual Living Arrangements" entries despite data being captured on the originating SharePoint list item. Stakeholders requested parity with Admission form summary quality and elimination of manual retrieval burden.
+
+ROOT CAUSE (LIKELY)
+1. Folder/template cloning from earlier Admissions remediation (test5_partialSuccess) did not include tailored Discharge summary social fields.
+2. Manual adaptation focused on other required discharge-specific rows; these two were never inserted.
+3. No automated diff or schema checklist flagged the absence.
+
+AFFECTED ARTIFACTS
+raw_parameters_originalVerbose.html (authoritative code; lines 242–249)
+compose_inputs/inputs_originalVerbose.html (source Compose HTML text – now shows rows)
+compose_outputs/outputs_originalVerbose.html (rendered HTML – validation of presence)
+reports/verbose_report_originalSource.md (updated by this commit)
+commits/* (this file and quick commit file updated)
+
+CHANGE DETAILS
+Added exactly two summary table rows:
+1. Marital Status → Expression pattern: if(empty(triggerOutputs()?['body/MaritalStatus']), 'Not specified', parseValue)
+2. Usual Living Arrangements → Expression pattern: if(empty(triggerOutputs()?['body/UsualLivingArrangements']), 'Not specified', parseValue)
+
+Parsing logic retains existing pattern used in nearby summary rows:
+if(contains(string(field),'Value'), split(split(string(field), '"Value":"')[1], '"')[0], string(field))
+Reason: Consistency with surrounding implementation until broader normalization effort converts all to direct /Value dereferencing.
+
+VALIDATION STEPS
+1. Test run with both fields populated → Correct labels rendered.
+2. Test run with fields empty → Fallback text "Not specified" displayed; layout preserved.
+3. Spot check email/client rendering – table integrity maintained; no unintended styling shifts.
+4. Confirm no HTML entity escaping issues (ampersands, quotes) by viewing in compose_outputs artifact.
+
+RISK & MITIGATION
+Risk Level: Low (additive only). No removal or alteration of existing expressions.
+Mitigation: Lines are isolated; failure would degrade to fallback text; rollback via previous staged artifacts possible.
+
+QUANTITATIVE METRICS
+New dynamic rows added: 2
+Lines touched: ~8 (including <tr> wrapper & indentation)
+Additional conditional expressions: 2
+Estimated effort: ~0.25 person-hours (analysis + edit + validation)
+
+FOLLOW-UP RECOMMENDATIONS
+1. Introduce a schema manifest for Discharge vs Admission flows listing required summary fields.
+2. Implement automated validator script: assert presence of each required label string inside raw_parameters HTML.
+3. Normalize choice field extraction to future-proof against JSON shape changes (adopt direct /Value path where feasible).
+4. Add unit-like snapshot (export + hash) into metadata/hashes.json after each successful stage deployment.
+
+LESSONS LEARNED
+Small omissions persist when relying on manual visual diffing; codify required summary field set; maintain parity check between Admission and Discharge flows; keep commit scope minimal and well documented for audit clarity.
+
+FINAL STATE
+Discharge HTML summary now includes both social context fields with reliable fallback handling, restoring completeness and reducing manual retrieval burden.
+
+END OF COMMIT MESSAGE

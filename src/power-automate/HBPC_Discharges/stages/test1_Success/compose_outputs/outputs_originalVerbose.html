@@ -1,0 +1,458 @@
+<!--
+    File Description:   Extracted details from after Test #1 completed partially successfully, confirming that the flow ran successfully after the addition of all the missing lines of data were added in last fix
+    File Purpose:   To help with debugging flow issues by providing a snapshot of the raw HTML code that makes compiles the final .html document generated during Test #1
+    Flow name: HBPC Discharge Notification
+    Flow Direct Edit URL:   https://make.gov.powerautomate.us/environments/Default-e95f1b23-abaf-45ee-821d-b7ab251ab3bf/flows/shared/964fc9b5-b540-4940-ba88-1e998138e7d2
+    Flow Step Type:  Compose
+    Flow Step Name:  Save-HTML-Document
+    Flow Step Body:  OUTPUTS
+    Testing Flow Run:  11/18/2025 @ 06:50 AM
+    Testing Outcome:  SUCCESS
+    Testing Flow Run URL:   https://make.gov.powerautomate.us/environments/Default-e95f1b23-abaf-45ee-821d-b7ab251ab3bf/flows/shared/964fc9b5-b540-4940-ba88-1e998138e7d2/details
+    Testing Output HTML File:   https://dvagov.sharepoint.com/:u:/r/sites/HomeBasedPrimaryCare941/Shared%20Documents/General/HBPC%20Discharges%20-%20Automated/HBPC_Discharge_30_Hines%204_(test)%20lastName,%20firstName,_2025-11-18.html?csf=1&web=1&e=jlWMXy
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HBPC_Discharge_Hines 4_(test) lastName, firstName,</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            line-height: 1.4;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header { 
+            background-color: #1f4e79; 
+            color: white; 
+            padding: 20px; 
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0 0 10px 0;
+            font-size: 28px;
+        }
+        .header h2 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: normal;
+        }
+        .document-title {
+            background-color: #f8f9fa;
+            border: 2px solid #dc3545;
+            padding: 15px;
+            margin: 0;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            font-weight: bold;
+            color: #dc3545;
+            letter-spacing: 1px;
+        }
+        .team-badge-section {
+            text-align: center;
+            padding: 15px;
+            background-color: #fff;
+        }
+        .team-badge {
+            display: inline-block;
+            background-color: #dc3545;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border: 3px solid #dc3545;
+        }
+        .content {
+            padding: 30px;
+        }
+        .section { 
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+        }
+        .section-title { 
+            background-color: #1f4e79;
+            color: white;
+            padding: 12px 15px;
+            margin: -20px -20px 15px -20px;
+            font-weight: bold;
+            font-size: 16px;
+            border-radius: 8px 8px 0 0;
+        }
+        .field-row { 
+            display: flex; 
+            margin: 8px 0; 
+            border-bottom: 1px dotted #dee2e6;
+            padding-bottom: 8px;
+            align-items: flex-start;
+        }
+        .field-label { 
+            font-weight: bold; 
+            width: 250px; 
+            flex-shrink: 0;
+            color: #1f4e79;
+        }
+        .field-value { 
+            flex: 1; 
+            padding-left: 15px;
+            word-break: break-word;
+        }
+        .summary-section {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+        .summary-section h3 {
+            color: #856404;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .summary-table th {
+            background-color: #1f4e79;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+        .summary-table td {
+            padding: 12px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .summary-table tr:last-child td {
+            border-bottom: none;
+        }
+        .footer { 
+            background-color: #1f4e79;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+        .highlight-box {
+            background-color: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .highlight-box h4 {
+            color: #721c24;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .highlight-box p {
+            color: #721c24;
+            margin: 0;
+        }
+        .death-section {
+            background-color: #f8f9fa;
+            border-left: 4px solid #6c757d;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .death-section h4 {
+            color: #495057;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        @media print {
+            body { 
+                margin: 0; 
+                background-color: white;
+            }
+            .container {
+                box-shadow: none;
+                max-width: none;
+            }
+            .section { 
+                page-break-inside: avoid; 
+                border: 1px solid #ccc;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Department of Veterans Affairs</h1>
+            <h2>Hines VA Medical Center</h2>
+            <h2>Home Based Primary Care (HBPC) Discharge Form</h2>
+        </div>
+        
+        <div class="document-title">
+            HBPC_Discharge_Hines 4_(test) lastName, firstName,
+        </div>
+        
+        <div class="team-badge-section">
+            <div class="team-badge">
+                Hines 4 TEAM
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="highlight-box">
+                <h4>📋 Official HBPC Discharge Document</h4>
+                <p>This document contains the complete discharge form data for the termination of Home Based Primary Care services.</p>
+            </div>
+
+            <div class="summary-section">
+                <h3>📋 Discharge Summary</h3>
+                <table class="summary-table">
+                    <tr>
+                        <th>Patient Name</th>
+                        <td>(test) lastName, firstName,</td>
+                    </tr>
+                    <tr>
+                        <th>PACT Team</th>
+                        <td>Hines 4</td>
+                    </tr>
+                    <tr>
+                        <th>Record ID</th>
+                        <td>#30</td>
+                    </tr>
+                    <tr>
+                        <th>Discharge Date</th>
+                        <td>11/17/2025</td>
+                    </tr>
+                    <tr>
+                        <th>Marital Status</th>
+                        <td>3 SEPARATED</td>
+                    </tr>
+                    <tr>
+                        <th>Usual Living Arrangements</th>
+                        <td>5 GROUP QUARTERS NOT HEALTH RELATED</td>
+                    </tr>
+                    <tr>
+                        <th>Form Submitted</th>
+                        <td>11/18/2025 05:49 AM CST</td>
+                    </tr>
+                    <tr>
+                        <th>Submitted By</th>
+                        <td>Coder, Kyle J.</td>
+                    </tr>
+                    <tr>
+                        <th>Discharge Status</th>
+                        <td>1 TRANSFERRED TO OTHER PROVIDER</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">Patient Information</div>
+                <div class="field-row">
+                    <div class="field-label">Patient Full Name:</div>
+                    <div class="field-value">(test) lastName, firstName,</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Patient Full SSN:</div>
+                    <div class="field-value">012-34-5678</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Discharge Details</div>
+                <div class="field-row">
+                    <div class="field-label">Discharge Date:</div>
+                    <div class="field-value">11/17/2025</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Discharge Status:</div>
+                    <div class="field-value">1 TRANSFERRED TO OTHER PROVIDER</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Discharge Type:</div>
+                    <div class="field-value">Full Discharge</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Transfer Destination: </div>
+                    <div class="field-value">1 VA PROVIDED CARE</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Type Of Agency:</div>
+                    <div class="field-value">2 SPECIALTY HOSPITAL</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Medical Information</div>
+                <div class="field-row">
+                    <div class="field-label">Primary Diagnosis:</div>
+                    <div class="field-value">(test) primaryDiagnosis</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Secondary Diagnosis:</div>
+                    <div class="field-value">(test) secondaryDiagnosis</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Functional Assessment at Discharge</div>
+                <div class="field-row">
+                    <div class="field-label">Vision:</div>
+                    <div class="field-value">1 NORMAL OR MINIMAL LOSS</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Hearing:</div>
+                    <div class="field-value">2 MODERATE LOSS</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Expressive Communication:</div>
+                    <div class="field-value">3 USES ONLY SIGN LANG., SYM. BD OR WRITING</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Receptive Communication:</div>
+                    <div class="field-value">4 UNDERSTANDS PRIMITIVE GESTURES. FACIAL EXPRESSIONS, PICTOGRAMS AND / OR ENVIRONMENTAL CUES</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Activities of Daily Living (ADL) at Discharge</div>
+                <div class="field-row">
+                    <div class="field-label">ADL Bathing or Shower:</div>
+                    <div class="field-value">2 RECEIVES HELP</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">ADL Dressing:</div>
+                    <div class="field-value">3 NOT DONE OR DONE WITHOUT PATIENT PARTICIPATION</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">ADL Using Toilet:</div>
+                    <div class="field-value">2 RECEIVES HELP</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">ADL Transfer:</div>
+                    <div class="field-value">3 NOT DONE OR DONE WITHOUT PATIENT PARTICIPATION</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">ADL Eating:</div>
+                    <div class="field-value">2 RECEIVES HELP</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">ADL Walking:</div>
+                    <div class="field-value">9 NOT DETERMINED</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Continence Assessment at Discharge</div>
+                <div class="field-row">
+                    <div class="field-label">Continence Bowel:</div>
+                    <div class="field-value">1 CONTINENT OR OSTOMY / CATHETER SELF-CARE</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Continence Bladder:</div>
+                    <div class="field-value">2 INCONTINENT OCCASIONALLY</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Behavioral and Cognitive Assessment at Discharge</div>
+                <div class="field-row">
+                    <div class="field-label">Mobility:</div>
+                    <div class="field-value">4 BED-DISABLED</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Adaptive Tasks:</div>
+                    <div class="field-value">2 REQUIRED HELP</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Behavior Problems:</div>
+                    <div class="field-value">2 EXHIBITS THIS CHARACTERISTIC</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Disorientation Memory Impairment:</div>
+                    <div class="field-value">1 DOES NOT EXHIBIT THIS CHARACTERISTIC</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Disturbance Of Mood:</div>
+                    <div class="field-value">2 EXHIBITS THIS CHARACTERISTIC</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Caregiver Limitations:</div>
+                    <div class="field-value">2 MODERATE</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Care Transition Information</div>
+                <div class="field-row">
+                    <div class="field-label">New PCP Provider Information:</div>
+                    <div class="field-value">VA</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Enter New PCP Provider Data:</div>
+                    <div class="field-value">(test) "Enter New PCP Provider Data" free-text</div>
+                </div>
+            </div>
+
+            <!-- Death-Related Information Section (Conditional Display) -->
+            <div class="death-section">
+                <h4>⚫ Death-Related Information (If Applicable)</h4>
+                <div class="field-row">
+                    <div class="field-label">Discharge Due To Death:</div>
+                    <div class="field-value">Not specified</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Cause Of Death:</div>
+                    <div class="field-value">Not applicable</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Where Did The Death Occur:</div>
+                    <div class="field-value">Not specified</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Was The Veteran Enrolled In Hospice:</div>
+                    <div class="field-value">Not specified</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Is Family Interested In Bereavement Letters:</div>
+                    <div class="field-value">Not specified</div>
+                </div>
+                <div class="field-row">
+                    <div class="field-label">Bereavement Name And Address:</div>
+                    <div class="field-value">Not provided</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Document Generated:</strong> 11/18/2025 05:50 AM CST</p>
+            <p><strong>Form Submitted:</strong> 11/18/2025 05:49 AM CST</p>
+            <p><strong>Record ID:</strong> 30</p>
+            <p>Department of Veterans Affairs - Hines VA Medical Center</p>
+            <p>Home Based Primary Care Program - Discharge Documentation</p>
+            <p><em>This document can be printed to PDF using your browser's print function</em></p>
+        </div>
+    </div>
+</body>
+</html>
