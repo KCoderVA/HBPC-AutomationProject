@@ -30,7 +30,7 @@ archives/
 docs/*
 !docs/config/
 !docs/maintenance/
-!docs/metrics/
+!docs/MANAGER_SUMMARY_REPORT.md
 !docs/tests/
 !docs/FIELD_SCHEMA.md
 !docs/CHANGE_VELOCITY_LOG.md

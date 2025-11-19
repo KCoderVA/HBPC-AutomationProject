@@ -6,6 +6,17 @@
 ### Fixed
 - (placeholder)
 
+# [v1.0.0] - 2025-11-19
+### Added
+- Manager-facing summary report documenting end-to-end HBPC Admission & Discharge remediation, stakeholders, effort, and current governed state (`docs/MANAGER_SUMMARY_REPORT.md`).
+- Direct links to HBPC Canvas App, Power Automate flows, SharePoint lists/libraries, Teams, and Entra group under `assets/links/` for operational transparency.
+- Copilot quick reference checklist (`.github/copilot-quickref.md`) for future AI-assisted maintenance.
+### Changed
+- Updated `.gitignore` to track the manager summary report while keeping sensitive metadata and hash verification scripts internal-only.
+- Consolidated Copilot instructions under `.github/copilot-instructions.md` and removed the legacy copy under `dev/`.
+### Fixed
+- Aligned repository documentation and ignore rules with the completed Admission & Discharge remediation scope in preparation for v1.0.0.
+
 # [v0.5.1] - 2025-11-18
 ### Added
 - Unpacked Canvas App sources under `src/power-apps/.unpacked` (manifest, screens, themes, data sources) for HinesHBPCAdmDisApp.

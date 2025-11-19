@@ -8,10 +8,12 @@
 <!-- BADGES:END -->
 <p><img alt="Schema Fields" src="assets/badges/schema-field-count.svg" /></p>
 
-<!-- BUILDINFO:START --><div><em>Build Info</em>: Commit <code>26f8a08</code> • UTC <code>2025-11-18</code> • Last Tag <code>v0.5.0</code> • Commits Since Tag <code>0</code> • Files Since Tag <code>0</code> • Schema Fields Snapshot <code>11</code></div><!-- BUILDINFO:END -->
+<!-- BUILDINFO:START --><div><em>Build Info</em>: Commit <code>TODO_SHA</code> • UTC <code>2025-11-19</code> • Last Tag <code>v1.0.0</code> • Commits Since Tag <code>0</code> • Files Since Tag <code>0</code> • Schema Fields Snapshot <code>11</code></div><!-- BUILDINFO:END -->
 
 ## Overview
-This repository houses governance, forensic, and maintenance artifacts for the **Veteran Admission Email With Saved Form** and **Veteran Discharge Email With Saved Form** Power Automate flows, plus the companion Canvas App (**HinesHBPCAdmDisApp**) now source-controlled in unpacked form. Each flow generates a structured HTML summary populated from SharePoint list item data; the Canvas App provides clinical data entry and validation scaffolding. Reconstruction (v0.1.0 baseline) restored truncated middle sections for Admission; v0.5.0 added Discharge remediation; v0.5.1 introduces full Canvas App source tracking for transparent review and future automation.
+For a manager-facing narrative of the original issues, remediation steps, stakeholders, effort, and current state of the HBPC Admission & Discharge automation, see `docs/MANAGER_SUMMARY_REPORT.md` (public, PHI-masked). An internal, uncensored copy is retained offline at `archives/MANAGER_SUMMARY_REPORT.md`.
+
+This repository houses governance, forensic, and maintenance artifacts for the **Veteran Admission Email With Saved Form** and **Veteran Discharge Email With Saved Form** Power Automate flows, plus the companion Canvas App (**HinesHBPCAdmDisApp**) now source-controlled in unpacked form. Each flow generates a structured HTML summary populated from SharePoint list item data; the Canvas App provides clinical data entry and validation scaffolding. Reconstruction (v0.1.0 baseline) restored truncated middle sections for Admission; v0.5.0 added Discharge remediation; v0.5.1 introduces full Canvas App source tracking for transparent review and future automation; v1.0.0 marks the first complete, governed release with manager-facing documentation and operational links.
 | `HinesHBPCAdmDisApp.msapp` | `src/power-apps/.msapp/` | Binary packaged Canvas App (authoritative export). |
 | `.unpacked/CanvasManifest.json` | `src/power-apps/.unpacked/` | App manifest (flags, version, feature toggles). |
 | `.unpacked/Src/App.fx.yaml` | `src/power-apps/.unpacked/Src/` | Global OnStart + theme logic (responsive width config). |
@@ -75,8 +77,8 @@ root/
 | `RELEASE.md` | `governance/` | Release procedure & tagging policy. |
 | `LABELS.md` | `governance/` | Issue label taxonomy. |
 | `copilot-instructions.md` | `.github/` | Full AI collaboration contract & guardrails (authoritative). |
-| `copilot-quickref.md` | `dev/` | Condensed Copilot checklist. |
-| `HBPC_Automation.code-workspace` | `dev/` | VS Code workspace settings. |
+| `copilot-quickref.md` | `.github/` | Condensed Copilot checklist for safe AI-assisted changes. |
+| `MANAGER_SUMMARY_REPORT.md` | `docs/` | Manager-facing summary of problems, remediation, stakeholders, effort, and current state. |
 | `CODEOWNERS` | root | Automatic review assignment. |
 | `LICENSE.txt` | root | Apache 2.0 license (joint copyright: Kyle J. Coder & Ara A. Zakarian). |
 | `ARCHITECTURE.md` | `docs/` | Flow component diagram & extension points. |
